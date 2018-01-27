@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 const config = {
   resolve: {
-    modules: [path.resolve('./lib'), path.resolve('./node_modules')]
+    modules: [path.resolve('./lib'), path.resolve('./node_modules')],
   },
   entry: {
     vendor: [
@@ -14,13 +14,13 @@ const config = {
       'axios',
       'lodash.debounce',
       'lodash.pickby',
-      'react-bootstrap'
+      'react-bootstrap',
     ],
-    app: ['./lib/renderers/dom.js']
+    app: ['./lib/renderers/dom.js'],
   },
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: '[name].js'
+    filename: '[name].js',
   },
   module: {
     rules: [{
@@ -29,16 +29,16 @@ const config = {
       use: {
         loader: 'babel-loader',
         options: {
-          presets: ['react', 'env', 'stage-2']
-        }
-      }
-    }]
+          presets: ['react', 'env', 'stage-2'],
+        },
+      },
+    }],
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
-    })
-  ]
+      name: 'vendor',
+    }),
+  ],
 };
 
 module.exports = config;
