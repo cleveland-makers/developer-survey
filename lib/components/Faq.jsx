@@ -1,6 +1,6 @@
 import React from 'react';
-import NavbarHome from './NavbarHome';
 import { Link } from 'react-router-dom';
+import NavbarHome from './NavbarHome';
 import FullWidthSection from './FullWidthSection';
 
 const styles = {
@@ -20,8 +20,8 @@ const styles = {
     margin: 'auto',
   },
   buttonMain: {
-    backgroundColor: '#4556A5',
-    border: '2px solid #4556A5',
+    backgroundColor: '#730006',
+    border: '2px solid #730006',
     borderRadius: '2px',
     color: '#F7F5F4',
     padding: '15px 32px',
@@ -69,13 +69,13 @@ const Faq = () => (
             (date here).
           </p>
           <p>
-            The full survey will take under 10 minutes and contains only the
             necessary questions to help people understand the primary salary
+            The full survey will take under 10 minutes and contains only the
             considerations.
           </p>
         </div>
         <div className="buttons">
-          <a href="next.html" style={styles.buttonMain}>Start</a>
+          <Link style={styles.buttonMain} to="/survey">Start</Link>
         </div>
       </section>
     </FullWidthSection>
