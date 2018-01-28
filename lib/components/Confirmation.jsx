@@ -63,7 +63,7 @@ const Faq = () => (
           </p>
         </div>
         <div className="buttons">
-          <Link style={styles.buttonMain} to="/survey">Start</Link>
+          <Link style={styles.buttonMain} to="/faq">Start</Link>
         </div>
       </section>
     </FullWidthSection>
