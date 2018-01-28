@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 
 const styles = {
-  navBarHeader: {
-    color: '#fff',
-    fontSize: '3em',
+  navbar: {
+    backgroundColor: '#8097ad',
   },
-  navBar: {
-    backgroundColor: '#6B86A0',
+  navbarTitle: {
+    fontFamily: 'Play, serif',
+    fontWeight: '600',
+    textShadow: '2px 2px 5px #6B86A0',
+    textTransform: 'uppercase',
   },
 };
 
@@ -17,9 +19,9 @@ class AppNavbar extends React.PureComponent {
     return (
       <div>
         <AppBar
-          style={styles.navBar}
+          style={styles.navbar}
+          titleStyle={styles.navbarTitle}
           title={this.props.i18n.header}
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
         />
       </div>
     );

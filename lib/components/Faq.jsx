@@ -8,7 +8,7 @@ const styles = {
     marginTop: '20px',
     marginBottom: '40px',
     fontFamily: 'Play, serif',
-    color: '#510004',
+    color: '#730006',
     textShadow: '2px 2px 5px #F24932',
     fontSize: '50px',
     fontWeight: '600',
@@ -44,7 +44,7 @@ const styles = {
     fontWeight: 'bold',
   },
   root: {
-    backgroundColor: '#6B86A0',
+    backgroundColor: '#8097ad',
     overflow: 'hidden',
     minHeight: '800px',
   },

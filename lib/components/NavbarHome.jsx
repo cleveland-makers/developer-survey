@@ -7,7 +7,7 @@ const styles = {
     fontSize: '3em',
   },
   navBar: {
-    backgroundColor: '#6B86A0',
+    backgroundColor: '#8097ad',
   },
 };
 
