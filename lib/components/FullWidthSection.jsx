@@ -52,6 +52,7 @@ class FullWidthSection extends React.PureComponent {
       <ClearFix
         {...other}
         style={Object.assign(
+          {},
           styles.root,
           style,
           width === SMALL && styles.rootWhenSmall,
