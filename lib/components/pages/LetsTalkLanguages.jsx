@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PrimaryLanguage from './PrimaryLanguage';
-import SecondaryLanguages from './SecondaryLanguages';
-import LanguageUses from './LanguageUses';
-import YearsExpWithLanguage from './YearsExpWithLanguage';
-import CodingInstitutions from './CodingInstitutions';
+import PrimaryLanguage from '../questions/PrimaryLanguage';
+import SecondaryLanguages from '../questions/SecondaryLanguages';
+import LanguageUses from '../questions/LanguageUses';
+import YearsExpWithLanguage from '../questions/YearsExpWithLanguage';
+import CodingInstitutions from '../questions/CodingInstitutions';
 
 class TellUsAboutYourCurrentRole extends React.PureComponent {
   previousStep(e) {

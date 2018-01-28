@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import storeProvider from './storeProvider';
+import storeProvider from '../storeProvider';
 
 const roles = [
   'Back-End',

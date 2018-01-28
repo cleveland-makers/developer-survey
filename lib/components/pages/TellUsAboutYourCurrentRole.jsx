@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CurrentRole from './CurrentRole';
-import YearsExp from './YearsExp';
-import storeProvider from './storeProvider';
+import CurrentRole from '../questions/CurrentRole';
+import YearsExp from '../questions/YearsExp';
+import storeProvider from '../storeProvider';
 
 class TellUsAboutYourCurrentRole extends React.PureComponent {
   saveAndContinue(e) {

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReasonsForStayingInCleveland from './ReasonsForStayingInCleveland';
-import FavSportsTeam from './FavSportsTeam';
-import FavCleActivity from './FavCleActivity';
+import ReasonsForStayingInCleveland from '../questions/ReasonsForStayingInCleveland';
+import FavSportsTeam from '../questions/FavSportsTeam';
+import FavCleActivity from '../questions/FavCleActivity';
 
 class TellUsAboutYourCurrentRole extends React.PureComponent {
   previousStep(e) {

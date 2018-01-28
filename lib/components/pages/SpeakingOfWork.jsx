@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AvgHoursPerWeek from './AvgHoursPerWeek';
-import WorkLocation from './WorkLocation';
-import CompanySize from './CompanySize';
-import TotalCompensation from './TotalCompensation';
-import NumCompaniesWorkedFor from './NumCompaniesWorkedFor';
-import JobSatisfaction from './JobSatisfaction';
-import WorkLifeBalance from './WorkLifeBalance';
+import AvgHoursPerWeek from '../questions/AvgHoursPerWeek';
+import WorkLocation from '../questions/WorkLocation';
+import CompanySize from '../questions/CompanySize';
+import TotalCompensation from '../questions/TotalCompensation';
+import NumCompaniesWorkedFor from '../questions/NumCompaniesWorkedFor';
+import JobSatisfaction from '../questions/JobSatisfaction';
+import WorkLifeBalance from '../questions/WorkLifeBalance';
 
 class TellUsAboutYourCurrentRole extends React.PureComponent {
   previousStep(e) {

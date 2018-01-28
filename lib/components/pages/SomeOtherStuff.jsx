@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Gender from './Gender';
-import Ethnicity from './Ethnicity';
-import HighestEducationalAttainment from './HighestEducationalAttainment';
+import Gender from '../questions/Gender';
+import Ethnicity from '../questions/Ethnicity';
+import HighestEducationalAttainment from '../questions/HighestEducationalAttainment';
 
 class SomeOtherStuff extends React.PureComponent {
   previousStep(e) {
