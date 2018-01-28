@@ -14,7 +14,6 @@ const config = {
       'axios',
       'lodash.debounce',
       'lodash.pickby',
-      'react-bootstrap',
     ],
     app: ['./lib/renderers/dom.js'],
   },
