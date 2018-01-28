@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const config = {
   resolve: {
     modules: [path.resolve('./lib'), path.resolve('./node_modules')],
+    extensions: ['.js', '.jsx'],
   },
   entry: {
     vendor: [
@@ -23,7 +24,7 @@ const config = {
   },
   module: {
     rules: [{
-      test: /\.js$/,
+      test: /.jsx?$/,
       exclude: /node_modules/,
       use: {
         loader: 'babel-loader',
