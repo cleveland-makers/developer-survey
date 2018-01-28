@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import storeProvider from '../storeProvider';
+
+const styles = {
+  div: {
+    float: 'left',
+  },
+};
 
 const reasons = [
   'of the Pro Sports Teams',
@@ -22,21 +29,23 @@ class ReasonsForStayingInCleveland extends React.Component {
   render() {
     const { reasonsForStayingInCleveland } = this.props;
     return (
-      <SelectField
-        multiple
-        hintText="Reasons for Staying"
-        value={reasonsForStayingInCleveland}
-        onChange={this.handleChange}
-      >
-        {reasons.map(reason => (
-          <MenuItem
-            key={reason}
-            insetChildren
-            checked={reasonsForStayingInCleveland && reasonsForStayingInCleveland.indexOf(reason) > -1}
-            value={reason}
-            primaryText={reason}
-          />))}
-      </SelectField>
+      <div style={styles.div}>
+        <SelectField
+          multiple
+          hintText="Reasons for Staying"
+          value={reasonsForStayingInCleveland}
+          onChange={this.handleChange}
+        >
+          {reasons.map(reason => (
+            <MenuItem
+              key={reason}
+              insetChildren
+              checked={reasonsForStayingInCleveland && reasonsForStayingInCleveland.indexOf(reason) > -1}
+              value={reason}
+              primaryText={reason}
+            />))}
+        </SelectField>
+      </div>
     );
   }
 }

@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import storeProvider from '../storeProvider';
+
+const styles = {
+  div: {
+    float: 'left',
+  },
+};
 
 const activities = [
   'A Christmas Story House',
@@ -26,7 +33,7 @@ class FavCleActivity extends React.Component {
   render() {
     const { favCleActivity } = this.props;
     return (
-      <div>
+      <div style={styles.div}>
         <SelectField
           hintText="Favorite Cleveland Activity"
           value={favCleActivity}

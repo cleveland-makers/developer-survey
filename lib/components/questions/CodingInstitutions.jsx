@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import storeProvider from '../storeProvider';
+
+const styles = {
+  div: {
+    float: 'left',
+  },
+};
 
 const institutions = [
   'Bootcamp',
@@ -21,21 +28,23 @@ class CodingInstitutions extends React.Component {
   render() {
     const { codingInstitutions } = this.props;
     return (
-      <SelectField
-        multiple
-        hintText="Where you learned to code"
-        value={codingInstitutions}
-        onChange={this.handleChange}
-      >
-        {institutions.map(institution => (
-          <MenuItem
-            key={institution}
-            insetChildren
-            checked={codingInstitutions && codingInstitutions.indexOf(institution) > -1}
-            value={institution}
-            primaryText={institution}
-          />))}
-      </SelectField>
+      <div style={styles.div}>
+        <SelectField
+          multiple
+          hintText="Where you learned to code"
+          value={codingInstitutions}
+          onChange={this.handleChange}
+        >
+          {institutions.map(institution => (
+            <MenuItem
+              key={institution}
+              insetChildren
+              checked={codingInstitutions && codingInstitutions.indexOf(institution) > -1}
+              value={institution}
+              primaryText={institution}
+            />))}
+        </SelectField>
+      </div>
     );
   }
 }

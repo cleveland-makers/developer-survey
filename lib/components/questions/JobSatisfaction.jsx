@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import storeProvider from '../storeProvider';
+
+const styles = {
+  div: {
+    float: 'left',
+  },
+};
 
 const emoji = [
   '&#x1F62D',
@@ -17,20 +24,22 @@ class JobSatisfaction extends React.Component {
   render() {
     const { jobSatisfaction } = this.props;
     return (
-      <SelectField
-        hintText="Job Satisfaction"
-        value={jobSatisfaction}
-        onChange={this.handleChange}
-      >
-        {emoji.map(emo => (
-          <MenuItem
-            key={emo}
-            insetChildren
-            checked={jobSatisfaction && jobSatisfaction.indexOf(emo) > -1}
-            value={emo}
-            primaryText={emo}
-          />))}
-      </SelectField>
+      <div style={styles.div}>
+        <SelectField
+          hintText="Job Satisfaction"
+          value={jobSatisfaction}
+          onChange={this.handleChange}
+        >
+          {emoji.map(emo => (
+            <MenuItem
+              key={emo}
+              insetChildren
+              checked={jobSatisfaction && jobSatisfaction.indexOf(emo) > -1}
+              value={emo}
+              primaryText={emo}
+            />))}
+        </SelectField>
+      </div>
     );
   }
 }

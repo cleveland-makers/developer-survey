@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import storeProvider from '../storeProvider';
+
+const styles = {
+  div: {
+    float: 'left',
+  },
+};
 
 const emoji = [
   '&#x1F62D',
@@ -17,20 +24,22 @@ class WorkLifeBalance extends React.Component {
   render() {
     const { workLifeBalance } = this.props;
     return (
-      <SelectField
-        hintText="Work/Life Balance"
-        value={workLifeBalance}
-        onChange={this.handleChange}
-      >
-        {emoji.map(emo => (
-          <MenuItem
-            key={emo}
-            insetChildren
-            checked={workLifeBalance && workLifeBalance.indexOf(emo) > -1}
-            value={emo}
-            primaryText={emo}
-          />))}
-      </SelectField>
+      <div style={styles.div}>
+        <SelectField
+          hintText="Work/Life Balance"
+          value={workLifeBalance}
+          onChange={this.handleChange}
+        >
+          {emoji.map(emo => (
+            <MenuItem
+              key={emo}
+              insetChildren
+              checked={workLifeBalance && workLifeBalance.indexOf(emo) > -1}
+              value={emo}
+              primaryText={emo}
+            />))}
+        </SelectField>
+      </div>
     );
   }
 }

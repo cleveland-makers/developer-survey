@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import storeProvider from '../storeProvider';
 
 const styles = {
   customWidth: {
     width: 150,
+  },
+  div: {
+    float: 'left',
   },
 };
 
@@ -22,7 +26,7 @@ class Gender extends React.Component {
   render() {
     const { gender } = this.props;
     return (
-      <div>
+      <div style={styles.div}>
         <SelectField
           style={styles.customWidth}
           hintText="Gender"

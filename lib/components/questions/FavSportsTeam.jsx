@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import storeProvider from '../storeProvider';
+
+const styles = {
+  div: {
+    float: 'left',
+  },
+};
 
 const teams = [
   'Browns',
@@ -25,7 +32,7 @@ class FavSportsTeam extends React.Component {
   render() {
     const { favSportTeam } = this.props;
     return (
-      <div>
+      <div style={styles.div}>
         <SelectField
           hintText="Favorite Sports Team"
           value={favSportTeam}

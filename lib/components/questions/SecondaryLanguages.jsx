@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import storeProvider from '../storeProvider';
+
+const styles = {
+  div: {
+    float: 'left',
+  },
+};
 
 const langs = [
   'Assembly',
@@ -41,21 +48,23 @@ class SecondaryLanguages extends React.Component {
   render() {
     const { secondaryLanguages } = this.props;
     return (
-      <SelectField
-        multiple
-        hintText="Secondary Languages"
-        value={secondaryLanguages}
-        onChange={this.handleChange}
-      >
-        {langs.map(lang => (
-          <MenuItem
-            key={lang}
-            insetChildren
-            checked={secondaryLanguages && secondaryLanguages.indexOf(lang) > -1}
-            value={lang}
-            primaryText={lang}
-          />))}
-      </SelectField>
+      <div style={styles.div}>
+        <SelectField
+          multiple
+          hintText="Secondary Languages"
+          value={secondaryLanguages}
+          onChange={this.handleChange}
+        >
+          {langs.map(lang => (
+            <MenuItem
+              key={lang}
+              insetChildren
+              checked={secondaryLanguages && secondaryLanguages.indexOf(lang) > -1}
+              value={lang}
+              primaryText={lang}
+            />))}
+        </SelectField>
+      </div>
     );
   }
 }

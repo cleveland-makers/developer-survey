@@ -4,6 +4,12 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
+const styles = {
+  div: {
+    float: 'left',
+  }
+}
+
 const roles = [
   'Back-End',
   'Data Science',
@@ -26,21 +32,23 @@ class CurrentRole extends React.Component {
   render() {
     const { currentRoles } = this.props;
     return (
-      <SelectField
-        multiple
-        hintText="Select a role"
-        value={currentRoles}
-        onChange={this.handleChange}
-      >
-        {roles.map(role => (
-          <MenuItem
-            key={role}
-            insetChildren
-            checked={currentRoles && currentRoles.indexOf(role) > -1}
-            value={role}
-            primaryText={role}
-          />))}
-      </SelectField>
+      <div style={styles.div}>
+        <SelectField
+          multiple
+          hintText="Select a role"
+          value={currentRoles}
+          onChange={this.handleChange}
+        >
+          {roles.map(role => (
+            <MenuItem
+              key={role}
+              insetChildren
+              checked={currentRoles && currentRoles.indexOf(role) > -1}
+              value={role}
+              primaryText={role}
+            />))}
+        </SelectField>
+      </div>
     );
   }
 }
