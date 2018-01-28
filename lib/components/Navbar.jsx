@@ -8,15 +8,16 @@ const styles = {
     fontSize: '3em',
   },
   navBar: {
-    backgroundColor: '#44C938',
+    backgroundColor: '#6B86A0',
   },
 };
 
 class AppNavbar extends React.PureComponent {
   render() {
     return (
-      <div style={styles.navBar}>
+      <div>
         <AppBar
+          style={styles.navBar}
           title={this.props.i18n.header}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
         />
@@ -26,7 +27,9 @@ class AppNavbar extends React.PureComponent {
 }
 
 AppNavbar.propTypes = {
-  i18n: PropTypes.object.isRequired,
+  i18n: PropTypes.shape({
+    header: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default AppNavbar;
