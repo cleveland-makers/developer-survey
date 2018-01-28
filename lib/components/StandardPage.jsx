@@ -1,18 +1,18 @@
 import React from 'react';
+import FullWidthSection from './FullWidthSection';
 import Navbar from './Navbar';
 import Survey from './Survey';
 
-let fieldValues = {
-  name: null,
-  email: null,
-  password: null,
-  age: null,
-  colors: [],
+const styles = {
+  container: {
+    width: '60%',
+    margin: 'auto',
+  },
+  root: {
+    overflow: 'hidden',
+    minHeight: '800px',
+  },
 };
-
-const saveValues = fields => ((() => {
-  fieldValues = Object.assign({}, fieldValues, fields);
-})());
 
 class StandardPage extends React.PureComponent {
   constructor(props) {
@@ -43,11 +43,14 @@ class StandardPage extends React.PureComponent {
   }
 
   render() {
-    const { i18n } = this.props;
     return (
-      <div style={{ minHeight: '600px' }}>
-        <Navbar i18n={i18n} />
-        <Survey />
+      <div style={styles.root}>
+        <Navbar {...this.props} />
+        <FullWidthSection>
+          <div style={styles.container}>
+            <Survey />
+          </div>
+        </FullWidthSection>
       </div>
     );
   }
