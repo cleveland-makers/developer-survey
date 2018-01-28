@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
-import storeProvider from '../storeProvider';
 
 const styles = {
   div: {
     float: 'left',
+  },
+  customWidth: {
+    width: 160,
   },
 };
 
@@ -18,6 +20,7 @@ class YearsExp extends React.Component {
         <TextField
           type="number"
           hintText="Number of Years"
+          style={styles.customWidth}
         />
       </div>
     );

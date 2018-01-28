@@ -6,6 +6,12 @@ import LanguageUses from '../questions/LanguageUses';
 import YearsExpWithLanguage from '../questions/YearsExpWithLanguage';
 import CodingInstitutions from '../questions/CodingInstitutions';
 
+const styles = {
+  div: {
+    display: 'inline-block',
+  },
+};
+
 class TellUsAboutYourCurrentRole extends React.PureComponent {
   previousStep(e) {
     e.preventDefault();
@@ -21,29 +27,29 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
   render() {
     return (
       <div>
-        <h1>{"Let's Talk Languages"}</h1>
-        At work, I primarily use
+        <h1>Let&#8217s Talk Languages</h1>
+        <div style={styles.div}>At work, I primarily use</div>
         <PrimaryLanguage
           primaryLanguage={this.props.primaryLanguage}
           updateState={this.props.updateState}
         />
-        At home I use
+        <div style={styles.div}>At home I use</div>
         <SecondaryLanguages
           secondaryLanguages={this.props.secondaryLanguages}
           updateState={this.props.updateState}
-        />{". I've been using my primary language for "}
+        /><div style={styles.div}>. I&#8217ve been using my primary language for</div>
         <LanguageUses
           languageUses={this.props.languageUses}
           updateState={this.props.updateState}
-        />.{"And I learned it "}
+        /><div style={styles.div}>. And I learned it </div>
         <YearsExpWithLanguage
           yearsExpWithLanguage={this.props.yearsExpWithLanguage}
           updateState={this.props.updateState}
-        />{"years ago from"}
+        /><div style={styles.div}>years ago from</div>
         <CodingInstitutions
           codingInstitutions={this.props.codingInstitutions}
           updateState={this.props.updateState}
-        />{"."}
+        /><div style={styles.div}>.</div>
         <button onClick={(e) => { this.previousStep(e); }}>Previous</button>
         <button onClick={(e) => { this.saveAndContinue(e); }}>Next</button>
       </div>
