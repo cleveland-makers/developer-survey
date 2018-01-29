@@ -15,7 +15,7 @@ const styles = {
  * How many hours do you work per week?
  */
 class AvgHoursPerWeek extends React.Component {
-  handleChange = (event, index, value) => {
+  handleChange = (event, value) => {
     this.props.updateState({ avgHoursPerWeek: value });
     this.props.store.saveHoursPerWeek(value);
   }

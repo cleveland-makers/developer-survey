@@ -7,25 +7,25 @@ const styles = {
   div: {
     float: 'left',
   },
-  customWidth: {
-    width: 160,
+  field: {
+    width: 40,
   },
 };
 
 class YearsExp extends React.Component {
-  handleChange = (event, index, value) => {
-    this.props.updateState({ yearsExp: value });
-    this.props.store.saveHowLong(value);
+  handleChange = (event, value) => {
+    this.props.store.saveHowLong(parseInt(value, 10));
   }
 
   render() {
     return (
       <div style={styles.div}>
         <TextField
-          type="number"
           hintText="Number of Years"
           onChange={this.handleChange}
-          style={styles.customWidth}
+          style={styles.field}
+          type="number"
+          value={this.props.developerHowLong}
         />
       </div>
     );
@@ -33,7 +33,7 @@ class YearsExp extends React.Component {
 }
 
 YearsExp.propTypes = {
-  updateState: PropTypes.func.isRequired,
+  developerHowLong: PropTypes.number.isRequired,
   store: PropTypes.shape({
     saveHowLong: PropTypes.func.isRequired,
   }).isRequired,

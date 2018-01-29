@@ -8,9 +8,6 @@ const styles = {
   div: {
     float: 'left',
   },
-  customWidth: {
-    width: 160,
-  },
 };
 
 const roles = [
@@ -28,26 +25,24 @@ const roles = [
 
 class CurrentRole extends React.Component {
   handleChange = (event, index, values) => {
-    this.props.updateState({ currentRoles: values });
     this.props.store.saveRoles(values);
   }
 
   render() {
-    const { currentRoles } = this.props;
+    const { developerCurrentRoles } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
           multiple
           hintText="Role"
-          value={currentRoles}
+          value={developerCurrentRoles}
           onChange={this.handleChange}
-          style={styles.customWidth}
         >
           {roles.map(role => (
             <MenuItem
               key={role}
               insetChildren
-              checked={currentRoles && currentRoles.indexOf(role) > -1}
+              checked={developerCurrentRoles && developerCurrentRoles.indexOf(role) > -1}
               value={role}
               primaryText={role}
             />))}
@@ -58,8 +53,7 @@ class CurrentRole extends React.Component {
 }
 
 CurrentRole.propTypes = {
-  currentRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  updateState: PropTypes.func.isRequired,
+  developerCurrentRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
   store: PropTypes.shape({
     saveRoles: PropTypes.func.isRequired,
   }).isRequired,

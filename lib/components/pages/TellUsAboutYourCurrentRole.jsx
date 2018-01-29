@@ -26,7 +26,6 @@ const styles = {
   },
   answer: {
     float: 'left',
-    width: '175px',
     paddingLeft: '5px',
     paddingRight: '5px',
   },
@@ -52,7 +51,6 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
   saveAndContinue(e) {
     e.preventDefault();
 
-    this.props.saveValues({});
     this.props.nextStep();
   }
 
@@ -64,15 +62,13 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
           <div style={styles.div}>I have been programming as a</div>
           <div style={styles.answer}>
             <CurrentRole
-              currentRoles={this.props.currentRoles}
-              updateState={this.props.updateState}
+              developerCurrentRoles={this.props.survey.developerCurrentRoles}
             />
           </div>
           <div style={styles.div}>developer for</div>
           <div style={styles.answer}>
             <YearsExp
-              yearsExp={this.props.yearsExp}
-              updateState={this.props.updateState}
+              developerHowLong={this.props.survey.developerHowLong}
               style={styles.answer}
             />
           </div>
@@ -89,11 +85,11 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
 }
 
 TellUsAboutYourCurrentRole.propTypes = {
-  currentRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  saveValues: PropTypes.func.isRequired,
+  survey: PropTypes.shape({
+    developerCurrentRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
+    developerHowLong: PropTypes.number.isRequired,
+  }).isRequired,
   nextStep: PropTypes.func.isRequired,
-  updateState: PropTypes.func.isRequired,
-  yearsExp: PropTypes.number.isRequired,
 };
 
 export default storeProvider()(TellUsAboutYourCurrentRole);
