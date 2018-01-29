@@ -5,6 +5,9 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
+  customWidth: {
+    width: 150,
+  },
   div: {
     float: 'left',
   },
@@ -12,7 +15,7 @@ const styles = {
 
 const institutions = [
   'Bootcamp',
-  'Coding competition or part­time course',
+  'Coding competition or part­-time course',
   'College',
   'Hackathon',
   'Industry certification',
