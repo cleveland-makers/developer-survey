@@ -71,7 +71,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
     return (
       <div>
         <h1 style={styles.h1}>Let’s Talk Languages</h1>
-        <ClearFix style={styles.specialMargin}>
+        <div style={styles.specialMargin}>
           <ClearFix>
             <div style={styles.answer}>
               <PrimaryLanguage
@@ -112,7 +112,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
             </div>
             <div style={styles.div}>.</div>
           </ClearFix>
-        </ClearFix>
+        </div>
         <button style={styles.buttonMain} onClick={this.previousStep}>
           Previous
         </button>

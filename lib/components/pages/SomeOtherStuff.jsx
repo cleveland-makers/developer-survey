@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ClearFix from 'material-ui/internal/ClearFix';
 import Gender from '../questions/Gender';
 import Ethnicity from '../questions/Ethnicity';
 import HighestEducationalAttainment from '../questions/HighestEducationalAttainment';
@@ -62,18 +63,32 @@ class SomeOtherStuff extends React.PureComponent {
     const { survey } = this.props;
     return (
       <div>
-        <h1>Some Other Stuff</h1>
-        <Gender
-          personalGender={survey.personalGender}
-        />
-        <Ethnicity
-          personalEthnicity={survey.personalEthnicity}
-        />
-        <HighestEducationalAttainment
-          personalHighestEducation={survey.personalHighestEducation}
-        />
-        <button onClick={this.previousStep}>Previous</button>
-        <button onClick={this.submitSurvey}>Submit</button>
+        <h1 style={styles.h1}>Some Other Stuff</h1>
+        <div style={styles.specialMargin}>
+          <ClearFix>
+            <div style={styles.answer}>
+              <Gender
+                personalGender={survey.personalGender}
+              />
+            </div>
+          </ClearFix>
+          <ClearFix>
+            <div style={styles.answer}>
+              <Ethnicity
+                personalEthnicity={survey.personalEthnicity}
+              />
+            </div>
+          </ClearFix>
+          <ClearFix>
+            <div style={styles.answer}>
+              <HighestEducationalAttainment
+                personalHighestEducation={survey.personalHighestEducation}
+              />
+            </div>
+          </ClearFix>
+        </div>
+        <button style={styles.buttonMain} onClick={this.previousStep}>Previous</button>
+        <button style={styles.buttonMain} onClick={this.submitSurvey}>Submit</button>
       </div>
     );
   }

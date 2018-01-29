@@ -39,7 +39,7 @@ class CompanySize extends React.PureComponent {
     return (
       <div style={styles.div}>
         <SelectField
-          hintText="Primary Language"
+          hintText="Company Size"
           onChange={this.handleChange}
           style={styles.field}
           value={officeEmployeeCount}

@@ -8,9 +8,6 @@ const styles = {
   div: {
     float: 'left',
   },
-  field: {
-    width: 150,
-  },
 };
 
 const genders = [
