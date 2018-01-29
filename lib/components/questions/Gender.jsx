@@ -20,7 +20,7 @@ const genders = [
   'Prefer not to say',
 ];
 
-class Gender extends React.Component {
+class Gender extends React.PureComponent {
   handleChange = (event, index, value) => {
     this.props.store.saveGender(value);
   }
@@ -30,18 +30,18 @@ class Gender extends React.Component {
     return (
       <div style={styles.div}>
         <SelectField
-          style={styles.field}
           hintText="Gender"
-          value={personalGender}
           onChange={this.handleChange}
+          style={styles.field}
+          value={personalGender}
         >
           {genders.map(gen => (
             <MenuItem
-              key={gen}
-              insetChildren
               checked={personalGender.length > 0 && personalGender === gen}
-              value={gen}
+              insetChildren
+              key={gen}
               primaryText={gen}
+              value={gen}
             />))}
         </SelectField>
       </div>

@@ -23,9 +23,9 @@ class TotalCompensation extends React.PureComponent {
     return (
       <div style={styles.div}>
         <TextField
-          type="number"
           hintText="Total Compensation"
           onChange={this.handleChange}
+          type="number"
           value={this.props.careerSalary}
         />
       </div>

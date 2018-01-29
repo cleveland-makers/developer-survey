@@ -12,7 +12,7 @@ const styles = {
   },
 };
 
-class YearsExpWithLanguage extends React.Component {
+class YearsExpWithLanguage extends React.PureComponent {
   handleChange = (event, value) => {
     this.props.store.saveWhenLearned(value);
   }

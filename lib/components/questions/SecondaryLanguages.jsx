@@ -45,7 +45,7 @@ const langs = [
   'Other',
 ];
 
-class SecondaryLanguages extends React.Component {
+class SecondaryLanguages extends React.PureComponent {
   handleChange = (event, index, values) => {
     this.props.store.saveHomeLanguages(values);
   }
@@ -55,19 +55,19 @@ class SecondaryLanguages extends React.Component {
     return (
       <div style={styles.div}>
         <SelectField
-          style={styles.field}
-          multiple
           hintText="Languages"
-          value={languagePrimaryHomeLanguages}
+          multiple
           onChange={this.handleChange}
+          style={styles.field}
+          value={languagePrimaryHomeLanguages}
         >
           {langs.map(lang => (
             <MenuItem
-              key={lang}
-              insetChildren
               checked={languagePrimaryHomeLanguages && languagePrimaryHomeLanguages.indexOf(lang) > -1}
-              value={lang}
+              insetChildren
+              key={lang}
               primaryText={lang}
+              value={lang}
             />))}
         </SelectField>
       </div>

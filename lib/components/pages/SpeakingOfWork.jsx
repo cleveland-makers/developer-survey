@@ -14,6 +14,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
     this.props.saveValues({});
     this.props.previousStep();
   }
+
   saveAndContinue = (e) => {
     e.preventDefault();
     this.props.saveValues({});

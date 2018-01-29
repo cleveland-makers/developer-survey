@@ -25,7 +25,7 @@ const ethnicities = [
   'Other',
 ];
 
-class Ethnicity extends React.Component {
+class Ethnicity extends React.PureComponent {
   handleChange = (event, index, value) => {
     this.props.store.saveEthnicity(value);
   }
@@ -42,11 +42,11 @@ class Ethnicity extends React.Component {
         >
           {ethnicities.map(eth => (
             <MenuItem
-              key={eth}
-              insetChildren
               checked={personalEthnicity.length > 0 && personalEthnicity === eth}
-              value={eth}
+              insetChildren
+              key={eth}
               primaryText={eth}
+              value={eth}
             />))}
         </SelectField>
       </div>

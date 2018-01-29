@@ -23,7 +23,7 @@ const roles = [
   'UX',
 ];
 
-class CurrentRole extends React.Component {
+class CurrentRole extends React.PureComponent {
   handleChange = (event, index, values) => {
     this.props.store.saveRoles(values);
   }
@@ -33,18 +33,18 @@ class CurrentRole extends React.Component {
     return (
       <div style={styles.div}>
         <SelectField
-          multiple
           hintText="Role"
-          value={developerCurrentRoles}
+          multiple
           onChange={this.handleChange}
+          value={developerCurrentRoles}
         >
           {roles.map(role => (
             <MenuItem
-              key={role}
-              insetChildren
               checked={developerCurrentRoles && developerCurrentRoles.indexOf(role) > -1}
-              value={role}
+              insetChildren
+              key={role}
               primaryText={role}
+              value={role}
             />))}
         </SelectField>
       </div>

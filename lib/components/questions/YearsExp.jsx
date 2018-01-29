@@ -12,7 +12,7 @@ const styles = {
   },
 };
 
-class YearsExp extends React.Component {
+class YearsExp extends React.PureComponent {
   handleChange = (event, value) => {
     this.props.store.saveHowLong(parseInt(value, 10));
   }

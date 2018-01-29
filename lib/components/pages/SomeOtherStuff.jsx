@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import RaisedButton from 'material-ui/RaisedButton';
 import Gender from '../questions/Gender';
 import Ethnicity from '../questions/Ethnicity';
 import HighestEducationalAttainment from '../questions/HighestEducationalAttainment';
@@ -13,14 +11,22 @@ const styles = {
     fontFamily: 'Play, serif',
     color: '#730006',
     textShadow: '2px 2px 5px #F24932',
-    fontSize: '50px',
+    fontSize: '30px',
     fontWeight: '600',
     lineHeight: '1.08',
     textTransform: 'uppercase',
   },
   div: {
-    width: '60%',
-    margin: 'auto',
+    display: 'inline-block',
+    lineHeight: '45px',
+    height: '48px',
+    float: 'left',
+    fontSize: '16px',
+  },
+  answer: {
+    float: 'left',
+    paddingLeft: '5px',
+    paddingRight: '5px',
   },
   buttonMain: {
     backgroundColor: '#730006',
@@ -33,33 +39,22 @@ const styles = {
     display: 'inline-block',
     font: '14px Roboto, sans-serif',
     fontWeight: 'bold',
+    marginRight: '16px',
   },
-  buttonSecondary: {
-    backgroundColor: '#F7F5F4',
-    border: '2px solid #4556A5',
-    borderRadius: '2px',
-    color: '#4556A5',
-    padding: '15px 32px',
-    textAlign: 'center',
-    textDecoration: 'none',
-    display: 'inline-block',
-    font: '16px Roboto, sans-serif',
-    fontWeight: 'bold',
-  },
-  root: {
-    backgroundColor: '#8097ad',
-    overflow: 'hidden',
-    minHeight: '800px',
+  specialMargin: {
+    marginTop: '15px',
+    marginBottom: '20px',
   },
 };
 
 class SomeOtherStuff extends React.PureComponent {
-  previousStep(e) {
+  previousStep = (e) => {
     e.preventDefault();
     this.props.saveValues({});
     this.props.previousStep();
   }
-  submitSurvey() {
+
+  submitSurvey = () => {
     this.props.saveValues({});
   }
 
@@ -77,14 +72,8 @@ class SomeOtherStuff extends React.PureComponent {
         <HighestEducationalAttainment
           personalHighestEducation={survey.personalHighestEducation}
         />
-        <button onClick={(e) => { this.previousStep(e); }}>Previous</button>
-        <div className="buttons">
-          <RaisedButton
-            className={styles.buttonMain}
-          >
-            Submit Survey
-          </RaisedButton>
-        </div>
+        <button onClick={this.previousStep}>Previous</button>
+        <button onClick={this.submitSurvey}>Submit</button>
       </div>
     );
   }
@@ -94,8 +83,8 @@ SomeOtherStuff.propTypes = {
   saveValues: PropTypes.func.isRequired,
   previousStep: PropTypes.func.isRequired,
   survey: PropTypes.shape({
-    personalGender: PropTypes.string.isRequired,
     personalEthnicity: PropTypes.string.isRequired,
+    personalGender: PropTypes.string.isRequired,
     personalHighestEducation: PropTypes.string.isRequired,
   }).isRequired,
 };

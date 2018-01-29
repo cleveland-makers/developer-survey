@@ -25,7 +25,7 @@ const institutions = [
   'Other',
 ];
 
-class CodingInstitutions extends React.Component {
+class CodingInstitutions extends React.PureComponent {
   handleChange = (event, index, values) => {
     this.props.store.saveWhereLearned(values);
   }
@@ -35,18 +35,18 @@ class CodingInstitutions extends React.Component {
     return (
       <div style={styles.div}>
         <SelectField
-          multiple
           hintText="Where you learned to code"
-          value={languageWhereDidYouLearnIt}
+          multiple
           onChange={this.handleChange}
+          value={languageWhereDidYouLearnIt}
         >
           {institutions.map(institution => (
             <MenuItem
-              key={institution}
-              insetChildren
               checked={languageWhereDidYouLearnIt && languageWhereDidYouLearnIt.indexOf(institution) > -1}
-              value={institution}
+              insetChildren
+              key={institution}
               primaryText={institution}
+              value={institution}
             />))}
         </SelectField>
       </div>

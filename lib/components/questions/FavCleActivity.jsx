@@ -27,28 +27,32 @@ const activities = [
   'Other',
 ];
 
-class FavCleActivity extends React.Component {
+/**
+ * Asks the question:
+ *
+ * What is your favorite undiscovered activity?
+ */
+class FavCleActivity extends React.PureComponent {
   handleChange = (event, index, value) => {
-    this.props.updateState({ favCleActivity: value });
     this.props.store.saveClevelandActivity(value);
   }
 
   render() {
-    const { favCleActivity } = this.props;
+    const { personalFavoriteClevelandActivity } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
           hintText="Favorite Cleveland Activity"
-          value={favCleActivity}
           onChange={this.handleChange}
+          value={personalFavoriteClevelandActivity}
         >
           {activities.map(activity => (
             <MenuItem
-              key={activity}
+              checked={personalFavoriteClevelandActivity.length > 0 && personalFavoriteClevelandActivity === activity}
               insetChildren
-              checked={favCleActivity && favCleActivity.indexOf(activity) > -1}
-              value={activity}
+              key={activity}
               primaryText={activity}
+              value={activity}
             />))}
         </SelectField>
       </div>
@@ -57,8 +61,7 @@ class FavCleActivity extends React.Component {
 }
 
 FavCleActivity.propTypes = {
-  favCleActivity: PropTypes.string.isRequired,
-  updateState: PropTypes.func.isRequired,
+  personalFavoriteClevelandActivity: PropTypes.string.isRequired,
   store: PropTypes.shape({
     saveClevelandActivity: PropTypes.func.isRequired,
   }).isRequired,

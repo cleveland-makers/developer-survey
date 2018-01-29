@@ -3,26 +3,25 @@ import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
 import CurrentRole from '../questions/CurrentRole';
 import YearsExp from '../questions/YearsExp';
-import storeProvider from '../storeProvider';
 
 const styles = {
   h1: {
-    color: '#730006',
+    marginTop: '20px',
+    marginBottom: '40px',
     fontFamily: 'Play, serif',
+    color: '#730006',
+    textShadow: '2px 2px 5px #F24932',
     fontSize: '30px',
     fontWeight: '600',
     lineHeight: '1.08',
-    marginBottom: '40px',
-    marginTop: '20px',
-    textShadow: '2px 2px 5px #F24932',
     textTransform: 'uppercase',
   },
   div: {
     display: 'inline-block',
+    lineHeight: '45px',
+    height: '48px',
     float: 'left',
     fontSize: '16px',
-    height: '48px',
-    lineHeight: '45px',
   },
   answer: {
     float: 'left',
@@ -34,16 +33,17 @@ const styles = {
     border: '2px solid #730006',
     borderRadius: '2px',
     color: '#F7F5F4',
-    display: 'inline-block',
-    font: '14px Roboto, sans-serif',
-    fontWeight: 'bold',
     padding: '8px 14px',
     textAlign: 'center',
     textDecoration: 'none',
+    display: 'inline-block',
+    font: '14px Roboto, sans-serif',
+    fontWeight: 'bold',
+    marginRight: '16px',
   },
   specialMargin: {
-    marginBottom: '20px',
     marginTop: '15px',
+    marginBottom: '20px',
   },
 };
 
@@ -91,4 +91,4 @@ TellUsAboutYourCurrentRole.propTypes = {
   nextStep: PropTypes.func.isRequired,
 };
 
-export default storeProvider()(TellUsAboutYourCurrentRole);
+export default TellUsAboutYourCurrentRole;

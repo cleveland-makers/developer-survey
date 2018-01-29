@@ -16,7 +16,7 @@ const uses = [
   'Study',
 ];
 
-class LanguageUses extends React.Component {
+class LanguageUses extends React.PureComponent {
   handleChange = (event, index, values) => {
     this.props.store.saveLanguageUses(values);
   }
@@ -26,18 +26,18 @@ class LanguageUses extends React.Component {
     return (
       <div style={styles.div}>
         <SelectField
-          multiple
           hintText="Reason for using language"
-          value={languageWhyDoYouUseIt}
+          multiple
           onChange={this.handleChange}
+          value={languageWhyDoYouUseIt}
         >
           {uses.map(use => (
             <MenuItem
-              key={use}
-              insetChildren
               checked={languageWhyDoYouUseIt && languageWhyDoYouUseIt.indexOf(use) > -1}
-              value={use}
+              insetChildren
+              key={use}
               primaryText={use}
+              value={use}
             />))}
         </SelectField>
       </div>

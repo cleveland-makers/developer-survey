@@ -34,16 +34,16 @@ class JobSatisfaction extends React.PureComponent {
       <div style={styles.div}>
         <SelectField
           hintText="Job Satisfaction"
-          value={careerSatisfaction}
           onChange={this.handleChange}
+          value={careerSatisfaction}
         >
           {emoji.map(emo => (
             <MenuItem
-              key={emo}
-              insetChildren
               checked={careerSatisfaction.length > 0 && careerSatisfaction === emo}
-              value={emo}
+              insetChildren
+              key={emo}
               primaryText={emo}
+              value={emo}
             />))}
         </SelectField>
       </div>

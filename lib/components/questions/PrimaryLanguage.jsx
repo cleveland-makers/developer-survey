@@ -45,7 +45,7 @@ const langs = [
   'Other',
 ];
 
-class PrimaryLanguage extends React.Component {
+class PrimaryLanguage extends React.PureComponent {
   handleChange = (event, index, value) => {
     this.props.store.savePrimaryLanguage(value);
   }
@@ -56,17 +56,17 @@ class PrimaryLanguage extends React.Component {
       <div style={styles.div}>
         <SelectField
           hintText="Language"
-          value={languagePrimaryWorkLanguage}
           onChange={this.handleChange}
           style={styles.field}
+          value={languagePrimaryWorkLanguage}
         >
           {langs.map(lang => (
             <MenuItem
-              key={lang}
-              insetChildren
               checked={languagePrimaryWorkLanguage.length > 0 && languagePrimaryWorkLanguage === lang}
-              value={lang}
+              insetChildren
+              key={lang}
               primaryText={lang}
+              value={lang}
             />))}
         </SelectField>
       </div>

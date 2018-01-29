@@ -17,28 +17,32 @@ const teams = [
   'Monsters',
 ];
 
-class FavSportsTeam extends React.Component {
+/**
+ * Asks the question:
+ *
+ * What are your favorite sports teams?
+ */
+class FavSportsTeam extends React.PureComponent {
   handleChange = (event, index, value) => {
-    this.props.updateState({ favSportTeam: value });
     this.props.store.saveSportsTeam(value);
   }
 
   render() {
-    const { favSportTeam } = this.props;
+    const { personalFavoriteSportsTeams } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
           hintText="Favorite Sports Team"
-          value={favSportTeam}
+          value={personalFavoriteSportsTeams}
           onChange={this.handleChange}
         >
           {teams.map(team => (
             <MenuItem
-              key={team}
+              checked={personalFavoriteSportsTeams.length > 0 && personalFavoriteSportsTeams === team}
               insetChildren
-              checked={favSportTeam && favSportTeam.indexOf(team) > -1}
-              value={team}
+              key={team}
               primaryText={team}
+              value={team}
             />))}
         </SelectField>
       </div>
@@ -47,8 +51,7 @@ class FavSportsTeam extends React.Component {
 }
 
 FavSportsTeam.propTypes = {
-  favSportTeam: PropTypes.string.isRequired,
-  updateState: PropTypes.func.isRequired,
+  personalFavoriteSportsTeams: PropTypes.string.isRequired,
   store: PropTypes.shape({
     saveSportsTeam: PropTypes.func.isRequired,
   }).isRequired,

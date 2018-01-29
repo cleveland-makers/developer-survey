@@ -5,11 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  customWidth: {
-    width: 150,
-  },
   div: {
     float: 'left',
+  },
+  field: {
+    width: 150,
   },
 };
 
@@ -26,30 +26,34 @@ const reasons = [
   'of Something Else',
 ];
 
-class ReasonsForStayingInCleveland extends React.Component {
+/**
+ * Asks the question:
+ *
+ * Why do you stay in Cleveland?
+ */
+class ReasonsForStayingInCleveland extends React.PureComponent {
   handleChange = (event, index, values) => {
-    this.props.updateState({ reasonsForStayingInCleveland: values });
     this.props.store.saveWhyCleveland(values);
   }
 
   render() {
-    const { reasonsForStayingInCleveland } = this.props;
+    const { personalWhyCleveland } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
-          style={styles.customWidth}
-          multiple
           hintText="Reasons for Staying"
-          value={reasonsForStayingInCleveland}
+          multiple
           onChange={this.handleChange}
+          style={styles.field}
+          value={personalWhyCleveland}
         >
           {reasons.map(reason => (
             <MenuItem
-              key={reason}
+              checked={personalWhyCleveland && personalWhyCleveland.indexOf(reason) > -1}
               insetChildren
-              checked={reasonsForStayingInCleveland && reasonsForStayingInCleveland.indexOf(reason) > -1}
-              value={reason}
+              key={reason}
               primaryText={reason}
+              value={reason}
             />))}
         </SelectField>
       </div>
@@ -58,8 +62,7 @@ class ReasonsForStayingInCleveland extends React.Component {
 }
 
 ReasonsForStayingInCleveland.propTypes = {
-  reasonsForStayingInCleveland: PropTypes.arrayOf(PropTypes.string).isRequired,
-  updateState: PropTypes.func.isRequired,
+  personalWhyCleveland: PropTypes.arrayOf(PropTypes.string).isRequired,
   store: PropTypes.shape({
     saveWhyCleveland: PropTypes.func.isRequired,
   }).isRequired,

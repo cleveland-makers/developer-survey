@@ -25,9 +25,8 @@ const education = [
   'I prefer not to answer',
 ];
 
-class HighestEducationalAttainment extends React.Component {
+class HighestEducationalAttainment extends React.PureComponent {
   handleChange = (event, index, value) => {
-    this.props.updateState({ highestEducationalAttainment: value });
     this.props.store.saveHighestEducation(value);
   };
 
@@ -36,18 +35,18 @@ class HighestEducationalAttainment extends React.Component {
     return (
       <div style={styles.div}>
         <SelectField
-          style={styles.field}
           hintText="Highest Educational Attainment"
-          value={personalHighestEducation}
           onChange={this.handleChange}
+          style={styles.field}
+          value={personalHighestEducation}
         >
           {education.map(ed => (
             <MenuItem
-              key={ed}
-              insetChildren
               checked={personalHighestEducation.length > 0 && personalHighestEducation === ed}
-              value={ed}
+              insetChildren
+              key={ed}
               primaryText={ed}
+              value={ed}
             />))}
         </SelectField>
       </div>

@@ -5,49 +5,51 @@ import FavSportsTeam from '../questions/FavSportsTeam';
 import FavCleActivity from '../questions/FavCleActivity';
 
 class TellUsAboutYourCurrentRole extends React.PureComponent {
-  previousStep(e) {
+  previousStep = (e) => {
     e.preventDefault();
     this.props.saveValues({});
     this.props.previousStep();
   }
-  saveAndContinue(e) {
+
+  saveAndContinue = (e) => {
     e.preventDefault();
     this.props.saveValues({});
     this.props.nextStep();
   }
 
   render() {
+    const { survey } = this.props;
     return (
       <div>
         <h1>Moving On...</h1>
-        {'I stay in Cleveland because '}
+        I stay in Cleveland because
         <ReasonsForStayingInCleveland
-          reasonsForStayingInCleveland={this.props.reasonsForStayingInCleveland}
-          updateState={this.props.updateState}
-        />{', and I live and breathe the'}
-        <FavSportsTeam
-          favSportsTeam={this.props.favSportsTeam}
-          updateState={this.props.updateState}
-        />{'(most of the time), but I wish more people knew about '}
-        <FavCleActivity
-          favCleActivity={this.props.favCleActivity}
-          updateState={this.props.updateState}
+          personalWhyCleveland={survey.personalWhyCleveland}
         />
-        <button onClick={(e) => { this.previousStep(e); }}>Previous</button>
-        <button onClick={(e) => { this.saveAndContinue(e); }}>Next</button>
+        , and I live and breathe the
+        <FavSportsTeam
+          personalFavoriteSportsTeams={survey.personalFavoriteSportsTeams}
+        />
+        (most of the time), but I wish more people knew about
+        <FavCleActivity
+          personalFavoriteClevelandActivity={survey.personalFavoriteClevelandActivity}
+        />
+        <button onClick={this.previousStep}>Previous</button>
+        <button onClick={this.saveAndContinue}>Next</button>
       </div>
     );
   }
 }
 
 TellUsAboutYourCurrentRole.propTypes = {
+  survey: PropTypes.shape({
+    personalFavoriteClevelandActivity: PropTypes.string.isRequired,
+    personalFavoriteSportsTeams: PropTypes.string.isRequired,
+    personalWhyCleveland: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
   saveValues: PropTypes.func.isRequired,
   nextStep: PropTypes.func.isRequired,
   previousStep: PropTypes.func.isRequired,
-  updateState: PropTypes.func.isRequired,
-  reasonsForStayingInCleveland: PropTypes.arrayOf(PropTypes.string).isRequired,
-  favSportsTeam: PropTypes.string.isRequired,
-  favCleActivity: PropTypes.string.isRequired,
 };
 
 export default TellUsAboutYourCurrentRole;
