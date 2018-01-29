@@ -10,7 +10,7 @@ const styles = {
   },
   root: {
     overflow: 'hidden',
-    minHeight: '800px',
+    minHeight: '500px',
   },
 };
 

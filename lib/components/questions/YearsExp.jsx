@@ -7,6 +7,9 @@ const styles = {
   div: {
     float: 'left',
   },
+  customWidth: {
+    width: 160,
+  },
 };
 
 class YearsExp extends React.Component {
@@ -22,6 +25,7 @@ class YearsExp extends React.Component {
           type="number"
           hintText="Number of Years"
           onChange={this.handleChange}
+          style={styles.customWidth}
         />
       </div>
     );

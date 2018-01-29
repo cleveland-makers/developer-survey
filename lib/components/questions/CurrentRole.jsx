@@ -7,8 +7,11 @@ import storeProvider from '../storeProvider';
 const styles = {
   div: {
     float: 'left',
-  }
-}
+  },
+  customWidth: {
+    width: 160,
+  },
+};
 
 const roles = [
   'Back-End',
@@ -35,9 +38,10 @@ class CurrentRole extends React.Component {
       <div style={styles.div}>
         <SelectField
           multiple
-          hintText="Select a role"
+          hintText="Role"
           value={currentRoles}
           onChange={this.handleChange}
+          style={styles.customWidth}
         >
           {roles.map(role => (
             <MenuItem
