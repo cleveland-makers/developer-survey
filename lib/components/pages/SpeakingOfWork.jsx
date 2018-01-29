@@ -8,6 +8,7 @@ import TotalCompensation from '../questions/TotalCompensation';
 import NumCompaniesWorkedFor from '../questions/NumCompaniesWorkedFor';
 import JobSatisfaction from '../questions/JobSatisfaction';
 import WorkLifeBalance from '../questions/WorkLifeBalance';
+import storeProvider from '../storeProvider';
 
 const styles = {
   h1: {
@@ -55,14 +56,12 @@ const styles = {
 class SpeakingOfWork extends React.PureComponent {
   previousStep = (e) => {
     e.preventDefault();
-    this.props.saveValues({});
-    this.props.previousStep();
+    this.props.store.previousStep();
   }
 
   saveAndContinue = (e) => {
     e.preventDefault();
-    this.props.saveValues({});
-    this.props.nextStep();
+    this.props.store.nextStep();
   }
 
   render() {
@@ -124,6 +123,10 @@ class SpeakingOfWork extends React.PureComponent {
 }
 
 SpeakingOfWork.propTypes = {
+  store: PropTypes.shape({
+    nextStep: PropTypes.func.isRequired,
+    previousStep: PropTypes.func.isRequired,
+  }).isRequired,
   survey: PropTypes.shape({
     careerDevelopmentJobCount: PropTypes.number.isRequired,
     careerSalary: PropTypes.number.isRequired,
@@ -133,9 +136,6 @@ SpeakingOfWork.propTypes = {
     officeHoursPerWeek: PropTypes.number.isRequired,
     officeLocation: PropTypes.string.isRequired,
   }).isRequired,
-  saveValues: PropTypes.func.isRequired,
-  nextStep: PropTypes.func.isRequired,
-  previousStep: PropTypes.func.isRequired,
 };
 
-export default SpeakingOfWork;
+export default storeProvider()(SpeakingOfWork);

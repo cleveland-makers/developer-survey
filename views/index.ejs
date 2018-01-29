@@ -26,6 +26,7 @@
     }
 
     html {
+      height: 100%;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -42,8 +43,8 @@
     }
   </style>
 </head>
-<body>
-  <div id="root"><%- initialMarkup -%></div>
+<body style="height: 100%;">
+  <div style="height: 100%;" id="root"><%- initialMarkup -%></div>
   <script src="/vendor.js?version=1" charset="utf-8"></script>
   <script src="/app.js?version=1" charset="utf-8"></script>
 </body>

@@ -12,16 +12,19 @@ const styles = {
   },
   footer: {
     backgroundColor: '#343432',
-    minHeight: '400px',
+    flexShrink: 'none',
+    padding: '20px',
   },
 };
 
 const Footer = () => (
-  <FullWidthSection style={styles.footer}>
-    <p style={styles.p}>
-      {'Hand crafted with love by engineers from Cleveland. '}
-    </p>
-  </FullWidthSection>
+  <footer style={styles.footer}>
+    <FullWidthSection>
+      <p style={styles.p}>
+        {'Hand crafted with love by engineers from Cleveland. '}
+      </p>
+    </FullWidthSection>
+  </footer>
 );
 
 export default Footer;

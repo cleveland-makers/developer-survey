@@ -6,6 +6,7 @@ import SecondaryLanguages from '../questions/SecondaryLanguages';
 import LanguageUses from '../questions/LanguageUses';
 import YearsExpWithLanguage from '../questions/YearsExpWithLanguage';
 import CodingInstitutions from '../questions/CodingInstitutions';
+import storeProvider from '../storeProvider';
 
 const styles = {
   h1: {
@@ -56,14 +57,12 @@ const styles = {
 class TellUsAboutYourCurrentRole extends React.PureComponent {
   previousStep = (e) => {
     e.preventDefault();
-    this.props.saveValues({});
-    this.props.previousStep();
+    this.props.store.previousStep();
   }
 
   saveAndContinue = (e) => {
     e.preventDefault();
-    this.props.saveValues({});
-    this.props.nextStep();
+    this.props.store.nextStep();
   }
 
   render() {
@@ -125,6 +124,10 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
 }
 
 TellUsAboutYourCurrentRole.propTypes = {
+  store: PropTypes.shape({
+    nextStep: PropTypes.func.isRequired,
+    previousStep: PropTypes.func.isRequired,
+  }).isRequired,
   survey: PropTypes.shape({
     languagePrimaryHomeLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
     languagePrimaryWorkLanguage: PropTypes.string.isRequired,
@@ -132,9 +135,6 @@ TellUsAboutYourCurrentRole.propTypes = {
     languageWhereDidYouLearnIt: PropTypes.arrayOf(PropTypes.string).isRequired,
     languageWhyDoYouUseIt: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
-  nextStep: PropTypes.func.isRequired,
-  previousStep: PropTypes.func.isRequired,
-  saveValues: PropTypes.func.isRequired,
 };
 
-export default TellUsAboutYourCurrentRole;
+export default storeProvider()(TellUsAboutYourCurrentRole);

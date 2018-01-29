@@ -4,6 +4,7 @@ import ClearFix from 'material-ui/internal/ClearFix';
 import Gender from '../questions/Gender';
 import Ethnicity from '../questions/Ethnicity';
 import HighestEducationalAttainment from '../questions/HighestEducationalAttainment';
+import storeProvider from '../storeProvider';
 
 const styles = {
   h1: {
@@ -51,12 +52,11 @@ const styles = {
 class SomeOtherStuff extends React.PureComponent {
   previousStep = (e) => {
     e.preventDefault();
-    this.props.saveValues({});
-    this.props.previousStep();
+    this.props.store.previousStep();
   }
 
   submitSurvey = () => {
-    this.props.saveValues({});
+    this.props.store.submitSurvey();
   }
 
   render() {
@@ -95,8 +95,10 @@ class SomeOtherStuff extends React.PureComponent {
 }
 
 SomeOtherStuff.propTypes = {
-  saveValues: PropTypes.func.isRequired,
-  previousStep: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    previousStep: PropTypes.func.isRequired,
+    submitSurvey: PropTypes.func.isRequired,
+  }).isRequired,
   survey: PropTypes.shape({
     personalEthnicity: PropTypes.string.isRequired,
     personalGender: PropTypes.string.isRequired,
@@ -104,4 +106,4 @@ SomeOtherStuff.propTypes = {
   }).isRequired,
 };
 
-export default SomeOtherStuff;
+export default storeProvider()(SomeOtherStuff);
