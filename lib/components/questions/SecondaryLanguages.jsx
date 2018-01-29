@@ -5,6 +5,9 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
+  customWidth: {
+    width: 150,
+  },
   div: {
     float: 'left',
   },
@@ -53,8 +56,9 @@ class SecondaryLanguages extends React.Component {
     return (
       <div style={styles.div}>
         <SelectField
+          style={styles.customWidth}
           multiple
-          hintText="Secondary Languages"
+          hintText="Languages"
           value={secondaryLanguages}
           onChange={this.handleChange}
         >

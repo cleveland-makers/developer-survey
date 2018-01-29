@@ -7,6 +7,9 @@ const styles = {
   div: {
     float: 'left',
   },
+  customWidth: {
+    width: 150,
+  },
 };
 
 class YearsExpWithLanguage extends React.Component {
@@ -19,6 +22,7 @@ class YearsExpWithLanguage extends React.Component {
     return (
       <div style={styles.div}>
         <TextField
+          style={styles.customWidth}
           type="number"
           hintText="Number of Years"
           onChange={this.handleChange}

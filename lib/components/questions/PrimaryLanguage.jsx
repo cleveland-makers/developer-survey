@@ -56,10 +56,10 @@ class PrimaryLanguage extends React.Component {
     return (
       <div style={styles.div}>
         <SelectField
-          style={styles.customWidth}
-          hintText="Primary Language"
+          hintText="Language"
           value={primaryLanguage}
           onChange={this.handleChange}
+          style={styles.customWidth}
         >
           {langs.map(lang => (
             <MenuItem

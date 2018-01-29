@@ -8,7 +8,7 @@ const styles = {
     float: 'left',
   },
   customWidth: {
-    width: 160,
+    width: 150,
   },
 };
 
@@ -22,10 +22,10 @@ class YearsExp extends React.Component {
     return (
       <div style={styles.div}>
         <TextField
+          style={styles.customWidth}
           type="number"
           hintText="Number of Years"
           onChange={this.handleChange}
-          style={styles.customWidth}
         />
       </div>
     );
