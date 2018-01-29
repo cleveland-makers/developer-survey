@@ -7,7 +7,6 @@ import LanguageUses from '../questions/LanguageUses';
 import YearsExpWithLanguage from '../questions/YearsExpWithLanguage';
 import CodingInstitutions from '../questions/CodingInstitutions';
 
-
 const styles = {
   h1: {
     marginTop: '20px',
@@ -55,12 +54,12 @@ const styles = {
  * The second page of the survey.
  */
 class TellUsAboutYourCurrentRole extends React.PureComponent {
-  previousStep(e) {
+  previousStep = (e) => {
     e.preventDefault();
     this.props.saveValues({});
     this.props.previousStep();
   }
-  saveAndContinue(e) {
+  saveAndContinue = (e) => {
     e.preventDefault();
     this.props.saveValues({});
     this.props.nextStep();
@@ -113,10 +112,10 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
             <div style={styles.div}>.</div>
           </ClearFix>
         </ClearFix>
-        <button style={styles.buttonMain} onClick={(e) => { this.previousStep(e); }}>
+        <button style={styles.buttonMain} onClick={this.previousStep}>
           Previous
         </button>
-        <button style={styles.buttonMain} onClick={(e) => { this.saveAndContinue(e); }}>
+        <button style={styles.buttonMain} onClick={this.saveAndContinue}>
           Next
         </button>
       </div>

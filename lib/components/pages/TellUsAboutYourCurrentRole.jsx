@@ -7,22 +7,22 @@ import storeProvider from '../storeProvider';
 
 const styles = {
   h1: {
-    marginTop: '20px',
-    marginBottom: '40px',
-    fontFamily: 'Play, serif',
     color: '#730006',
-    textShadow: '2px 2px 5px #F24932',
+    fontFamily: 'Play, serif',
     fontSize: '30px',
     fontWeight: '600',
     lineHeight: '1.08',
+    marginBottom: '40px',
+    marginTop: '20px',
+    textShadow: '2px 2px 5px #F24932',
     textTransform: 'uppercase',
   },
   div: {
     display: 'inline-block',
-    lineHeight: '45px',
-    height: '48px',
     float: 'left',
     fontSize: '16px',
+    height: '48px',
+    lineHeight: '45px',
   },
   answer: {
     float: 'left',
@@ -34,23 +34,22 @@ const styles = {
     border: '2px solid #730006',
     borderRadius: '2px',
     color: '#F7F5F4',
-    padding: '8px 14px',
-    textAlign: 'center',
-    textDecoration: 'none',
     display: 'inline-block',
     font: '14px Roboto, sans-serif',
     fontWeight: 'bold',
+    padding: '8px 14px',
+    textAlign: 'center',
+    textDecoration: 'none',
   },
   specialMargin: {
-    marginTop: '15px',
     marginBottom: '20px',
+    marginTop: '15px',
   },
 };
 
 class TellUsAboutYourCurrentRole extends React.PureComponent {
-  saveAndContinue(e) {
+  saveAndContinue = (e) => {
     e.preventDefault();
-
     this.props.nextStep();
   }
 
@@ -74,11 +73,11 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
           </div>
           <div style={styles.div}>years.</div>
         </ClearFix>
-        <div>
-          <button style={styles.buttonMain} onClick={(e) => { this.saveAndContinue(e); }}>
-            Save and Continue
+        <ClearFix style={styles.specialMargin}>
+          <button style={styles.buttonMain} onClick={this.saveAndContinue}>
+            Next
           </button>
-        </div>
+        </ClearFix>
       </div>
     );
   }

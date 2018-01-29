@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
 import Gender from '../questions/Gender';
 import Ethnicity from '../questions/Ethnicity';
 import HighestEducationalAttainment from '../questions/HighestEducationalAttainment';
@@ -63,24 +64,26 @@ class SomeOtherStuff extends React.PureComponent {
   }
 
   render() {
+    const { survey } = this.props;
     return (
       <div>
         <h1>Some Other Stuff</h1>
         <Gender
-          gender={this.props.gender}
-          updateState={this.props.updateState}
+          personalGender={survey.personalGender}
         />
         <Ethnicity
-          ethnicity={this.props.ethnicity}
-          updateState={this.props.updateState}
+          personalEthnicity={survey.personalEthnicity}
         />
         <HighestEducationalAttainment
-          highestEducationalAttainment={this.props.highestEducationalAttainment}
-          updateState={this.props.updateState}
+          personalHighestEducation={survey.personalHighestEducation}
         />
         <button onClick={(e) => { this.previousStep(e); }}>Previous</button>
         <div className="buttons">
-          <Link style={styles.buttonMain} to="/confirmation" onClick={this.submitSurvey()}>Submit Survey</Link>
+          <RaisedButton
+            className={styles.buttonMain}
+          >
+            Submit Survey
+          </RaisedButton>
         </div>
       </div>
     );
@@ -90,10 +93,11 @@ class SomeOtherStuff extends React.PureComponent {
 SomeOtherStuff.propTypes = {
   saveValues: PropTypes.func.isRequired,
   previousStep: PropTypes.func.isRequired,
-  updateState: PropTypes.func.isRequired,
-  gender: PropTypes.string.isRequired,
-  ethnicity: PropTypes.string.isRequired,
-  highestEducationalAttainment: PropTypes.string.isRequired,
+  survey: PropTypes.shape({
+    personalGender: PropTypes.string.isRequired,
+    personalEthnicity: PropTypes.string.isRequired,
+    personalHighestEducation: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default SomeOtherStuff;

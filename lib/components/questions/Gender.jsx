@@ -5,11 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  customWidth: {
-    width: 150,
-  },
   div: {
     float: 'left',
+  },
+  field: {
+    width: 150,
   },
 };
 
@@ -22,25 +22,24 @@ const genders = [
 
 class Gender extends React.Component {
   handleChange = (event, index, value) => {
-    this.props.updateState({ gender: value });
     this.props.store.saveGender(value);
   }
 
   render() {
-    const { gender } = this.props;
+    const { personalGender } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
-          style={styles.customWidth}
+          style={styles.field}
           hintText="Gender"
-          value={gender}
+          value={personalGender}
           onChange={this.handleChange}
         >
           {genders.map(gen => (
             <MenuItem
               key={gen}
               insetChildren
-              checked={gender && gender.indexOf(gen) > -1}
+              checked={personalGender.length > 0 && personalGender === gen}
               value={gen}
               primaryText={gen}
             />))}
@@ -51,8 +50,7 @@ class Gender extends React.Component {
 }
 
 Gender.propTypes = {
-  gender: PropTypes.string.isRequired,
-  updateState: PropTypes.func.isRequired,
+  personalGender: PropTypes.string.isRequired,
   store: PropTypes.shape({
     saveGender: PropTypes.func.isRequired,
   }).isRequired,

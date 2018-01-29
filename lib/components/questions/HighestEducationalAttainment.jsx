@@ -5,11 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  customWidth: {
-    width: 150,
-  },
   div: {
     float: 'left',
+  },
+  field: {
+    width: 150,
   },
 };
 
@@ -32,20 +32,20 @@ class HighestEducationalAttainment extends React.Component {
   };
 
   render() {
-    const { highestEducationalAttainment } = this.props;
+    const { personalHighestEducation } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
-          style={styles.customWidth}
+          style={styles.field}
           hintText="Highest Educational Attainment"
-          value={highestEducationalAttainment}
+          value={personalHighestEducation}
           onChange={this.handleChange}
         >
           {education.map(ed => (
             <MenuItem
               key={ed}
               insetChildren
-              checked={highestEducationalAttainment && highestEducationalAttainment.indexOf(ed) > -1}
+              checked={personalHighestEducation.length > 0 && personalHighestEducation === ed}
               value={ed}
               primaryText={ed}
             />))}
@@ -56,8 +56,7 @@ class HighestEducationalAttainment extends React.Component {
 }
 
 HighestEducationalAttainment.propTypes = {
-  highestEducationalAttainment: PropTypes.string.isRequired,
-  updateState: PropTypes.func.isRequired,
+  personalHighestEducation: PropTypes.string.isRequired,
   store: PropTypes.shape({
     saveHighestEducation: PropTypes.func.isRequired,
   }).isRequired,

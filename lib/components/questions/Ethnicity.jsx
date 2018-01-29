@@ -5,11 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  customWidth: {
-    width: 150,
-  },
   div: {
     float: 'left',
+  },
+  field: {
+    width: 150,
   },
 };
 
@@ -27,25 +27,24 @@ const ethnicities = [
 
 class Ethnicity extends React.Component {
   handleChange = (event, index, value) => {
-    this.props.updateState({ ethnicity: value });
     this.props.store.saveEthnicity(value);
   }
 
   render() {
-    const { ethnicity } = this.props;
+    const { personalEthnicity } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
-          style={styles.customWidth}
           hintText="Ethnicity"
-          value={ethnicity}
           onChange={this.handleChange}
+          style={styles.field}
+          value={personalEthnicity}
         >
           {ethnicities.map(eth => (
             <MenuItem
               key={eth}
               insetChildren
-              checked={ethnicity && ethnicity.indexOf(eth) > -1}
+              checked={personalEthnicity.length > 0 && personalEthnicity === eth}
               value={eth}
               primaryText={eth}
             />))}
@@ -56,8 +55,7 @@ class Ethnicity extends React.Component {
 }
 
 Ethnicity.propTypes = {
-  ethnicity: PropTypes.string.isRequired,
-  updateState: PropTypes.func.isRequired,
+  personalEthnicity: PropTypes.string.isRequired,
   store: PropTypes.shape({
     saveEthnicity: PropTypes.func.isRequired,
   }).isRequired,
