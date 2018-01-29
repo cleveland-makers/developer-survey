@@ -5,11 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  customWidth: {
-    width: 150,
-  },
   div: {
     float: 'left',
+  },
+  field: {
+    width: 150,
   },
 };
 
@@ -24,29 +24,33 @@ const buckets = [
   '> 10,000',
 ];
 
-class CompanySize extends React.Component {
+/**
+ * Asks the question:
+ *
+ * How large is your company?
+ */
+class CompanySize extends React.PureComponent {
   handleChange = (event, index, value) => {
-    this.props.updateState({ companySize: value });
     this.props.store.saveCompanySize(value);
   }
 
   render() {
-    const { companySize } = this.props;
+    const { officeEmployeeCount } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
-          style={styles.customWidth}
           hintText="Primary Language"
-          value={companySize}
           onChange={this.handleChange}
+          style={styles.field}
+          value={officeEmployeeCount}
         >
           {buckets.map(bucket => (
             <MenuItem
-              key={bucket}
+              checked={officeEmployeeCount.length > 0 && officeEmployeeCount === bucket}
               insetChildren
-              checked={companySize && companySize.indexOf(bucket) > -1}
-              value={bucket}
+              key={bucket}
               primaryText={bucket}
+              value={bucket}
             />))}
         </SelectField>
       </div>
@@ -55,8 +59,7 @@ class CompanySize extends React.Component {
 }
 
 CompanySize.propTypes = {
-  companySize: PropTypes.string.isRequired,
-  updateState: PropTypes.func.isRequired,
+  officeEmployeeCount: PropTypes.string.isRequired,
   store: PropTypes.shape({
     saveCompanySize: PropTypes.func.isRequired,
   }).isRequired,

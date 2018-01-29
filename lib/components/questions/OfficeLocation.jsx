@@ -19,28 +19,32 @@ const locations = [
   'Other',
 ];
 
-class WorkLocation extends React.Component {
+/**
+ * Asks the question:
+ *
+ * Where is your office located?
+ */
+class OfficeLocation extends React.PureComponent {
   handleChange = (event, index, value) => {
-    this.props.updateState({ workLocation: value });
     this.props.store.saveWorkLocation(value);
   }
 
   render() {
-    const { workLocation } = this.props;
+    const { officeLocation } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
           hintText="Work Location"
-          value={workLocation}
           onChange={this.handleChange}
+          value={officeLocation}
         >
           {locations.map(location => (
             <MenuItem
-              key={location}
+              checked={officeLocation.length > 0 && officeLocation === location}
               insetChildren
-              checked={workLocation && workLocation.indexOf(location) > -1}
-              value={location}
+              key={location}
               primaryText={location}
+              value={location}
             />))}
         </SelectField>
       </div>
@@ -48,12 +52,11 @@ class WorkLocation extends React.Component {
   }
 }
 
-WorkLocation.propTypes = {
-  workLocation: PropTypes.string.isRequired,
-  updateState: PropTypes.func.isRequired,
+OfficeLocation.propTypes = {
+  officeLocation: PropTypes.string.isRequired,
   store: PropTypes.shape({
     saveWorkLocation: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default storeProvider()(WorkLocation);
+export default storeProvider()(OfficeLocation);

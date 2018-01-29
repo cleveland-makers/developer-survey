@@ -18,28 +18,32 @@ const emoji = [
   '&#x1F603',
 ];
 
+/**
+ * Asks the question:
+ *
+ * How would you say the work/life balance is at your current job?
+ */
 class WorkLifeBalance extends React.PureComponent {
   handleChange = (event, index, value) => {
-    this.props.updateState({ workLifeBalance: value });
     this.props.store.saveWorkLifeBalance(value);
   }
 
   render() {
-    const { workLifeBalance } = this.props;
+    const { careerWorkLifeBalance } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
           hintText="Work/Life Balance"
-          value={workLifeBalance}
           onChange={this.handleChange}
+          value={careerWorkLifeBalance}
         >
           {emoji.map(emo => (
             <MenuItem
-              key={emo}
+              checked={careerWorkLifeBalance.length > 0 && careerWorkLifeBalance === emo}
               insetChildren
-              checked={workLifeBalance && workLifeBalance.indexOf(emo) > -1}
-              value={emo}
+              key={emo}
               primaryText={emo}
+              value={emo}
             />))}
         </SelectField>
       </div>
@@ -48,8 +52,7 @@ class WorkLifeBalance extends React.PureComponent {
 }
 
 WorkLifeBalance.propTypes = {
-  workLifeBalance: PropTypes.string.isRequired,
-  updateState: PropTypes.func.isRequired,
+  careerWorkLifeBalance: PropTypes.string.isRequired,
   store: PropTypes.shape({
     saveWorkLifeBalance: PropTypes.func.isRequired,
   }).isRequired,

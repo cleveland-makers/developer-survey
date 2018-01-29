@@ -18,26 +18,30 @@ const emoji = [
   '&#x1F603',
 ];
 
-class JobSatisfaction extends React.Component {
+/**
+ * Asks the question:
+ *
+ * How statified are you are you current job?
+ */
+class JobSatisfaction extends React.PureComponent {
   handleChange = (event, index, value) => {
-    this.props.updateState({ jobSatisfaction: value });
     this.props.store.saveJobSatisfaction(value);
   }
 
   render() {
-    const { jobSatisfaction } = this.props;
+    const { careerSatisfaction } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
           hintText="Job Satisfaction"
-          value={jobSatisfaction}
+          value={careerSatisfaction}
           onChange={this.handleChange}
         >
           {emoji.map(emo => (
             <MenuItem
               key={emo}
               insetChildren
-              checked={jobSatisfaction && jobSatisfaction.indexOf(emo) > -1}
+              checked={careerSatisfaction.length > 0 && careerSatisfaction === emo}
               value={emo}
               primaryText={emo}
             />))}
@@ -48,8 +52,7 @@ class JobSatisfaction extends React.Component {
 }
 
 JobSatisfaction.propTypes = {
-  jobSatisfaction: PropTypes.string.isRequired,
-  updateState: PropTypes.func.isRequired,
+  careerSatisfaction: PropTypes.string.isRequired,
   store: PropTypes.shape({
     saveJobSatisfaction: PropTypes.func.isRequired,
   }).isRequired,

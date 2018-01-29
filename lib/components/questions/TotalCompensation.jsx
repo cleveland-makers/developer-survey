@@ -9,9 +9,13 @@ const styles = {
   },
 };
 
-class TotalCompensation extends React.Component {
+/**
+ * Asks the question:
+ *
+ * How much do you earn?
+ */
+class TotalCompensation extends React.PureComponent {
   handleChange = (event, value) => {
-    this.props.updateState({ totalCompensation: value });
     this.props.store.saveCompensation(value);
   }
 
@@ -22,6 +26,7 @@ class TotalCompensation extends React.Component {
           type="number"
           hintText="Total Compensation"
           onChange={this.handleChange}
+          value={this.props.careerSalary}
         />
       </div>
     );
@@ -29,7 +34,7 @@ class TotalCompensation extends React.Component {
 }
 
 TotalCompensation.propTypes = {
-  updateState: PropTypes.func.isRequired,
+  careerSalary: PropTypes.number.isRequired,
   store: PropTypes.shape({
     saveCompensation: PropTypes.func.isRequired,
   }).isRequired,

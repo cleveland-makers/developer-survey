@@ -9,9 +9,13 @@ const styles = {
   },
 };
 
-class NumCompaniesWorkedFor extends React.Component {
+/**
+ * Asks the question:
+ *
+ * How many development jobs have you had?
+ */
+class NumCompaniesWorkedFor extends React.PureComponent {
   handleChange = (event, value) => {
-    this.props.updateState({ numCompaniesWorkedFor: value });
     this.props.store.saveNumberOfJobs(value);
   }
 
@@ -19,9 +23,10 @@ class NumCompaniesWorkedFor extends React.Component {
     return (
       <div style={styles.div}>
         <TextField
-          type="number"
           hintText="Number of Companies You've Worked For"
           onChange={this.handleChange}
+          type="number"
+          value={this.props.careerDevelopmentJobCount}
         />
       </div>
     );
@@ -29,7 +34,7 @@ class NumCompaniesWorkedFor extends React.Component {
 }
 
 NumCompaniesWorkedFor.propTypes = {
-  updateState: PropTypes.func.isRequired,
+  careerDevelopmentJobCount: PropTypes.number.isRequired,
   store: PropTypes.shape({
     saveNumberOfJobs: PropTypes.func.isRequired,
   }).isRequired,
