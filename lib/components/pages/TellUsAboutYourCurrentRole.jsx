@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
 import CurrentRole from '../questions/CurrentRole';
-import YearsExp from '../questions/YearsExp';
+import YearsOfExperience from '../questions/YearsOfExperience';
 
 const styles = {
   h1: {
@@ -18,7 +18,7 @@ const styles = {
   },
   div: {
     display: 'inline-block',
-    lineHeight: '45px',
+    lineHeight: '48px',
     height: '48px',
     float: 'left',
     fontSize: '16px',
@@ -66,7 +66,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
           </div>
           <div style={styles.div}>developer for</div>
           <div style={styles.answer}>
-            <YearsExp
+            <YearsOfExperience
               developerHowLong={this.props.survey.developerHowLong}
               style={styles.answer}
             />
