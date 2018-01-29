@@ -5,11 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  customWidth: {
-    width: 150,
-  },
   div: {
     float: 'left',
+  },
+  field: {
+    width: 150,
   },
 };
 
@@ -47,25 +47,24 @@ const langs = [
 
 class PrimaryLanguage extends React.Component {
   handleChange = (event, index, value) => {
-    this.props.updateState({ primaryLanguage: value });
     this.props.store.savePrimaryLanguage(value);
   }
 
   render() {
-    const { primaryLanguage } = this.props;
+    const { languagePrimaryWorkLanguage } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
           hintText="Language"
-          value={primaryLanguage}
+          value={languagePrimaryWorkLanguage}
           onChange={this.handleChange}
-          style={styles.customWidth}
+          style={styles.field}
         >
           {langs.map(lang => (
             <MenuItem
               key={lang}
               insetChildren
-              checked={primaryLanguage && primaryLanguage.indexOf(lang) > -1}
+              checked={languagePrimaryWorkLanguage.length > 0 && languagePrimaryWorkLanguage === lang}
               value={lang}
               primaryText={lang}
             />))}
@@ -76,8 +75,7 @@ class PrimaryLanguage extends React.Component {
 }
 
 PrimaryLanguage.propTypes = {
-  primaryLanguage: PropTypes.string.isRequired,
-  updateState: PropTypes.func.isRequired,
+  languagePrimaryWorkLanguage: PropTypes.string.isRequired,
   store: PropTypes.shape({
     savePrimaryLanguage: PropTypes.func.isRequired,
   }).isRequired,

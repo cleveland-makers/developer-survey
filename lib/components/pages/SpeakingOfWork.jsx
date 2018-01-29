@@ -23,7 +23,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
   render() {
     return (
       <div>
-        <h1>{'Speaking of Work... '}</h1>
+        <h1>Speaking of Work...</h1>
         For my average of
         <AvgHoursPerWeek
           avgHoursPerWeek={this.props.avgHoursPerWeek}

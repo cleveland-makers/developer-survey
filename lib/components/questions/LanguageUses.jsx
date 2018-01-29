@@ -18,25 +18,24 @@ const uses = [
 
 class LanguageUses extends React.Component {
   handleChange = (event, index, values) => {
-    this.props.updateState({ languageUses: values });
     this.props.store.saveLanguageUses(values);
   }
 
   render() {
-    const { languageUses } = this.props;
+    const { languageWhyDoYouUseIt } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
           multiple
           hintText="Reason for using language"
-          value={languageUses}
+          value={languageWhyDoYouUseIt}
           onChange={this.handleChange}
         >
           {uses.map(use => (
             <MenuItem
               key={use}
               insetChildren
-              checked={languageUses && languageUses.indexOf(use) > -1}
+              checked={languageWhyDoYouUseIt && languageWhyDoYouUseIt.indexOf(use) > -1}
               value={use}
               primaryText={use}
             />))}
@@ -47,8 +46,7 @@ class LanguageUses extends React.Component {
 }
 
 LanguageUses.propTypes = {
-  languageUses: PropTypes.arrayOf(PropTypes.string).isRequired,
-  updateState: PropTypes.func.isRequired,
+  languageWhyDoYouUseIt: PropTypes.arrayOf(PropTypes.string).isRequired,
   store: PropTypes.shape({
     saveLanguageUses: PropTypes.func.isRequired,
   }).isRequired,

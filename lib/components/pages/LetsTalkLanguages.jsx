@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
-import storeProvider from '../storeProvider';
 import PrimaryLanguage from '../questions/PrimaryLanguage';
 import SecondaryLanguages from '../questions/SecondaryLanguages';
 import LanguageUses from '../questions/LanguageUses';
@@ -52,6 +51,9 @@ const styles = {
   },
 };
 
+/**
+ * The second page of the survey.
+ */
 class TellUsAboutYourCurrentRole extends React.PureComponent {
   previousStep(e) {
     e.preventDefault();
@@ -65,15 +67,15 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
   }
 
   render() {
+    const { survey } = this.props;
     return (
       <div>
-        <h1 style={styles.h1}>{"Let's Talk Languages"}</h1>
+        <h1 style={styles.h1}>Let’s Talk Languages</h1>
         <ClearFix style={styles.specialMargin}>
           <ClearFix>
             <div style={styles.answer}>
               <PrimaryLanguage
-                primaryLanguage={this.props.primaryLanguage}
-                updateState={this.props.updateState}
+                languagePrimaryWorkLanguage={survey.languagePrimaryWorkLanguage}
               />
             </div>
             <div style={styles.div}>is my primary work programming language.</div>
@@ -82,18 +84,16 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
             <div style={styles.div}>At home, I use</div>
             <div style={styles.answer}>
               <SecondaryLanguages
-                secondaryLanguages={this.props.secondaryLanguages}
-                updateState={this.props.updateState}
+                languagePrimaryHomeLanguages={survey.languagePrimaryHomeLanguages}
               />
             </div>
             <div style={styles.div}>for my personal and open-source projects.</div>
           </ClearFix>
           <ClearFix>
-            <div style={styles.div}>{"I've been using my primary language for"}</div>
+            <div style={styles.div}>I’ve been using my primary language for</div>
             <div style={styles.answer}>
               <LanguageUses
-                languageUses={this.props.languageUses}
-                updateState={this.props.updateState}
+                languageWhyDoYouUseIt={survey.languageWhyDoYouUseIt}
               />
             </div>
           </ClearFix>
@@ -101,15 +101,13 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
             <div style={styles.div}>I learned it </div>
             <div style={styles.answer}>
               <YearsExpWithLanguage
-                yearsExpWithLanguage={this.props.yearsExpWithLanguage}
-                updateState={this.props.updateState}
+                languageWhenDidYouLearnIt={survey.languageWhenDidYouLearnIt}
               />
             </div>
             <div style={styles.div}>years ago from</div>
             <div style={styles.answer}>
               <CodingInstitutions
-                codingInstitutions={this.props.codingInstitutions}
-                updateState={this.props.updateState}
+                languageWhereDidYouLearnIt={survey.languageWhereDidYouLearnIt}
               />
             </div>
             <div style={styles.div}>.</div>
@@ -127,15 +125,16 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
 }
 
 TellUsAboutYourCurrentRole.propTypes = {
-  saveValues: PropTypes.func.isRequired,
+  survey: PropTypes.shape({
+    languagePrimaryHomeLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
+    languagePrimaryWorkLanguage: PropTypes.string.isRequired,
+    languageWhenDidYouLearnIt: PropTypes.number.isRequired,
+    languageWhereDidYouLearnIt: PropTypes.arrayOf(PropTypes.string).isRequired,
+    languageWhyDoYouUseIt: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
   nextStep: PropTypes.func.isRequired,
   previousStep: PropTypes.func.isRequired,
-  updateState: PropTypes.func.isRequired,
-  primaryLanguage: PropTypes.string.isRequired,
-  secondaryLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
-  languageUses: PropTypes.arrayOf(PropTypes.string).isRequired,
-  yearsExpWithLanguage: PropTypes.number.isRequired,
-  codingInstitutions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  saveValues: PropTypes.func.isRequired,
 };
 
 export default TellUsAboutYourCurrentRole;

@@ -10,7 +10,7 @@ const styles = {
 };
 
 class NumCompaniesWorkedFor extends React.Component {
-  handleChange = (event, index, value) => {
+  handleChange = (event, value) => {
     this.props.updateState({ numCompaniesWorkedFor: value });
     this.props.store.saveNumberOfJobs(value);
   }

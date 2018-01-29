@@ -27,25 +27,24 @@ const institutions = [
 
 class CodingInstitutions extends React.Component {
   handleChange = (event, index, values) => {
-    this.props.updateState({ codingInstitutions: values });
     this.props.store.saveWhereLearned(values);
   }
 
   render() {
-    const { codingInstitutions } = this.props;
+    const { languageWhereDidYouLearnIt } = this.props;
     return (
       <div style={styles.div}>
         <SelectField
           multiple
           hintText="Where you learned to code"
-          value={codingInstitutions}
+          value={languageWhereDidYouLearnIt}
           onChange={this.handleChange}
         >
           {institutions.map(institution => (
             <MenuItem
               key={institution}
               insetChildren
-              checked={codingInstitutions && codingInstitutions.indexOf(institution) > -1}
+              checked={languageWhereDidYouLearnIt && languageWhereDidYouLearnIt.indexOf(institution) > -1}
               value={institution}
               primaryText={institution}
             />))}
@@ -56,8 +55,7 @@ class CodingInstitutions extends React.Component {
 }
 
 CodingInstitutions.propTypes = {
-  codingInstitutions: PropTypes.arrayOf(PropTypes.string).isRequired,
-  updateState: PropTypes.func.isRequired,
+  languageWhereDidYouLearnIt: PropTypes.arrayOf(PropTypes.string).isRequired,
   store: PropTypes.shape({
     saveWhereLearned: PropTypes.func.isRequired,
   }).isRequired,

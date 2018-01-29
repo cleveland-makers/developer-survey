@@ -10,7 +10,7 @@ const styles = {
 };
 
 class TotalCompensation extends React.Component {
-  handleChange = (event, index, value) => {
+  handleChange = (event, value) => {
     this.props.updateState({ totalCompensation: value });
     this.props.store.saveCompensation(value);
   }

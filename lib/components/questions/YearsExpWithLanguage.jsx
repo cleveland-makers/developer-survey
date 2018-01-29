@@ -7,14 +7,13 @@ const styles = {
   div: {
     float: 'left',
   },
-  customWidth: {
-    width: 150,
+  field: {
+    width: 40,
   },
 };
 
 class YearsExpWithLanguage extends React.Component {
   handleChange = (event, value) => {
-    this.props.updateState({ yearsExpWithLanguage: value });
     this.props.store.saveWhenLearned(value);
   }
 
@@ -22,10 +21,11 @@ class YearsExpWithLanguage extends React.Component {
     return (
       <div style={styles.div}>
         <TextField
-          style={styles.customWidth}
-          type="number"
           hintText="Number of Years"
           onChange={this.handleChange}
+          style={styles.field}
+          type="number"
+          value={this.props.languageWhenDidYouLearnIt}
         />
       </div>
     );
@@ -33,7 +33,7 @@ class YearsExpWithLanguage extends React.Component {
 }
 
 YearsExpWithLanguage.propTypes = {
-  updateState: PropTypes.func.isRequired,
+  languageWhenDidYouLearnIt: PropTypes.number.isRequired,
   store: PropTypes.shape({
     saveWhenLearned: PropTypes.func.isRequired,
   }).isRequired,
