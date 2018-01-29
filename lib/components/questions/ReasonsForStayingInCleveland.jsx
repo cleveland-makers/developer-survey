@@ -24,7 +24,10 @@ const reasons = [
 ];
 
 class ReasonsForStayingInCleveland extends React.Component {
-  handleChange = (event, index, values) => this.props.updateState({ reasonsForStayingInCleveland: values });
+  handleChange = (event, index, values) => {
+    this.props.updateState({ reasonsForStayingInCleveland: values });
+    this.props.store.saveWhyCleveland(values);
+  }
 
   render() {
     const { reasonsForStayingInCleveland } = this.props;
@@ -53,6 +56,9 @@ class ReasonsForStayingInCleveland extends React.Component {
 ReasonsForStayingInCleveland.propTypes = {
   reasonsForStayingInCleveland: PropTypes.arrayOf(PropTypes.string).isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveWhyCleveland: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default ReasonsForStayingInCleveland;
+export default storeProvider()(ReasonsForStayingInCleveland);

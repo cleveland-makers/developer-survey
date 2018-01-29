@@ -18,8 +18,11 @@ const emoji = [
   '&#x1F603',
 ];
 
-class WorkLifeBalance extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ workLifeBalance: value });
+class WorkLifeBalance extends React.PureComponent {
+  handleChange = (event, index, value) => {
+    this.props.updateState({ workLifeBalance: value });
+    this.props.store.saveWorkLifeBalance(value);
+  }
 
   render() {
     const { workLifeBalance } = this.props;
@@ -47,6 +50,9 @@ class WorkLifeBalance extends React.Component {
 WorkLifeBalance.propTypes = {
   workLifeBalance: PropTypes.string.isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveWorkLifeBalance: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default WorkLifeBalance;
+export default storeProvider()(WorkLifeBalance);

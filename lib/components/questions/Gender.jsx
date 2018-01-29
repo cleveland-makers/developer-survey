@@ -21,7 +21,10 @@ const genders = [
 ];
 
 class Gender extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ gender: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ gender: value });
+    this.props.store.saveGender(value);
+  }
 
   render() {
     const { gender } = this.props;
@@ -50,6 +53,9 @@ class Gender extends React.Component {
 Gender.propTypes = {
   gender: PropTypes.string.isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveGender: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default Gender;
+export default storeProvider()(Gender);

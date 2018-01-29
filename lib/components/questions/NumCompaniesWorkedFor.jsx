@@ -10,7 +10,10 @@ const styles = {
 };
 
 class NumCompaniesWorkedFor extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ numCompaniesWorkedFor: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ numCompaniesWorkedFor: value });
+    this.props.store.saveNumberOfJobs(value);
+  }
 
   render() {
     return (
@@ -18,6 +21,7 @@ class NumCompaniesWorkedFor extends React.Component {
         <TextField
           type="number"
           hintText="Number of Companies You've Worked For"
+          onChange={this.handleChange}
         />
       </div>
     );
@@ -26,6 +30,9 @@ class NumCompaniesWorkedFor extends React.Component {
 
 NumCompaniesWorkedFor.propTypes = {
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveNumberOfJobs: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default NumCompaniesWorkedFor;
+export default storeProvider()(NumCompaniesWorkedFor);

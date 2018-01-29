@@ -17,7 +17,10 @@ const uses = [
 ];
 
 class LanguageUses extends React.Component {
-  handleChange = (event, index, values) => this.props.updateState({ languageUses: values });
+  handleChange = (event, index, values) => {
+    this.props.updateState({ languageUses: values });
+    this.props.store.saveLanguageUses(values);
+  }
 
   render() {
     const { languageUses } = this.props;
@@ -46,6 +49,9 @@ class LanguageUses extends React.Component {
 LanguageUses.propTypes = {
   languageUses: PropTypes.arrayOf(PropTypes.string).isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveLanguageUses: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default LanguageUses;
+export default storeProvider()(LanguageUses);

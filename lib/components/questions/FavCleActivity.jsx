@@ -28,7 +28,10 @@ const activities = [
 ];
 
 class FavCleActivity extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ favCleActivity: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ favCleActivity: value });
+    this.props.store.saveClevelandActivity(value);
+  }
 
   render() {
     const { favCleActivity } = this.props;
@@ -56,6 +59,9 @@ class FavCleActivity extends React.Component {
 FavCleActivity.propTypes = {
   favCleActivity: PropTypes.string.isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveClevelandActivity: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default FavCleActivity;
+export default storeProvider()(FavCleActivity);

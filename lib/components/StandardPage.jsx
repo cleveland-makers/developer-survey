@@ -48,7 +48,7 @@ class StandardPage extends React.PureComponent {
         <Navbar {...this.props} />
         <FullWidthSection>
           <div style={styles.container}>
-            <Survey />
+            <Survey {...this.props} />
           </div>
         </FullWidthSection>
       </div>

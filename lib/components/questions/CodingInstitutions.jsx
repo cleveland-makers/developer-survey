@@ -23,7 +23,10 @@ const institutions = [
 ];
 
 class CodingInstitutions extends React.Component {
-  handleChange = (event, index, values) => this.props.updateState({ codingInstitutions: values });
+  handleChange = (event, index, values) => {
+    this.props.updateState({ codingInstitutions: values });
+    this.props.store.saveWhereLearned(values);
+  }
 
   render() {
     const { codingInstitutions } = this.props;
@@ -52,6 +55,9 @@ class CodingInstitutions extends React.Component {
 CodingInstitutions.propTypes = {
   codingInstitutions: PropTypes.arrayOf(PropTypes.string).isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveWhereLearned: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default CodingInstitutions;
+export default storeProvider()(CodingInstitutions);

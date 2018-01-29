@@ -15,7 +15,10 @@ const styles = {
  * How many hours do you work per week?
  */
 class AvgHoursPerWeek extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ avgHoursPerWeek: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ avgHoursPerWeek: value });
+    this.props.store.saveHoursPerWeek(value);
+  }
 
   render() {
     return (
@@ -23,6 +26,7 @@ class AvgHoursPerWeek extends React.Component {
         <TextField
           type="number"
           hintText="Average Work Hours Per Week"
+          onChange={this.handleChange}
         />
       </div>
     );
@@ -31,6 +35,9 @@ class AvgHoursPerWeek extends React.Component {
 
 AvgHoursPerWeek.propTypes = {
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveHoursPerWeek: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default storeProvider()(AvgHoursPerWeek);

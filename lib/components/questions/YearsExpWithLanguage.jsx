@@ -10,7 +10,10 @@ const styles = {
 };
 
 class YearsExpWithLanguage extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ yearsExpWithLanguage: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ yearsExpWithLanguage: value });
+    this.props.store.saveWhenLearned(value);
+  }
 
   render() {
     return (
@@ -18,6 +21,7 @@ class YearsExpWithLanguage extends React.Component {
         <TextField
           type="number"
           hintText="Number of Years"
+          onChange={this.handleChange}
         />
       </div>
     );
@@ -26,6 +30,9 @@ class YearsExpWithLanguage extends React.Component {
 
 YearsExpWithLanguage.propTypes = {
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveWhenLearned: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default YearsExpWithLanguage;
+export default storeProvider()(YearsExpWithLanguage);

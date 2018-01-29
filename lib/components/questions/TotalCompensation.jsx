@@ -10,7 +10,10 @@ const styles = {
 };
 
 class TotalCompensation extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ totalCompensation: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ totalCompensation: value });
+    this.props.store.saveCompensation(value);
+  }
 
   render() {
     return (
@@ -18,6 +21,7 @@ class TotalCompensation extends React.Component {
         <TextField
           type="number"
           hintText="Total Compensation"
+          onChange={this.handleChange}
         />
       </div>
     );
@@ -26,6 +30,9 @@ class TotalCompensation extends React.Component {
 
 TotalCompensation.propTypes = {
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveCompensation: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default TotalCompensation;
+export default storeProvider()(TotalCompensation);

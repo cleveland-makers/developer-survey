@@ -18,17 +18,11 @@ const teams = [
 ];
 
 class FavSportsTeam extends React.Component {
-  state = {
-    valid: true,
-  }
   handleChange = (event, index, value) => {
-    if (value !== 'correct') {
-      event.preventDefault();
-      this.setState({ valid: false });
-      return;
-    }
     this.props.updateState({ favSportTeam: value });
+    this.props.store.saveSportsTeam(value);
   }
+
   render() {
     const { favSportTeam } = this.props;
     return (
@@ -37,7 +31,6 @@ class FavSportsTeam extends React.Component {
           hintText="Favorite Sports Team"
           value={favSportTeam}
           onChange={this.handleChange}
-          valid={this.state.valid}
         >
           {teams.map(team => (
             <MenuItem
@@ -56,6 +49,9 @@ class FavSportsTeam extends React.Component {
 FavSportsTeam.propTypes = {
   favSportTeam: PropTypes.string.isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveSportsTeam: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default FavSportsTeam;
+export default storeProvider()(FavSportsTeam);

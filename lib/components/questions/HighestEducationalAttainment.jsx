@@ -26,7 +26,10 @@ const education = [
 ];
 
 class HighestEducationalAttainment extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ highestEducationalAttainment: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ highestEducationalAttainment: value });
+    this.props.store.saveHighestEducation(value);
+  };
 
   render() {
     const { highestEducationalAttainment } = this.props;
@@ -55,6 +58,9 @@ class HighestEducationalAttainment extends React.Component {
 HighestEducationalAttainment.propTypes = {
   highestEducationalAttainment: PropTypes.string.isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveHighestEducation: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default HighestEducationalAttainment;
+export default storeProvider()(HighestEducationalAttainment);

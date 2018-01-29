@@ -25,7 +25,10 @@ const buckets = [
 ];
 
 class CompanySize extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ companySize: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ companySize: value });
+    this.props.store.saveCompanySize(value);
+  }
 
   render() {
     const { companySize } = this.props;
@@ -54,6 +57,9 @@ class CompanySize extends React.Component {
 CompanySize.propTypes = {
   companySize: PropTypes.string.isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveCompanySize: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default CompanySize;
+export default storeProvider()(CompanySize);

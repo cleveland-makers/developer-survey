@@ -10,7 +10,10 @@ const styles = {
 };
 
 class YearsExp extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ yearsExp: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ yearsExp: value });
+    this.props.store.saveHowLong(value);
+  }
 
   render() {
     return (
@@ -18,6 +21,7 @@ class YearsExp extends React.Component {
         <TextField
           type="number"
           hintText="Number of Years"
+          onChange={this.handleChange}
         />
       </div>
     );
@@ -26,6 +30,9 @@ class YearsExp extends React.Component {
 
 YearsExp.propTypes = {
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveHowLong: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default YearsExp;
+export default storeProvider()(YearsExp);

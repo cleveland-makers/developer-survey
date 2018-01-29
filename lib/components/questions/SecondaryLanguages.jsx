@@ -43,7 +43,10 @@ const langs = [
 ];
 
 class SecondaryLanguages extends React.Component {
-  handleChange = (event, index, values) => this.props.updateState({ secondaryLanguages: values });
+  handleChange = (event, index, values) => {
+    this.props.updateState({ secondaryLanguages: values });
+    this.props.store.saveHomeLanguages(values);
+  }
 
   render() {
     const { secondaryLanguages } = this.props;
@@ -72,6 +75,9 @@ class SecondaryLanguages extends React.Component {
 SecondaryLanguages.propTypes = {
   secondaryLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveHomeLanguages: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default SecondaryLanguages;
+export default storeProvider()(SecondaryLanguages);

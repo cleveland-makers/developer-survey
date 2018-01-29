@@ -19,7 +19,10 @@ const emoji = [
 ];
 
 class JobSatisfaction extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ jobSatisfaction: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ jobSatisfaction: value });
+    this.props.store.saveJobSatisfaction(value);
+  }
 
   render() {
     const { jobSatisfaction } = this.props;
@@ -47,6 +50,9 @@ class JobSatisfaction extends React.Component {
 JobSatisfaction.propTypes = {
   jobSatisfaction: PropTypes.string.isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveJobSatisfaction: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default JobSatisfaction;
+export default storeProvider()(JobSatisfaction);

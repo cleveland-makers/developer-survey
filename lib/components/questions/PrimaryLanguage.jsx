@@ -46,7 +46,10 @@ const langs = [
 ];
 
 class PrimaryLanguage extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ primaryLanguage: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ primaryLanguage: value });
+    this.props.store.savePrimaryLanguage(value);
+  }
 
   render() {
     const { primaryLanguage } = this.props;
@@ -75,6 +78,9 @@ class PrimaryLanguage extends React.Component {
 PrimaryLanguage.propTypes = {
   primaryLanguage: PropTypes.string.isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    savePrimaryLanguage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default PrimaryLanguage;
+export default storeProvider()(PrimaryLanguage);

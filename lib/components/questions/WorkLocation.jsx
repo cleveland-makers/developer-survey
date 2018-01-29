@@ -20,7 +20,10 @@ const locations = [
 ];
 
 class WorkLocation extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ workLocation: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ workLocation: value });
+    this.props.store.saveWorkLocation(value);
+  }
 
   render() {
     const { workLocation } = this.props;
@@ -48,6 +51,9 @@ class WorkLocation extends React.Component {
 WorkLocation.propTypes = {
   workLocation: PropTypes.string.isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveWorkLocation: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default WorkLocation;
+export default storeProvider()(WorkLocation);

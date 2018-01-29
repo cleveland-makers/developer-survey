@@ -26,7 +26,10 @@ const ethnicities = [
 ];
 
 class Ethnicity extends React.Component {
-  handleChange = (event, index, value) => this.props.updateState({ ethnicity: value });
+  handleChange = (event, index, value) => {
+    this.props.updateState({ ethnicity: value });
+    this.props.store.saveEthnicity(value);
+  }
 
   render() {
     const { ethnicity } = this.props;
@@ -55,6 +58,9 @@ class Ethnicity extends React.Component {
 Ethnicity.propTypes = {
   ethnicity: PropTypes.string.isRequired,
   updateState: PropTypes.func.isRequired,
+  store: PropTypes.shape({
+    saveEthnicity: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-export default Ethnicity;
+export default storeProvider()(Ethnicity);
