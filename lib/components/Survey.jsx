@@ -6,89 +6,41 @@ import SpeakingOfWork from './pages/SpeakingOfWork';
 import MovingOn from './pages/MovingOn';
 import SomeOtherStuff from './pages/SomeOtherStuff';
 
-let fieldValues = {
-  name: null,
-  email: null,
-  password: null,
-  age: null,
-  colors: [],
-};
-
-const saveValues = fields => ((() => {
-  fieldValues = Object.assign({}, fieldValues, fields);
-})());
-
 class Survey extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.updateState = this.updateState.bind(this);
-  }
-
-  state = {
-    step: 1,
-    currentRoles: [],
-    yearsExp: 7,
-  };
-
-  updateState(state) {
-    this.setState(Object.assign({}, this.state, state));
-  }
-
-  nextStep = () => {
-    this.setState({
-      step: this.state.step + 1,
-    });
-  }
-
-  previousStep = () => {
-    this.setState({
-      step: this.state.step - 1,
-    });
-  }
-
   render() {
-    switch (this.state.step) {
+    switch (this.props.surveyStep) {
       case 1:
         return (<TellUsAboutYourCurrentRole
           nextStep={this.nextStep}
-          saveValues={saveValues}
           {...this.props}
         />);
       case 2:
         return (<LetsTalkLanguages
           nextStep={this.nextStep}
           previousStep={this.previousStep}
-          saveValues={saveValues}
           {...this.props}
         />);
       case 3:
         return (<SpeakingOfWork
           nextStep={this.nextStep}
           previousStep={this.previousStep}
-          saveValues={saveValues}
-          updateState={this.updateState}
           {...this.props}
         />);
       case 4:
         return (<MovingOn
           nextStep={this.nextStep}
           previousStep={this.previousStep}
-          saveValues={saveValues}
-          updateState={this.updateState}
-          {...this.state}
           {...this.props}
         />);
       case 5:
         return (<SomeOtherStuff
           nextStep={this.nextStep}
           previousStep={this.previousStep}
-          saveValues={saveValues}
           {...this.props}
         />);
       default:
         return (<TellUsAboutYourCurrentRole
           nextStep={this.nextStep}
-          saveValues={saveValues}
           {...this.props}
         />);
     }
@@ -118,6 +70,7 @@ Survey.propTypes = {
     personalHighestEducation: PropTypes.string.isRequired,
     personalWhyCleveland: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
+  surveyStep: PropTypes.number.isRequired,
 };
 
 export default Survey;

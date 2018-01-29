@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
 import CurrentRole from '../questions/CurrentRole';
 import YearsOfExperience from '../questions/YearsOfExperience';
+import storeProvider from '../storeProvider';
 
 const styles = {
   h1: {
@@ -50,7 +51,7 @@ const styles = {
 class TellUsAboutYourCurrentRole extends React.PureComponent {
   saveAndContinue = (e) => {
     e.preventDefault();
-    this.props.nextStep();
+    this.props.store.nextStep();
   }
 
   render() {
@@ -84,11 +85,13 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
 }
 
 TellUsAboutYourCurrentRole.propTypes = {
+  store: PropTypes.shape({
+    nextStep: PropTypes.func.isRequired,
+  }).isRequired,
   survey: PropTypes.shape({
     developerCurrentRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
     developerHowLong: PropTypes.number.isRequired,
   }).isRequired,
-  nextStep: PropTypes.func.isRequired,
 };
 
-export default TellUsAboutYourCurrentRole;
+export default storeProvider()(TellUsAboutYourCurrentRole);

@@ -2,23 +2,20 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 
 const styles = {
-  navBarHeader: {
-    color: '#fff',
-    fontSize: '3em',
-  },
-  navBar: {
+  navbar: {
     backgroundColor: '#8097ad',
+    flexShrink: 'none',
   },
 };
 
-const AppBarHome = () => (
-  <div>
+const NavbarHome = () => (
+  <div style={styles.navbar}>
     <AppBar
-      style={styles.navBar}
+      style={styles.navbar}
       iconClassNameRight="muidocs-icon-navigation-expand-more"
       zDepth={0}
     />
   </div>
 );
 
-export default AppBarHome;
+export default NavbarHome;

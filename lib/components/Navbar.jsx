@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 const styles = {
   navbar: {
     backgroundColor: '#8097ad',
+    flexShrink: 'none',
   },
   navbarTitle: {
     cursor: 'pointer',
@@ -16,7 +17,7 @@ const styles = {
   },
 };
 
-class AppNavbar extends React.PureComponent {
+class Navbar extends React.PureComponent {
   onTitleClick = () => {
     const { history } = this.props;
     history.push('/');
@@ -24,7 +25,7 @@ class AppNavbar extends React.PureComponent {
 
   render() {
     return (
-      <div>
+      <div style={styles.navbar}>
         <AppBar
           onTitleClick={this.onTitleClick}
           style={styles.navbar}
@@ -36,7 +37,7 @@ class AppNavbar extends React.PureComponent {
   }
 }
 
-AppNavbar.propTypes = {
+Navbar.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
@@ -45,4 +46,4 @@ AppNavbar.propTypes = {
   }).isRequired,
 };
 
-export default withRouter(AppNavbar);
+export default withRouter(Navbar);

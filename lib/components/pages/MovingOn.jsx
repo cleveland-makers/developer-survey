@@ -4,6 +4,7 @@ import ClearFix from 'material-ui/internal/ClearFix';
 import ReasonsForStayingInCleveland from '../questions/ReasonsForStayingInCleveland';
 import FavSportsTeam from '../questions/FavSportsTeam';
 import FavCleActivity from '../questions/FavCleActivity';
+import storeProvider from '../storeProvider';
 
 const styles = {
   h1: {
@@ -51,14 +52,12 @@ const styles = {
 class MovingOn extends React.PureComponent {
   previousStep = (e) => {
     e.preventDefault();
-    this.props.saveValues({});
-    this.props.previousStep();
+    this.props.store.previousStep();
   }
 
   saveAndContinue = (e) => {
     e.preventDefault();
-    this.props.saveValues({});
-    this.props.nextStep();
+    this.props.store.nextStep();
   }
 
   render() {
@@ -96,14 +95,15 @@ class MovingOn extends React.PureComponent {
 }
 
 MovingOn.propTypes = {
+  store: PropTypes.shape({
+    nextStep: PropTypes.func.isRequired,
+    previousStep: PropTypes.func.isRequired,
+  }).isRequired,
   survey: PropTypes.shape({
     personalFavoriteClevelandActivity: PropTypes.string.isRequired,
     personalFavoriteSportsTeams: PropTypes.string.isRequired,
     personalWhyCleveland: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
-  saveValues: PropTypes.func.isRequired,
-  nextStep: PropTypes.func.isRequired,
-  previousStep: PropTypes.func.isRequired,
 };
 
-export default MovingOn;
+export default storeProvider()(MovingOn);

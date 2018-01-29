@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import NavbarHome from './NavbarHome';
 import FullWidthSection from './FullWidthSection';
 
 const styles = {
@@ -46,40 +45,36 @@ const styles = {
   root: {
     backgroundColor: '#8097ad',
     overflow: 'hidden',
-    minHeight: '800px',
   },
 };
 
 const Faq = () => (
-  <div>
-    <NavbarHome />
-    <FullWidthSection style={styles.root}>
-      <section style={styles.div}>
-        <div className="intro">
-          <h1 style={styles.h1}>Welcome to the CLE Tech Survey</h1>
-          <p>
-            The purpose of this survey is to collect and present information about
-            salary, education, and experience for those in Cleveland Technology to
-            get an understanding of the influence different components have on
-            salary calculation.
-          </p>
-          <p>
-            The information collected is anonymous and will be accessible to all, in
-            downloadable (type) format once the survey collection period is over
-            (date here).
-          </p>
-          <p>
-            necessary questions to help people understand the primary salary
-            The full survey will take under 10 minutes and contains only the
-            considerations.
-          </p>
-        </div>
-        <div className="buttons">
-          <Link style={styles.buttonMain} to="/survey">Start</Link>
-        </div>
-      </section>
-    </FullWidthSection>
-  </div>
+  <FullWidthSection style={styles.root}>
+    <section style={styles.div}>
+      <div>
+        <h1 style={styles.h1}>Welcome to the CLE Tech Survey</h1>
+        <p>
+          The purpose of this survey is to collect and present information about
+          salary, education, and experience for those in Cleveland Technology to
+          get an understanding of the influence different components have on
+          salary calculation.
+        </p>
+        <p>
+          The information collected is anonymous and will be accessible to all, in
+          downloadable (type) format once the survey collection period is over
+          (date here).
+        </p>
+        <p>
+          necessary questions to help people understand the primary salary
+          The full survey will take under 10 minutes and contains only the
+          considerations.
+        </p>
+      </div>
+      <div>
+        <Link style={styles.buttonMain} to="/survey">Start</Link>
+      </div>
+    </section>
+  </FullWidthSection>
 );
 
 export default Faq;
