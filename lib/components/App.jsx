@@ -49,12 +49,14 @@ class App extends React.Component {
   }
   appState() {
     const {
+      fingerprint,
       i18n,
       survey,
       surveyStep,
       surveyLength,
     } = this.props.store.getState();
     return {
+      fingerprint,
       i18n,
       survey,
       surveyStep,
@@ -63,6 +65,7 @@ class App extends React.Component {
   }
   render() {
     const {
+      fingerprint,
       i18n,
       survey,
       surveyStep,
@@ -97,7 +100,7 @@ class App extends React.Component {
             <Route exact path="/confirmation" component={Confirmation} />
           </Switch>
         </div>
-        <Footer />
+        <Footer fingerprint={fingerprint} />
       </div>
     );
   }

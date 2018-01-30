@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { lightWhite } from 'material-ui/styles/colors';
 import FullWidthSection from './FullWidthSection';
+import storeProvider from './storeProvider';
 
 const styles = {
   p: {
@@ -10,6 +12,14 @@ const styles = {
     maxWidth: 416,
     padding: 0,
   },
+  fingerprint: {
+    color: lightWhite,
+    fontSize: '14px',
+    margin: '0 auto',
+    maxWidth: 416,
+    padding: 0,
+    textAlign: 'center',
+  },
   footer: {
     backgroundColor: '#343432',
     flexShrink: 'none',
@@ -17,14 +27,25 @@ const styles = {
   },
 };
 
-const Footer = () => (
-  <footer style={styles.footer}>
-    <FullWidthSection>
-      <p style={styles.p}>
-        {'Hand crafted with love by engineers from Cleveland. '}
-      </p>
-    </FullWidthSection>
-  </footer>
-);
+class Footer extends React.PureComponent {
+  render() {
+    return (
+      <footer style={styles.footer}>
+        <FullWidthSection>
+          <p style={styles.p}>
+            {'Hand crafted with love by engineers from Cleveland. '}
+          </p>
+          <p style={styles.fingerprint}>
+            {this.props.fingerprint}
+          </p>
+        </FullWidthSection>
+      </footer>
+    );
+  }
+}
 
-export default Footer;
+Footer.propTypes = {
+  fingerprint: PropTypes.string.isRequired,
+};
+
+export default storeProvider()(Footer);

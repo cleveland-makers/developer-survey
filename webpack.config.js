@@ -15,6 +15,7 @@ const config = {
       'axios',
       'lodash.debounce',
       'lodash.pickby',
+      'fingerprintjs2',
     ],
     app: ['./lib/renderers/dom.js'],
   },
