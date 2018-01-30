@@ -12,7 +12,8 @@
     "build-node": "babel lib -d build --copy-files",
     "start-prod": "NODE_ENV=production NODE_PATH=./build pm2 start build/server.js -i max --name appProd",
     "eslint-fix": "eslint --fix lib/ --ext .js",
-    "eslint": "eslint lib/ --ext .js"
+    "eslint": "eslint lib/ --ext .js",
+    "docker": "NODE_ENV=production NODE_PATH=./build node build/server.js"
   },
   "author": "Cameron Rollheiser <icirellik@gmail.com>",
   "license": "MIT",
@@ -41,6 +42,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "compression": "^1.7.1",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "fingerprintjs2": "^1.6.1",
