@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const config = {
   resolve: {
@@ -14,6 +16,7 @@ const config = {
       'prop-types',
       'axios',
       'fingerprintjs2',
+      'material-ui',
     ],
     app: ['./lib/renderers/dom.js'],
   },
@@ -24,7 +27,7 @@ const config = {
   module: {
     rules: [{
       test: /.jsx?$/,
-      exclude: /node_modules/,
+      exclude: /(node_modules|__tests__)/,
       use: {
         loader: 'babel-loader',
         options: {
@@ -34,6 +37,7 @@ const config = {
     }],
   },
   plugins: [
+    new CleanWebpackPlugin(['public']),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
     }),
