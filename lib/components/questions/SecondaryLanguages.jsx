@@ -55,6 +55,7 @@ class SecondaryLanguages extends React.PureComponent {
     const { languagePrimaryHomeLanguages } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Languages"
         multiple
         onChange={this.handleChange}

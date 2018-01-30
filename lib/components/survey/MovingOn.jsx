@@ -81,10 +81,14 @@ class MovingOn extends React.PureComponent {
               <FavSportsTeam
                 personalFavoriteSportsTeams={survey.personalFavoriteSportsTeams}
               />
-              <div style={styles.div}>(most of the time), but I wish more people knew about</div>
+              <div style={styles.div}>(most of the time). Cleveland is a special place,</div>
+            </ClearFix>
+            <ClearFix>
+              <div style={styles.div}>and I wish more people knew about the</div>
               <FavCleActivity
                 personalFavoriteClevelandActivity={survey.personalFavoriteClevelandActivity}
               />
+              <div style={styles.div}>.</div>
             </ClearFix>
           </div>
         </Paper>

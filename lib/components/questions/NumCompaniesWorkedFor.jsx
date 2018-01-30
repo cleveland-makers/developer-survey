@@ -8,6 +8,14 @@ import storeProvider from '../storeProvider';
  *
  * How many development jobs have you had?
  */
+const styles = {
+  field: {
+    width: 40,
+    marginLeft: '8px',
+    float: 'left',
+  },
+};
+
 class NumCompaniesWorkedFor extends React.PureComponent {
   handleChange = (event, value) => {
     this.props.store.saveNumberOfJobs(value);
@@ -16,6 +24,7 @@ class NumCompaniesWorkedFor extends React.PureComponent {
   render() {
     return (
       <TextField
+        style={styles.field}
         hintText="Number of Companies You've Worked For"
         onChange={this.handleChange}
         type="number"

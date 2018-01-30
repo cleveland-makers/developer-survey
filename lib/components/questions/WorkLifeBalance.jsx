@@ -35,6 +35,7 @@ class WorkLifeBalance extends React.PureComponent {
     const { careerWorkLifeBalance } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Work/Life Balance"
         onChange={this.handleChange}
         style={styles.field}

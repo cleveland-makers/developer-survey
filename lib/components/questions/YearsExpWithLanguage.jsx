@@ -6,6 +6,7 @@ import storeProvider from '../storeProvider';
 const styles = {
   field: {
     width: 40,
+    marginLeft: '8px',
   },
 };
 

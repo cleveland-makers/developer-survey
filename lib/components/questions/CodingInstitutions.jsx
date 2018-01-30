@@ -34,6 +34,7 @@ class CodingInstitutions extends React.PureComponent {
     const { languageWhereDidYouLearnIt } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Where you learned to code"
         multiple
         onChange={this.handleChange}

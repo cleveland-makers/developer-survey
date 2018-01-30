@@ -29,6 +29,7 @@ class Gender extends React.PureComponent {
     const { personalGender } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Gender"
         onChange={this.handleChange}
         style={styles.field}

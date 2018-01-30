@@ -8,6 +8,14 @@ import storeProvider from '../storeProvider';
  *
  * How many hours do you work per week?
  */
+
+const styles = {
+  field: {
+    marginLeft: '8px',
+    float: 'left',
+  },
+};
+
 class OfficeHoursPerWeek extends React.PureComponent {
   handleChange = (event, value) => {
     this.props.store.saveHoursPerWeek(value);
@@ -17,6 +25,7 @@ class OfficeHoursPerWeek extends React.PureComponent {
     const { officeHoursPerWeek } = this.props;
     return (
       <TextField
+        style={styles.field}
         hintText="Average Work Hours Per Week"
         onChange={this.handleChange}
         type="number"

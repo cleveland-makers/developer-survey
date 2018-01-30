@@ -39,6 +39,7 @@ class CompanySize extends React.PureComponent {
     const { officeEmployeeCount } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Company Size"
         onChange={this.handleChange}
         style={styles.field}

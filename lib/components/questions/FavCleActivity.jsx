@@ -10,6 +10,7 @@ const styles = {
     fontSize: '20px',
     paddingLeft: '10px',
     paddingRight: '10px',
+    width: 270,
   },
 };
 
@@ -44,6 +45,7 @@ class FavCleActivity extends React.PureComponent {
     const { personalFavoriteClevelandActivity } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Favorite Cleveland Activity"
         onChange={this.handleChange}
         style={styles.field}

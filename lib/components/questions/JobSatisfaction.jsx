@@ -35,6 +35,7 @@ class JobSatisfaction extends React.PureComponent {
     const { careerSatisfaction } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Job Satisfaction"
         onChange={this.handleChange}
         style={styles.field}

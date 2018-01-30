@@ -19,6 +19,8 @@ const locations = [
   'Downtown',
   'The East Side',
   'East of the East Side',
+  'Just North of Akron',
+  'The Akron area',
   'Other',
 ];
 
@@ -36,6 +38,7 @@ class OfficeLocation extends React.PureComponent {
     const { officeLocation } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Work Location"
         onChange={this.handleChange}
         style={styles.field}

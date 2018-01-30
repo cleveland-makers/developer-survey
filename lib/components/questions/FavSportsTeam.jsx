@@ -34,6 +34,7 @@ class FavSportsTeam extends React.PureComponent {
     const { personalFavoriteSportsTeams } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Favorite Sports Team"
         onChange={this.handleChange}
         style={styles.field}

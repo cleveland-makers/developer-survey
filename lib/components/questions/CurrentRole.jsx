@@ -35,6 +35,7 @@ class CurrentRole extends React.PureComponent {
     const { developerCurrentRoles } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Role"
         multiple
         onChange={this.handleChange}

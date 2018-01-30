@@ -81,19 +81,18 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
               <PrimaryLanguage
                 languagePrimaryWorkLanguage={survey.languagePrimaryWorkLanguage}
               />
-              <div style={styles.div}>is my primary work programming language.</div>
-              <div style={styles.div}>At home, I use</div>
+              <div style={styles.div}>is my primary work programming language. At home, I use</div>
               <SecondaryLanguages
                 languagePrimaryHomeLanguages={survey.languagePrimaryHomeLanguages}
               />
-              <div style={styles.div}>for my personal and open-source projects.</div>
+              <div style={styles.div}>for my personal and open-source projects. I’ve been using</div>
             </ClearFix>
             <ClearFix>
-              <div style={styles.div}>I’ve been using my primary language for</div>
+              <div style={styles.div}>my primary language for</div>
               <LanguageUses
                 languageWhyDoYouUseIt={survey.languageWhyDoYouUseIt}
               />
-              <div style={styles.div}>I learned its</div>
+              <div style={styles.div}>. I learned it</div>
               <YearsExpWithLanguage
                 languageWhenDidYouLearnIt={survey.languageWhenDidYouLearnIt}
               />

@@ -10,7 +10,7 @@ const styles = {
     fontSize: '20px',
     paddingLeft: '10px',
     paddingRight: '10px',
-    width: 150,
+    width: 230,
   },
 };
 
@@ -41,6 +41,7 @@ class ReasonsForStayingInCleveland extends React.PureComponent {
     const { personalWhyCleveland } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Reasons for Staying"
         multiple
         onChange={this.handleChange}

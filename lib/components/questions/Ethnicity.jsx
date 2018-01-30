@@ -34,6 +34,7 @@ class Ethnicity extends React.PureComponent {
     const { personalEthnicity } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Ethnicity"
         onChange={this.handleChange}
         style={styles.field}

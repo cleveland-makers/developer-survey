@@ -28,7 +28,7 @@ class LanguageUses extends React.PureComponent {
     const { languageWhyDoYouUseIt } = this.props;
     return (
       <SelectField
-        hintText="Reason for using language"
+        hintText="Reasons"
         multiple
         onChange={this.handleChange}
         style={styles.field}

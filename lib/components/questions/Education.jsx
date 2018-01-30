@@ -39,6 +39,7 @@ class Education extends React.PureComponent {
     const { personalHighestEducation } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Education"
         onChange={this.handleChange}
         style={styles.field}

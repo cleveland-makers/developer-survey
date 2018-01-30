@@ -55,6 +55,7 @@ class PrimaryLanguage extends React.PureComponent {
     const { languagePrimaryWorkLanguage } = this.props;
     return (
       <SelectField
+        autoWidth
         hintText="Language"
         onChange={this.handleChange}
         style={styles.field}
