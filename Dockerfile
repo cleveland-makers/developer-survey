@@ -9,7 +9,10 @@ WORKDIR /root
 RUN cd /root && \
     yarn install && \
     yarn run build-node && \
-    yarn run build-webpack
+    yarn run build-webpack && \
+    rm -rf node_modules && \
+    yarn install --production && \
+    yarn cache clean
 
 EXPOSE 8080
 
