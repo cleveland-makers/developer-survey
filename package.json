@@ -14,8 +14,8 @@
     "eslint-fix": "eslint --fix lib/ --ext .js",
     "eslint": "eslint lib/ --ext .js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Cameron Rollheiser <icirellik@gmail.com>",
+  "license": "MIT",
   "babel": {
     "presets": [
       "react",
@@ -44,8 +44,6 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "fingerprintjs2": "^1.6.1",
-    "lodash.debounce": "^4.0.8",
-    "lodash.pickby": "^4.6.0",
     "material-ui": "^0.20.0",
     "pg-promise": "^7.4.1",
     "pm2": "^2.9.1",

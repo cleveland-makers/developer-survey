@@ -13,8 +13,6 @@ const config = {
       'react-dom',
       'prop-types',
       'axios',
-      'lodash.debounce',
-      'lodash.pickby',
       'fingerprintjs2',
     ],
     app: ['./lib/renderers/dom.js'],
