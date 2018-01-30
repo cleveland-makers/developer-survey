@@ -52,11 +52,13 @@ class App extends React.Component {
       i18n,
       survey,
       surveyStep,
+      surveyLength,
     } = this.props.store.getState();
     return {
       i18n,
       survey,
       surveyStep,
+      surveyLength,
     };
   }
   render() {
@@ -64,6 +66,7 @@ class App extends React.Component {
       i18n,
       survey,
       surveyStep,
+      surveyLength,
     } = this.state;
     const { location } = this.props;
 
@@ -86,6 +89,7 @@ class App extends React.Component {
                   <Survey
                     survey={survey}
                     surveyStep={surveyStep}
+                    surveyLength={surveyLength}
                   />
                 </StandardPage>
               )}

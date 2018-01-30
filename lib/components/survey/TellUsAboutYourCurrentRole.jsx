@@ -7,22 +7,22 @@ import storeProvider from '../storeProvider';
 
 const styles = {
   h1: {
-    marginTop: '20px',
-    marginBottom: '40px',
-    fontFamily: 'Play, serif',
     color: '#730006',
-    textShadow: '2px 2px 5px #F24932',
+    fontFamily: 'Play, serif',
     fontSize: '30px',
     fontWeight: '600',
     lineHeight: '1.08',
+    marginBottom: '40px',
+    marginTop: '20px',
+    textShadow: '2px 2px 5px #F24932',
     textTransform: 'uppercase',
   },
   div: {
     display: 'inline-block',
-    lineHeight: '48px',
-    height: '48px',
     float: 'left',
     fontSize: '16px',
+    height: '48px',
+    lineHeight: '48px',
   },
   answer: {
     float: 'left',
@@ -34,17 +34,17 @@ const styles = {
     border: '2px solid #730006',
     borderRadius: '2px',
     color: '#F7F5F4',
-    padding: '8px 14px',
-    textAlign: 'center',
-    textDecoration: 'none',
     display: 'inline-block',
     font: '14px Roboto, sans-serif',
     fontWeight: 'bold',
     marginRight: '16px',
+    padding: '8px 14px',
+    textAlign: 'center',
+    textDecoration: 'none',
   },
   specialMargin: {
-    marginTop: '15px',
     marginBottom: '20px',
+    marginTop: '15px',
   },
 };
 

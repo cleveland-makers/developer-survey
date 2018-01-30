@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TellUsAboutYourCurrentRole from './pages/TellUsAboutYourCurrentRole';
-import LetsTalkLanguages from './pages/LetsTalkLanguages';
-import SpeakingOfWork from './pages/SpeakingOfWork';
-import MovingOn from './pages/MovingOn';
-import SomeOtherStuff from './pages/SomeOtherStuff';
+import LetsTalkLanguages from './survey/LetsTalkLanguages';
+import MovingOn from './survey/MovingOn';
+import SomeOtherStuff from './survey/SomeOtherStuff';
+import SpeakingOfWork from './survey/SpeakingOfWork';
+import SurveyProgress from './survey/SurveyProgress';
+import TellUsAboutYourCurrentRole from './survey/TellUsAboutYourCurrentRole';
 
 class Survey extends React.PureComponent {
-  render() {
+  surveyPage() {
     switch (this.props.surveyStep) {
       case 1:
         return (<TellUsAboutYourCurrentRole
@@ -45,6 +46,18 @@ class Survey extends React.PureComponent {
         />);
     }
   }
+
+  render() {
+    return (
+      <div>
+        <SurveyProgress
+          surveyStep={this.props.surveyStep}
+          surveyLength={this.props.surveyLength}
+        />
+        {this.surveyPage()}
+      </div>
+    );
+  }
 }
 
 Survey.propTypes = {
@@ -70,6 +83,7 @@ Survey.propTypes = {
     personalHighestEducation: PropTypes.string.isRequired,
     personalWhyCleveland: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
+  surveyLength: PropTypes.number.isRequired,
   surveyStep: PropTypes.number.isRequired,
 };
 
