@@ -5,8 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
+  field: {
     float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
   },
 };
 
@@ -24,23 +27,22 @@ class LanguageUses extends React.PureComponent {
   render() {
     const { languageWhyDoYouUseIt } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Reason for using language"
-          multiple
-          onChange={this.handleChange}
-          value={languageWhyDoYouUseIt}
-        >
-          {uses.map(use => (
-            <MenuItem
-              checked={languageWhyDoYouUseIt && languageWhyDoYouUseIt.indexOf(use) > -1}
-              insetChildren
-              key={use}
-              primaryText={use}
-              value={use}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Reason for using language"
+        multiple
+        onChange={this.handleChange}
+        style={styles.field}
+        value={languageWhyDoYouUseIt}
+      >
+        {uses.map(use => (
+          <MenuItem
+            checked={languageWhyDoYouUseIt && languageWhyDoYouUseIt.indexOf(use) > -1}
+            insetChildren
+            key={use}
+            primaryText={use}
+            value={use}
+          />))}
+      </SelectField>
     );
   }
 }

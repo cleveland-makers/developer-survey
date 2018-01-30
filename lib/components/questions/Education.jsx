@@ -5,8 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
+  field: {
     float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
   },
 };
 
@@ -22,7 +25,12 @@ const education = [
   'I prefer not to answer',
 ];
 
-class HighestEducationalAttainment extends React.PureComponent {
+/**
+ * Answers the question:
+ *
+ * What is the highest level of education you have attained?
+ */
+class Education extends React.PureComponent {
   handleChange = (event, index, value) => {
     this.props.store.saveHighestEducation(value);
   };
@@ -30,32 +38,29 @@ class HighestEducationalAttainment extends React.PureComponent {
   render() {
     const { personalHighestEducation } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Highest Educational Attainment"
-          onChange={this.handleChange}
-          style={styles.field}
-          value={personalHighestEducation}
-        >
-          {education.map(ed => (
-            <MenuItem
-              checked={personalHighestEducation.length > 0 && personalHighestEducation === ed}
-              insetChildren
-              key={ed}
-              primaryText={ed}
-              value={ed}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Education"
+        onChange={this.handleChange}
+        style={styles.field}
+        value={personalHighestEducation}
+      >
+        {education.map(ed => (
+          <MenuItem
+            checked={personalHighestEducation.length > 0 && personalHighestEducation === ed}
+            key={ed}
+            primaryText={ed}
+            value={ed}
+          />))}
+      </SelectField>
     );
   }
 }
 
-HighestEducationalAttainment.propTypes = {
+Education.propTypes = {
   personalHighestEducation: PropTypes.string.isRequired,
   store: PropTypes.shape({
     saveHighestEducation: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default storeProvider()(HighestEducationalAttainment);
+export default storeProvider()(Education);

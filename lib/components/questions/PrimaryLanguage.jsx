@@ -5,10 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
-    float: 'left',
-  },
   field: {
+    float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
     width: 150,
   },
 };
@@ -53,23 +54,20 @@ class PrimaryLanguage extends React.PureComponent {
   render() {
     const { languagePrimaryWorkLanguage } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Language"
-          onChange={this.handleChange}
-          style={styles.field}
-          value={languagePrimaryWorkLanguage}
-        >
-          {langs.map(lang => (
-            <MenuItem
-              checked={languagePrimaryWorkLanguage.length > 0 && languagePrimaryWorkLanguage === lang}
-              insetChildren
-              key={lang}
-              primaryText={lang}
-              value={lang}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Language"
+        onChange={this.handleChange}
+        style={styles.field}
+        value={languagePrimaryWorkLanguage}
+      >
+        {langs.map(lang => (
+          <MenuItem
+            checked={languagePrimaryWorkLanguage.length > 0 && languagePrimaryWorkLanguage === lang}
+            key={lang}
+            primaryText={lang}
+            value={lang}
+          />))}
+      </SelectField>
     );
   }
 }

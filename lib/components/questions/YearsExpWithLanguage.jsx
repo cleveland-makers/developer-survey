@@ -4,9 +4,6 @@ import TextField from 'material-ui/TextField';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
-    float: 'left',
-  },
   field: {
     width: 40,
   },
@@ -19,15 +16,13 @@ class YearsExpWithLanguage extends React.PureComponent {
 
   render() {
     return (
-      <div style={styles.div}>
-        <TextField
-          hintText="Number of Years"
-          onChange={this.handleChange}
-          style={styles.field}
-          type="number"
-          value={this.props.languageWhenDidYouLearnIt}
-        />
-      </div>
+      <TextField
+        hintText="Number of Years"
+        onChange={this.handleChange}
+        style={styles.field}
+        type="number"
+        value={this.props.languageWhenDidYouLearnIt}
+      />
     );
   }
 }

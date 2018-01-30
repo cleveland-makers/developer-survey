@@ -5,8 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
+  field: {
     float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
   },
 };
 
@@ -31,22 +34,20 @@ class JobSatisfaction extends React.PureComponent {
   render() {
     const { careerSatisfaction } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Job Satisfaction"
-          onChange={this.handleChange}
-          value={careerSatisfaction}
-        >
-          {emoji.map(emo => (
-            <MenuItem
-              checked={careerSatisfaction.length > 0 && careerSatisfaction === emo}
-              insetChildren
-              key={emo}
-              primaryText={emo}
-              value={emo}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Job Satisfaction"
+        onChange={this.handleChange}
+        style={styles.field}
+        value={careerSatisfaction}
+      >
+        {emoji.map(emo => (
+          <MenuItem
+            checked={careerSatisfaction.length > 0 && careerSatisfaction === emo}
+            key={emo}
+            primaryText={emo}
+            value={emo}
+          />))}
+      </SelectField>
     );
   }
 }

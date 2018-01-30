@@ -1,34 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
 import FullWidthSection from './FullWidthSection';
 
 const styles = {
   h1: {
-    marginTop: '20px',
-    marginBottom: '40px',
-    fontFamily: 'Play, serif',
     color: '#730006',
-    textShadow: '2px 2px 5px #F24932',
+    fontFamily: 'Play, serif',
     fontSize: '50px',
     fontWeight: '600',
     lineHeight: '1.08',
+    marginBottom: '40px',
+    marginTop: '20px',
+    textShadow: '2px 2px 5px #F24932',
     textTransform: 'uppercase',
   },
   div: {
-    width: '60%',
     margin: 'auto',
+    width: '60%',
   },
   buttonMain: {
-    backgroundColor: '#730006',
-    border: '2px solid #730006',
-    borderRadius: '2px',
-    color: '#F7F5F4',
-    padding: '15px 32px',
-    textAlign: 'center',
-    textDecoration: 'none',
-    display: 'inline-block',
-    font: '16px Roboto, sans-serif',
-    fontWeight: 'bold',
+    height: '45px',
+    marginRight: '16px',
+    width: '110px',
+  },
+  buttonMainLabel: {
+    lineHeight: '45px',
   },
   buttonSecondary: {
     backgroundColor: '#F7F5F4',
@@ -47,6 +43,7 @@ const styles = {
     overflow: 'hidden',
   },
 };
+
 
 const Faq = () => (
   <FullWidthSection style={styles.root}>
@@ -71,7 +68,14 @@ const Faq = () => (
         </p>
       </div>
       <div>
-        <Link style={styles.buttonMain} to="/survey">Start</Link>
+        <RaisedButton
+          backgroundColor="#730006"
+          href="/survey"
+          label="Start"
+          labelColor="#F7F5F4"
+          labelStyle={styles.buttonMainLabel}
+          style={styles.buttonMain}
+        />
       </div>
     </section>
   </FullWidthSection>

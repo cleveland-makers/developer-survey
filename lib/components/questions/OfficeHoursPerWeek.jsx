@@ -3,12 +3,6 @@ import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import storeProvider from '../storeProvider';
 
-const styles = {
-  div: {
-    float: 'left',
-  },
-};
-
 /**
  * Asks the question:
  *
@@ -22,14 +16,12 @@ class OfficeHoursPerWeek extends React.PureComponent {
   render() {
     const { officeHoursPerWeek } = this.props;
     return (
-      <div style={styles.div}>
-        <TextField
-          hintText="Average Work Hours Per Week"
-          onChange={this.handleChange}
-          type="number"
-          value={officeHoursPerWeek}
-        />
-      </div>
+      <TextField
+        hintText="Average Work Hours Per Week"
+        onChange={this.handleChange}
+        type="number"
+        value={officeHoursPerWeek}
+      />
     );
   }
 }

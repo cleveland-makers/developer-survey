@@ -5,8 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
+  field: {
     float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
   },
 };
 
@@ -30,23 +33,20 @@ class Ethnicity extends React.PureComponent {
   render() {
     const { personalEthnicity } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Ethnicity"
-          onChange={this.handleChange}
-          style={styles.field}
-          value={personalEthnicity}
-        >
-          {ethnicities.map(eth => (
-            <MenuItem
-              checked={personalEthnicity.length > 0 && personalEthnicity === eth}
-              insetChildren
-              key={eth}
-              primaryText={eth}
-              value={eth}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Ethnicity"
+        onChange={this.handleChange}
+        style={styles.field}
+        value={personalEthnicity}
+      >
+        {ethnicities.map(eth => (
+          <MenuItem
+            checked={personalEthnicity.length > 0 && personalEthnicity === eth}
+            key={eth}
+            primaryText={eth}
+            value={eth}
+          />))}
+      </SelectField>
     );
   }
 }

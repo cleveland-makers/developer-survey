@@ -5,10 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
-    float: 'left',
-  },
   field: {
+    float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
     width: 150,
   },
 };
@@ -53,24 +54,22 @@ class SecondaryLanguages extends React.PureComponent {
   render() {
     const { languagePrimaryHomeLanguages } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Languages"
-          multiple
-          onChange={this.handleChange}
-          style={styles.field}
-          value={languagePrimaryHomeLanguages}
-        >
-          {langs.map(lang => (
-            <MenuItem
-              checked={languagePrimaryHomeLanguages && languagePrimaryHomeLanguages.indexOf(lang) > -1}
-              insetChildren
-              key={lang}
-              primaryText={lang}
-              value={lang}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Languages"
+        multiple
+        onChange={this.handleChange}
+        style={styles.field}
+        value={languagePrimaryHomeLanguages}
+      >
+        {langs.map(lang => (
+          <MenuItem
+            checked={languagePrimaryHomeLanguages && languagePrimaryHomeLanguages.indexOf(lang) > -1}
+            insetChildren
+            key={lang}
+            primaryText={lang}
+            value={lang}
+          />))}
+      </SelectField>
     );
   }
 }

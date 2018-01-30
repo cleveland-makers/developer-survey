@@ -5,8 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
+  field: {
     float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
   },
 };
 
@@ -40,22 +43,20 @@ class FavCleActivity extends React.PureComponent {
   render() {
     const { personalFavoriteClevelandActivity } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Favorite Cleveland Activity"
-          onChange={this.handleChange}
-          value={personalFavoriteClevelandActivity}
-        >
-          {activities.map(activity => (
-            <MenuItem
-              checked={personalFavoriteClevelandActivity.length > 0 && personalFavoriteClevelandActivity === activity}
-              insetChildren
-              key={activity}
-              primaryText={activity}
-              value={activity}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Favorite Cleveland Activity"
+        onChange={this.handleChange}
+        style={styles.field}
+        value={personalFavoriteClevelandActivity}
+      >
+        {activities.map(activity => (
+          <MenuItem
+            checked={personalFavoriteClevelandActivity.length > 0 && personalFavoriteClevelandActivity === activity}
+            key={activity}
+            primaryText={activity}
+            value={activity}
+          />))}
+      </SelectField>
     );
   }
 }

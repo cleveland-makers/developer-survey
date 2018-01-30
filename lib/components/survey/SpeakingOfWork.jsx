@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import OfficeHoursPerWeek from '../questions/OfficeHoursPerWeek';
 import OfficeLocation from '../questions/OfficeLocation';
 import CompanySize from '../questions/CompanySize';
@@ -14,7 +16,7 @@ const styles = {
   h1: {
     color: '#730006',
     fontFamily: 'Play, serif',
-    fontSize: '30px',
+    fontSize: '35px',
     fontWeight: '600',
     lineHeight: '1.08',
     marginBottom: '40px',
@@ -23,33 +25,32 @@ const styles = {
     textTransform: 'uppercase',
   },
   div: {
+    color: '#343432',
     display: 'inline-block',
     float: 'left',
-    fontSize: '16px',
+    fontSize: '20px',
+    fontWeight: '400',
     height: '48px',
-    lineHeight: '45px',
-  },
-  answer: {
-    float: 'left',
-    paddingLeft: '5px',
-    paddingRight: '5px',
+    lineHeight: '48px',
   },
   buttonMain: {
-    backgroundColor: '#730006',
-    border: '2px solid #730006',
-    borderRadius: '2px',
-    color: '#F7F5F4',
-    display: 'inline-block',
-    font: '14px Roboto, sans-serif',
-    fontWeight: 'bold',
+    height: '45px',
     marginRight: '16px',
-    padding: '8px 14px',
-    textAlign: 'center',
-    textDecoration: 'none',
+    width: '110px',
   },
-  specialMargin: {
-    marginBottom: '20px',
-    marginTop: '15px',
+  buttonMainLabel: {
+    lineHeight: '45px',
+  },
+  buttonSecondary: {
+    height: '45px',
+    marginRight: '16px',
+    width: '110px',
+  },
+  questionGroup: {
+    marginTop: '20px',
+  },
+  buttonGroup: {
+    paddingTop: '50px',
   },
 };
 
@@ -69,54 +70,53 @@ class SpeakingOfWork extends React.PureComponent {
     return (
       <div>
         <h1 style={styles.h1}>Speaking of Work...</h1>
-        <div style={styles.specialMargin}>
+        <div style={styles.questionGroup}>
           <ClearFix>
             <div style={styles.div}>For my average of</div>
-            <div style={styles.answer}>
-              <OfficeHoursPerWeek
-                officeHoursPerWeek={survey.officeHoursPerWeek}
-              />
-            </div>
+            <OfficeHoursPerWeek
+              officeHoursPerWeek={survey.officeHoursPerWeek}
+            />
             <div style={styles.div}>hours per week, I commute to</div>
-            <div style={styles.answer}>
-              <OfficeLocation
-                officeLocation={survey.officeLocation}
-              />
-            </div>
+            <OfficeLocation
+              officeLocation={survey.officeLocation}
+            />
             <div style={styles.div}>to work for a company about</div>
-            <div style={styles.answer}>
-              <CompanySize
-                officeEmployeeCount={survey.officeEmployeeCount}
-              />
-            </div>
+            <CompanySize
+              officeEmployeeCount={survey.officeEmployeeCount}
+            />
             <div style={styles.div}>people in size. I earn</div>
-            <div style={styles.answer}>
-              <TotalCompensation
-                careerSalary={survey.careerSalary}
-              />
-            </div>
+            <TotalCompensation
+              careerSalary={survey.careerSalary}
+            />
             <div style={styles.div}>for this work. This is development job no.</div>
-            <div style={styles.answer}>
-              <NumCompaniesWorkedFor
-                careerDevelopmentJobCount={survey.careerDevelopmentJobCount}
-              />
-            </div>
+            <NumCompaniesWorkedFor
+              careerDevelopmentJobCount={survey.careerDevelopmentJobCount}
+            />
             <div style={styles.div}>for me. I am generally</div>
-            <div style={styles.answer}>
-              <JobSatisfaction
-                careerSatisfaction={survey.careerSatisfaction}
-              />
-            </div>
+            <JobSatisfaction
+              careerSatisfaction={survey.careerSatisfaction}
+            />
             <div style={styles.div}>there, and I think the work/life balance is</div>
-            <div style={styles.answer}>
-              <WorkLifeBalance
-                careerWorkLifeBalance={survey.careerWorkLifeBalance}
-              />
-            </div>
+            <WorkLifeBalance
+              careerWorkLifeBalance={survey.careerWorkLifeBalance}
+            />
           </ClearFix>
         </div>
-        <button style={styles.buttonMain} onClick={this.previousStep}>Previous</button>
-        <button style={styles.buttonMain} onClick={this.saveAndContinue}>Next</button>
+        <div style={styles.buttonGroup}>
+          <FlatButton
+            label="Previous"
+            onClick={this.previousStep}
+            style={styles.buttonSecondary}
+          />
+          <RaisedButton
+            backgroundColor="#730006"
+            label="Next"
+            labelColor="#F7F5F4"
+            labelStyle={styles.buttonMainLabel}
+            onClick={this.saveAndContinue}
+            style={styles.buttonMain}
+          />
+        </div>
       </div>
     );
   }

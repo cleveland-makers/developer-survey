@@ -5,10 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
-    float: 'left',
-  },
   field: {
+    float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
     width: 150,
   },
 };
@@ -37,23 +38,20 @@ class CompanySize extends React.PureComponent {
   render() {
     const { officeEmployeeCount } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Company Size"
-          onChange={this.handleChange}
-          style={styles.field}
-          value={officeEmployeeCount}
-        >
-          {buckets.map(bucket => (
-            <MenuItem
-              checked={officeEmployeeCount.length > 0 && officeEmployeeCount === bucket}
-              insetChildren
-              key={bucket}
-              primaryText={bucket}
-              value={bucket}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Company Size"
+        onChange={this.handleChange}
+        style={styles.field}
+        value={officeEmployeeCount}
+      >
+        {buckets.map(bucket => (
+          <MenuItem
+            checked={officeEmployeeCount.length > 0 && officeEmployeeCount === bucket}
+            key={bucket}
+            primaryText={bucket}
+            value={bucket}
+          />))}
+      </SelectField>
     );
   }
 }

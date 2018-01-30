@@ -5,8 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
+  field: {
     float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
   },
 };
 
@@ -32,22 +35,20 @@ class OfficeLocation extends React.PureComponent {
   render() {
     const { officeLocation } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Work Location"
-          onChange={this.handleChange}
-          value={officeLocation}
-        >
-          {locations.map(location => (
-            <MenuItem
-              checked={officeLocation.length > 0 && officeLocation === location}
-              insetChildren
-              key={location}
-              primaryText={location}
-              value={location}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Work Location"
+        onChange={this.handleChange}
+        style={styles.field}
+        value={officeLocation}
+      >
+        {locations.map(location => (
+          <MenuItem
+            checked={officeLocation.length > 0 && officeLocation === location}
+            key={location}
+            primaryText={location}
+            value={location}
+          />))}
+      </SelectField>
     );
   }
 }

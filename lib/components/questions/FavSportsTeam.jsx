@@ -5,8 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
+  field: {
     float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
   },
 };
 
@@ -30,22 +33,20 @@ class FavSportsTeam extends React.PureComponent {
   render() {
     const { personalFavoriteSportsTeams } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Favorite Sports Team"
-          value={personalFavoriteSportsTeams}
-          onChange={this.handleChange}
-        >
-          {teams.map(team => (
-            <MenuItem
-              checked={personalFavoriteSportsTeams.length > 0 && personalFavoriteSportsTeams === team}
-              insetChildren
-              key={team}
-              primaryText={team}
-              value={team}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Favorite Sports Team"
+        onChange={this.handleChange}
+        style={styles.field}
+        value={personalFavoriteSportsTeams}
+      >
+        {teams.map(team => (
+          <MenuItem
+            checked={personalFavoriteSportsTeams.length > 0 && personalFavoriteSportsTeams === team}
+            key={team}
+            primaryText={team}
+            value={team}
+          />))}
+      </SelectField>
     );
   }
 }

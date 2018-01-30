@@ -5,8 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
+  field: {
     float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
   },
 };
 
@@ -25,23 +28,20 @@ class Gender extends React.PureComponent {
   render() {
     const { personalGender } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Gender"
-          onChange={this.handleChange}
-          style={styles.field}
-          value={personalGender}
-        >
-          {genders.map(gen => (
-            <MenuItem
-              checked={personalGender.length > 0 && personalGender === gen}
-              insetChildren
-              key={gen}
-              primaryText={gen}
-              value={gen}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Gender"
+        onChange={this.handleChange}
+        style={styles.field}
+        value={personalGender}
+      >
+        {genders.map(gen => (
+          <MenuItem
+            checked={personalGender.length > 0 && personalGender === gen}
+            key={gen}
+            primaryText={gen}
+            value={gen}
+          />))}
+      </SelectField>
     );
   }
 }

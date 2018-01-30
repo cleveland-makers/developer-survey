@@ -4,12 +4,13 @@ import ClearFix from 'material-ui/internal/ClearFix';
 import CurrentRole from '../questions/CurrentRole';
 import YearsOfExperience from '../questions/YearsOfExperience';
 import storeProvider from '../storeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const styles = {
   h1: {
     color: '#730006',
     fontFamily: 'Play, serif',
-    fontSize: '30px',
+    fontSize: '35px',
     fontWeight: '600',
     lineHeight: '1.08',
     marginBottom: '40px',
@@ -18,33 +19,27 @@ const styles = {
     textTransform: 'uppercase',
   },
   div: {
+    color: '#343432',
     display: 'inline-block',
     float: 'left',
-    fontSize: '16px',
+    fontSize: '20px',
+    fontWeight: '400',
     height: '48px',
     lineHeight: '48px',
   },
-  answer: {
-    float: 'left',
-    paddingLeft: '5px',
-    paddingRight: '5px',
-  },
   buttonMain: {
-    backgroundColor: '#730006',
-    border: '2px solid #730006',
-    borderRadius: '2px',
-    color: '#F7F5F4',
-    display: 'inline-block',
-    font: '14px Roboto, sans-serif',
-    fontWeight: 'bold',
+    height: '45px',
     marginRight: '16px',
-    padding: '8px 14px',
-    textAlign: 'center',
-    textDecoration: 'none',
+    width: '110px',
   },
-  specialMargin: {
-    marginBottom: '20px',
-    marginTop: '15px',
+  buttonMainLabel: {
+    lineHeight: '45px',
+  },
+  questionGroup: {
+    marginTop: '20px',
+  },
+  buttonGroup: {
+    paddingTop: '50px',
   },
 };
 
@@ -58,27 +53,27 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
     return (
       <div>
         <h1 style={styles.h1}>Tell Us About Your Current Role</h1>
-        <ClearFix style={styles.specialMargin}>
+        <ClearFix style={styles.questionGroup}>
           <div style={styles.div}>I have been programming as a</div>
-          <div style={styles.answer}>
-            <CurrentRole
-              developerCurrentRoles={this.props.survey.developerCurrentRoles}
-            />
-          </div>
+          <CurrentRole
+            developerCurrentRoles={this.props.survey.developerCurrentRoles}
+          />
           <div style={styles.div}>developer for</div>
-          <div style={styles.answer}>
-            <YearsOfExperience
-              developerHowLong={this.props.survey.developerHowLong}
-              style={styles.answer}
-            />
-          </div>
+          <YearsOfExperience
+            developerHowLong={this.props.survey.developerHowLong}
+          />
           <div style={styles.div}>years.</div>
         </ClearFix>
-        <ClearFix style={styles.specialMargin}>
-          <button style={styles.buttonMain} onClick={this.saveAndContinue}>
-            Next
-          </button>
-        </ClearFix>
+        <div style={styles.buttonGroup}>
+          <RaisedButton
+            backgroundColor="#730006"
+            label="Next"
+            labelColor="#F7F5F4"
+            labelStyle={styles.buttonMainLabel}
+            onClick={this.saveAndContinue}
+            style={styles.buttonMain}
+          />
+        </div>
       </div>
     );
   }

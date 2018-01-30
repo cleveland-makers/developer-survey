@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
-import storeProvider from '../storeProvider';
 import MenuItem from 'material-ui/MenuItem';
+import storeProvider from '../storeProvider';
 
 const styles = {
-  customWidth: {
-    width: 150,
-  },
-  div: {
+  field: {
     float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
   },
 };
 
@@ -33,23 +33,22 @@ class CodingInstitutions extends React.PureComponent {
   render() {
     const { languageWhereDidYouLearnIt } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Where you learned to code"
-          multiple
-          onChange={this.handleChange}
-          value={languageWhereDidYouLearnIt}
-        >
-          {institutions.map(institution => (
-            <MenuItem
-              checked={languageWhereDidYouLearnIt && languageWhereDidYouLearnIt.indexOf(institution) > -1}
-              insetChildren
-              key={institution}
-              primaryText={institution}
-              value={institution}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Where you learned to code"
+        multiple
+        onChange={this.handleChange}
+        style={styles.field}
+        value={languageWhereDidYouLearnIt}
+      >
+        {institutions.map(institution => (
+          <MenuItem
+            checked={languageWhereDidYouLearnIt && languageWhereDidYouLearnIt.indexOf(institution) > -1}
+            insetChildren
+            key={institution}
+            primaryText={institution}
+            value={institution}
+          />))}
+      </SelectField>
     );
   }
 }

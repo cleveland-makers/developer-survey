@@ -4,6 +4,15 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
+const styles = {
+  field: {
+    float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
+  },
+};
+
 const roles = [
   'Back-End',
   'Data Science',
@@ -29,6 +38,7 @@ class CurrentRole extends React.PureComponent {
         hintText="Role"
         multiple
         onChange={this.handleChange}
+        style={styles.field}
         value={developerCurrentRoles}
       >
         {roles.map(role => (

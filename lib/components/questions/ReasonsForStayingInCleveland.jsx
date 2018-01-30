@@ -5,10 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
-    float: 'left',
-  },
   field: {
+    float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
     width: 150,
   },
 };
@@ -39,24 +40,22 @@ class ReasonsForStayingInCleveland extends React.PureComponent {
   render() {
     const { personalWhyCleveland } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Reasons for Staying"
-          multiple
-          onChange={this.handleChange}
-          style={styles.field}
-          value={personalWhyCleveland}
-        >
-          {reasons.map(reason => (
-            <MenuItem
-              checked={personalWhyCleveland && personalWhyCleveland.indexOf(reason) > -1}
-              insetChildren
-              key={reason}
-              primaryText={reason}
-              value={reason}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Reasons for Staying"
+        multiple
+        onChange={this.handleChange}
+        style={styles.field}
+        value={personalWhyCleveland}
+      >
+        {reasons.map(reason => (
+          <MenuItem
+            checked={personalWhyCleveland && personalWhyCleveland.indexOf(reason) > -1}
+            insetChildren
+            key={reason}
+            primaryText={reason}
+            value={reason}
+          />))}
+      </SelectField>
     );
   }
 }

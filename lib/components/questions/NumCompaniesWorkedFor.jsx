@@ -3,12 +3,6 @@ import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import storeProvider from '../storeProvider';
 
-const styles = {
-  div: {
-    float: 'left',
-  },
-};
-
 /**
  * Asks the question:
  *
@@ -21,14 +15,12 @@ class NumCompaniesWorkedFor extends React.PureComponent {
 
   render() {
     return (
-      <div style={styles.div}>
-        <TextField
-          hintText="Number of Companies You've Worked For"
-          onChange={this.handleChange}
-          type="number"
-          value={this.props.careerDevelopmentJobCount}
-        />
-      </div>
+      <TextField
+        hintText="Number of Companies You've Worked For"
+        onChange={this.handleChange}
+        type="number"
+        value={this.props.careerDevelopmentJobCount}
+      />
     );
   }
 }

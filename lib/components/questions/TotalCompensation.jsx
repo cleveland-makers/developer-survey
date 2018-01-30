@@ -3,12 +3,6 @@ import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import storeProvider from '../storeProvider';
 
-const styles = {
-  div: {
-    float: 'left',
-  },
-};
-
 /**
  * Asks the question:
  *
@@ -21,14 +15,12 @@ class TotalCompensation extends React.PureComponent {
 
   render() {
     return (
-      <div style={styles.div}>
-        <TextField
-          hintText="Total Compensation"
-          onChange={this.handleChange}
-          type="number"
-          value={this.props.careerSalary}
-        />
-      </div>
+      <TextField
+        hintText="Total Compensation"
+        onChange={this.handleChange}
+        type="number"
+        value={this.props.careerSalary}
+      />
     );
   }
 }

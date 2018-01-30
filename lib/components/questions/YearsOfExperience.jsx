@@ -5,7 +5,11 @@ import storeProvider from '../storeProvider';
 
 const styles = {
   field: {
-    width: 40,
+    float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
+    width: '40px',
   },
 };
 

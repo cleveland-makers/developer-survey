@@ -5,8 +5,11 @@ import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
 
 const styles = {
-  div: {
+  field: {
     float: 'left',
+    fontSize: '20px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
   },
 };
 
@@ -31,22 +34,20 @@ class WorkLifeBalance extends React.PureComponent {
   render() {
     const { careerWorkLifeBalance } = this.props;
     return (
-      <div style={styles.div}>
-        <SelectField
-          hintText="Work/Life Balance"
-          onChange={this.handleChange}
-          value={careerWorkLifeBalance}
-        >
-          {emoji.map(emo => (
-            <MenuItem
-              checked={careerWorkLifeBalance.length > 0 && careerWorkLifeBalance === emo}
-              insetChildren
-              key={emo}
-              primaryText={emo}
-              value={emo}
-            />))}
-        </SelectField>
-      </div>
+      <SelectField
+        hintText="Work/Life Balance"
+        onChange={this.handleChange}
+        style={styles.field}
+        value={careerWorkLifeBalance}
+      >
+        {emoji.map(emo => (
+          <MenuItem
+            checked={careerWorkLifeBalance.length > 0 && careerWorkLifeBalance === emo}
+            key={emo}
+            primaryText={emo}
+            value={emo}
+          />))}
+      </SelectField>
     );
   }
 }
