@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
 import OfficeHoursPerWeek from '../questions/OfficeHoursPerWeek';
 import OfficeLocation from '../questions/OfficeLocation';
 import CompanySize from '../questions/CompanySize';
@@ -50,7 +51,10 @@ const styles = {
     marginTop: '20px',
   },
   buttonGroup: {
-    paddingTop: '50px',
+    paddingTop: '30px',
+  },
+  paper: {
+    padding: '20px 30px',
   },
 };
 
@@ -69,39 +73,41 @@ class SpeakingOfWork extends React.PureComponent {
     const { survey } = this.props;
     return (
       <div>
-        <h1 style={styles.h1}>Speaking of Work...</h1>
-        <div style={styles.questionGroup}>
-          <ClearFix>
-            <div style={styles.div}>For my average of</div>
-            <OfficeHoursPerWeek
-              officeHoursPerWeek={survey.officeHoursPerWeek}
-            />
-            <div style={styles.div}>hours per week, I commute to</div>
-            <OfficeLocation
-              officeLocation={survey.officeLocation}
-            />
-            <div style={styles.div}>to work for a company about</div>
-            <CompanySize
-              officeEmployeeCount={survey.officeEmployeeCount}
-            />
-            <div style={styles.div}>people in size. I earn</div>
-            <TotalCompensation
-              careerSalary={survey.careerSalary}
-            />
-            <div style={styles.div}>for this work. This is development job no.</div>
-            <NumCompaniesWorkedFor
-              careerDevelopmentJobCount={survey.careerDevelopmentJobCount}
-            />
-            <div style={styles.div}>for me. I am generally</div>
-            <JobSatisfaction
-              careerSatisfaction={survey.careerSatisfaction}
-            />
-            <div style={styles.div}>there, and I think the work/life balance is</div>
-            <WorkLifeBalance
-              careerWorkLifeBalance={survey.careerWorkLifeBalance}
-            />
-          </ClearFix>
-        </div>
+        <Paper style={styles.paper} zDepth={1}>
+          <h1 style={styles.h1}>Speaking of Work...</h1>
+          <div style={styles.questionGroup}>
+            <ClearFix>
+              <div style={styles.div}>For my average of</div>
+              <OfficeHoursPerWeek
+                officeHoursPerWeek={survey.officeHoursPerWeek}
+              />
+              <div style={styles.div}>hours per week, I commute to</div>
+              <OfficeLocation
+                officeLocation={survey.officeLocation}
+              />
+              <div style={styles.div}>to work for a company about</div>
+              <CompanySize
+                officeEmployeeCount={survey.officeEmployeeCount}
+              />
+              <div style={styles.div}>people in size. I earn</div>
+              <TotalCompensation
+                careerSalary={survey.careerSalary}
+              />
+              <div style={styles.div}>for this work. This is development job no.</div>
+              <NumCompaniesWorkedFor
+                careerDevelopmentJobCount={survey.careerDevelopmentJobCount}
+              />
+              <div style={styles.div}>for me. I am generally</div>
+              <JobSatisfaction
+                careerSatisfaction={survey.careerSatisfaction}
+              />
+              <div style={styles.div}>there, and I think the work/life balance is</div>
+              <WorkLifeBalance
+                careerWorkLifeBalance={survey.careerWorkLifeBalance}
+              />
+            </ClearFix>
+          </div>
+        </Paper>
         <div style={styles.buttonGroup}>
           <FlatButton
             label="Previous"

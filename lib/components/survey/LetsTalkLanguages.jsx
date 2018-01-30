@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
 import CodingInstitutions from '../questions/CodingInstitutions';
 import LanguageUses from '../questions/LanguageUses';
 import PrimaryLanguage from '../questions/PrimaryLanguage';
@@ -48,7 +49,10 @@ const styles = {
     marginTop: '20px',
   },
   buttonGroup: {
-    paddingTop: '50px',
+    paddingTop: '30px',
+  },
+  paper: {
+    padding: '20px 30px',
   },
 };
 
@@ -70,35 +74,37 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
     const { survey } = this.props;
     return (
       <div>
-        <h1 style={styles.h1}>Let’s Talk Languages</h1>
-        <div style={styles.questionGroup}>
-          <ClearFix>
-            <PrimaryLanguage
-              languagePrimaryWorkLanguage={survey.languagePrimaryWorkLanguage}
-            />
-            <div style={styles.div}>is my primary work programming language.</div>
-            <div style={styles.div}>At home, I use</div>
-            <SecondaryLanguages
-              languagePrimaryHomeLanguages={survey.languagePrimaryHomeLanguages}
-            />
-            <div style={styles.div}>for my personal and open-source projects.</div>
-          </ClearFix>
-          <ClearFix>
-            <div style={styles.div}>I’ve been using my primary language for</div>
-            <LanguageUses
-              languageWhyDoYouUseIt={survey.languageWhyDoYouUseIt}
-            />
-            <div style={styles.div}>I learned its</div>
-            <YearsExpWithLanguage
-              languageWhenDidYouLearnIt={survey.languageWhenDidYouLearnIt}
-            />
-            <div style={styles.div}>years ago from</div>
-            <CodingInstitutions
-              languageWhereDidYouLearnIt={survey.languageWhereDidYouLearnIt}
-            />
-            <div style={styles.div}>.</div>
-          </ClearFix>
-        </div>
+        <Paper style={styles.paper} zDepth={1}>
+          <h1 style={styles.h1}>Let’s Talk Languages</h1>
+          <div style={styles.questionGroup}>
+            <ClearFix>
+              <PrimaryLanguage
+                languagePrimaryWorkLanguage={survey.languagePrimaryWorkLanguage}
+              />
+              <div style={styles.div}>is my primary work programming language.</div>
+              <div style={styles.div}>At home, I use</div>
+              <SecondaryLanguages
+                languagePrimaryHomeLanguages={survey.languagePrimaryHomeLanguages}
+              />
+              <div style={styles.div}>for my personal and open-source projects.</div>
+            </ClearFix>
+            <ClearFix>
+              <div style={styles.div}>I’ve been using my primary language for</div>
+              <LanguageUses
+                languageWhyDoYouUseIt={survey.languageWhyDoYouUseIt}
+              />
+              <div style={styles.div}>I learned its</div>
+              <YearsExpWithLanguage
+                languageWhenDidYouLearnIt={survey.languageWhenDidYouLearnIt}
+              />
+              <div style={styles.div}>years ago from</div>
+              <CodingInstitutions
+                languageWhereDidYouLearnIt={survey.languageWhereDidYouLearnIt}
+              />
+              <div style={styles.div}>.</div>
+            </ClearFix>
+          </div>
+        </Paper>
         <div style={styles.buttonGroup}>
           <FlatButton
             label="Previous"

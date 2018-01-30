@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
 import ReasonsForStayingInCleveland from '../questions/ReasonsForStayingInCleveland';
 import FavSportsTeam from '../questions/FavSportsTeam';
 import FavCleActivity from '../questions/FavCleActivity';
@@ -46,7 +47,10 @@ const styles = {
     marginTop: '20px',
   },
   buttonGroup: {
-    paddingTop: '50px',
+    paddingTop: '30px',
+  },
+  paper: {
+    padding: '20px 30px',
   },
 };
 
@@ -65,23 +69,25 @@ class MovingOn extends React.PureComponent {
     const { survey } = this.props;
     return (
       <div>
-        <h1 style={styles.h1}>Moving On...</h1>
-        <div style={styles.questionGroup}>
-          <ClearFix>
-            <div style={styles.div}>I stay in Cleveland because</div>
-            <ReasonsForStayingInCleveland
-              personalWhyCleveland={survey.personalWhyCleveland}
-            />
-            <div style={styles.div}>, and I live and breathe the</div>
-            <FavSportsTeam
-              personalFavoriteSportsTeams={survey.personalFavoriteSportsTeams}
-            />
-            <div style={styles.div}>(most of the time), but I wish more people knew about</div>
-            <FavCleActivity
-              personalFavoriteClevelandActivity={survey.personalFavoriteClevelandActivity}
-            />
-          </ClearFix>
-        </div>
+        <Paper style={styles.paper} zDepth={1}>
+          <h1 style={styles.h1}>Moving On...</h1>
+          <div style={styles.questionGroup}>
+            <ClearFix>
+              <div style={styles.div}>I stay in Cleveland because</div>
+              <ReasonsForStayingInCleveland
+                personalWhyCleveland={survey.personalWhyCleveland}
+              />
+              <div style={styles.div}>, and I live and breathe the</div>
+              <FavSportsTeam
+                personalFavoriteSportsTeams={survey.personalFavoriteSportsTeams}
+              />
+              <div style={styles.div}>(most of the time), but I wish more people knew about</div>
+              <FavCleActivity
+                personalFavoriteClevelandActivity={survey.personalFavoriteClevelandActivity}
+              />
+            </ClearFix>
+          </div>
+        </Paper>
         <div style={styles.buttonGroup}>
           <FlatButton
             label="Previous"

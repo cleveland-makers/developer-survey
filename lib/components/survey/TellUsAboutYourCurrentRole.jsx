@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
+import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
 import CurrentRole from '../questions/CurrentRole';
 import YearsOfExperience from '../questions/YearsOfExperience';
 import storeProvider from '../storeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
 
 const styles = {
   h1: {
@@ -39,7 +40,10 @@ const styles = {
     marginTop: '20px',
   },
   buttonGroup: {
-    paddingTop: '50px',
+    paddingTop: '30px',
+  },
+  paper: {
+    padding: '20px 30px',
   },
 };
 
@@ -52,18 +56,20 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
   render() {
     return (
       <div>
-        <h1 style={styles.h1}>Tell Us About Your Current Role</h1>
-        <ClearFix style={styles.questionGroup}>
-          <div style={styles.div}>I have been programming as a</div>
-          <CurrentRole
-            developerCurrentRoles={this.props.survey.developerCurrentRoles}
-          />
-          <div style={styles.div}>developer for</div>
-          <YearsOfExperience
-            developerHowLong={this.props.survey.developerHowLong}
-          />
-          <div style={styles.div}>years.</div>
-        </ClearFix>
+        <Paper style={styles.paper} zDepth={1}>
+          <h1 style={styles.h1}>Tell Us About Your Current Role</h1>
+          <ClearFix style={styles.questionGroup}>
+            <div style={styles.div}>I have been programming as a</div>
+            <CurrentRole
+              developerCurrentRoles={this.props.survey.developerCurrentRoles}
+            />
+            <div style={styles.div}>developer for</div>
+            <YearsOfExperience
+              developerHowLong={this.props.survey.developerHowLong}
+            />
+            <div style={styles.div}>years.</div>
+          </ClearFix>
+        </Paper>
         <div style={styles.buttonGroup}>
           <RaisedButton
             backgroundColor="#730006"
