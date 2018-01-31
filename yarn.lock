@@ -1080,7 +1080,7 @@ bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.8"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
 
-body-parser@1.18.2:
+body-parser@1.18.2, body-parser@^1.18.2:
   version "1.18.2"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.2.tgz#87678a19d84b47d859b83199bd59bce222b10454"
   dependencies:
@@ -3756,10 +3756,6 @@ makeerror@1.0.x:
   dependencies:
     tmpl "1.0.x"
 
-manakin@~0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/manakin/-/manakin-0.5.1.tgz#c4a7116f6b00df3d5f1a37ad3ca515d22065a658"
-
 material-ui@^0.20.0:
   version "0.20.0"
   resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-0.20.0.tgz#85411bb59c916c9c7703f29dcffc44e3a67d5111"
@@ -4384,22 +4380,9 @@ pg-connection-string@0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/pg-connection-string/-/pg-connection-string-0.1.3.tgz#da1847b20940e42ee1492beaf65d49d91b245df7"
 
-pg-minify@~0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/pg-minify/-/pg-minify-0.5.4.tgz#89d5261cacfd44dd7927fa052222a404e9b2a3c9"
-
 pg-pool@~2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-2.0.3.tgz#c022032c8949f312a4f91fb6409ce04076be3257"
-
-pg-promise@^7.4.1:
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/pg-promise/-/pg-promise-7.4.1.tgz#bb20e39d2d0e6d45d92f0bbab3389d1e6117971a"
-  dependencies:
-    manakin "~0.5.1"
-    pg "~7.4.1"
-    pg-minify "~0.5.4"
-    spex "~2.0.2"
 
 pg-types@~1.12.1:
   version "1.12.1"
@@ -4410,7 +4393,7 @@ pg-types@~1.12.1:
     postgres-date "~1.0.0"
     postgres-interval "^1.1.0"
 
-pg@~7.4.1:
+pg@^7.4.1:
   version "7.4.1"
   resolved "https://registry.yarnpkg.com/pg/-/pg-7.4.1.tgz#f3411c8ddf9f692322fe05e7017a1888e47f78f1"
   dependencies:
@@ -5345,10 +5328,6 @@ spdx-expression-parse@~1.0.0:
 spdx-license-ids@^1.0.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-1.2.2.tgz#c9df7a3424594ade6bd11900d596696dc06bac57"
-
-spex@~2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/spex/-/spex-2.0.2.tgz#e8c8d633a4c67af642dded701ec2350c9de964a0"
 
 split@^1.0.0:
   version "1.0.1"
