@@ -51,10 +51,15 @@ const Faq = () => (
       <div>
         <h1 style={styles.h1}>Welcome to the CLE Tech Survey</h1>
         <p>
+          Popular tech surveys don't seem to get Cleveland. So, we made our own
+          Cleveland-based survey to try to get a more accurate idea of what goes on
+          in Cleveland tech.
+        </p>
+        <p>
           The purpose of this survey is to collect and present information about
           salary, education, and experience for those in Cleveland Technology to
           get an understanding of the influence different components have on
-          salary calculation.
+          salary calculations.
         </p>
         <p>
           The information collected is anonymous and will be accessible to all, in
@@ -62,9 +67,7 @@ const Faq = () => (
           (date here).
         </p>
         <p>
-          necessary questions to help people understand the primary salary
-          The full survey will take under 10 minutes and contains only the
-          considerations.
+          The survey takes about 7 minutes to complete.
         </p>
       </div>
       <div>
