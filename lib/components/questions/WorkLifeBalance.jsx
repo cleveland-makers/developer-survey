@@ -14,11 +14,11 @@ const styles = {
 };
 
 const emoji = [
-  '&#x1F62D',
-  '&#x1F641',
-  '&#x1F610',
-  '&#x1F642',
-  '&#x1F603',
+  '\u{1F603}', // Happy - 5
+  '\u{1F642}', // Not as happy - 4
+  '\u{1F610}', // Neutral - 3
+  '\u{1F641}', // Sad - 2
+  '\u{1F62D}', // Very sad - 1
 ];
 
 /**
