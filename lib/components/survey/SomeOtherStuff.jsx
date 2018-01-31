@@ -101,6 +101,7 @@ class SomeOtherStuff extends React.PureComponent {
             labelStyle={styles.buttonMainLabel}
             onClick={this.submitSurvey}
             style={styles.buttonMain}
+            href="../Confirmation"
           />
         </div>
       </div>

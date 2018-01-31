@@ -52,7 +52,6 @@ const styles = {
 
 const Faq = () => (
   <div>
-    <NavbarHome />
     <FullWidthSection style={styles.root}>
       <section style={styles.div}>
         <div className="intro">
@@ -61,9 +60,6 @@ const Faq = () => (
             We appreciate you taking the time to tell us about yourself. Results
             will be available soon.
           </p>
-        </div>
-        <div className="buttons">
-          <Link style={styles.buttonMain} to="/faq">Start</Link>
         </div>
       </section>
     </FullWidthSection>
