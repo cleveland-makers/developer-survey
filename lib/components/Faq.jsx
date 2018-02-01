@@ -44,14 +44,13 @@ const styles = {
   },
 };
 
-
 const Faq = () => (
   <FullWidthSection style={styles.root}>
     <section style={styles.div}>
       <div>
         <h1 style={styles.h1}>Welcome to the CLE Tech Survey</h1>
         <p>
-          Popular tech surveys don't seem to get Cleveland. So, we made our own
+          Popular tech surveys don’t seem to get Cleveland. So, we made our own
           Cleveland-based survey to try to get a more accurate idea of what goes on
           in Cleveland tech.
         </p>

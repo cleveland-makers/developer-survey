@@ -11,6 +11,9 @@ const styles = {
     paddingLeft: '10px',
     paddingRight: '10px',
   },
+  highlightLabel: {
+    color: '#730006',
+  },
 };
 
 const roles = [
@@ -35,6 +38,8 @@ class CurrentRole extends React.PureComponent {
     const { developerCurrentRoles } = this.props;
     return (
       <SelectField
+        hintStyle={styles.highlightLabel}
+        labelStyle={styles.highlightLabel}
         autoWidth
         hintText="Role"
         multiple

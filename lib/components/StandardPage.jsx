@@ -14,7 +14,6 @@ const styles = {
 
 class StandardPage extends React.PureComponent {
   render() {
-    const Component = this.props.component;
     return (
       <div style={styles.root}>
         <FullWidthSection>

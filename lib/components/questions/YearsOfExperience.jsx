@@ -5,23 +5,41 @@ import storeProvider from '../storeProvider';
 
 const styles = {
   field: {
+    color: '#730006',
     float: 'left',
     fontSize: '20px',
     paddingLeft: '10px',
     paddingRight: '10px',
     width: '40px',
   },
+  highlightLabel: {
+    color: '#730006',
+  },
 };
 
+/**
+ * Answers the question:
+ *
+ * How long have you been doing them?
+ */
 class YearsOfExperience extends React.PureComponent {
   handleChange = (event, value) => {
-    this.props.store.saveHowLong(parseInt(value, 10));
+    let validatedValue = parseInt(value, 10);
+    if (value < 1) {
+      validatedValue = 1;
+    } else if (value > 99) {
+      validatedValue = 99;
+    }
+
+    this.props.store.saveHowLong(validatedValue);
   }
 
   render() {
     return (
       <TextField
-        hintText="Number of Years"
+        hintStyle={styles.highlightLabel}
+        hintText="x"
+        inputStyle={styles.highlightLabel}
         onChange={this.handleChange}
         style={styles.field}
         type="number"
