@@ -25,7 +25,7 @@ class NumCompaniesWorkedFor extends React.PureComponent {
     return (
       <TextField
         style={styles.field}
-        hintText="Number of Companies You've Worked For"
+        hintText="x"
         onChange={this.handleChange}
         type="number"
         value={this.props.careerDevelopmentJobCount}

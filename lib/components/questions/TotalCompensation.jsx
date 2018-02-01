@@ -13,6 +13,7 @@ const styles = {
   field: {
     width: 70,
     marginLeft: '8px',
+    marginRight: '8px',
     float: 'left',
   },
 };

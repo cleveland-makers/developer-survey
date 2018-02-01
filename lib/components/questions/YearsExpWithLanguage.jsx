@@ -18,7 +18,7 @@ class YearsExpWithLanguage extends React.PureComponent {
   render() {
     return (
       <TextField
-        hintText="Number of Years"
+        hintText="x"
         onChange={this.handleChange}
         style={styles.field}
         type="number"

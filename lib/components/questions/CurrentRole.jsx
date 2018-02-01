@@ -41,7 +41,7 @@ class CurrentRole extends React.PureComponent {
         hintStyle={styles.highlightLabel}
         labelStyle={styles.highlightLabel}
         autoWidth
-        hintText="Role"
+        hintText="Select roles that apply"
         multiple
         onChange={this.handleChange}
         style={styles.field}

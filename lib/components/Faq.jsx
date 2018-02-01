@@ -62,8 +62,8 @@ const Faq = () => (
         </p>
         <p>
           The information collected is anonymous and will be accessible to all, in
-          downloadable (type) format once the survey collection period is over
-          (date here).
+          downloadable (INSERT FILE FORMAT TYPE HERE) format, once the survey
+          collection period is over (INSERT DATE OF COMPLETION HERE).
         </p>
         <p>
           The survey takes about 7 minutes to complete.
