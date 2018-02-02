@@ -12,10 +12,10 @@ class SurveyProgress extends React.PureComponent {
   render() {
     return (
       <LinearProgress
-        style={styles.progressBar}
         color="#730006"
         max={this.props.surveyLength}
         mode="determinate"
+        style={styles.progressBar}
         value={this.props.surveyStep}
       />
     );

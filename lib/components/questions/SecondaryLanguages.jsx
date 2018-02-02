@@ -53,7 +53,7 @@ class SecondaryLanguages extends React.PureComponent {
       <SelectField
         autoWidth
         hintStyle={styles.highlightLabel}
-        hintText="Languages"
+        hintText="Personal Languages"
         labelStyle={styles.highlightLabel}
         multiple
         onChange={this.handleChange}

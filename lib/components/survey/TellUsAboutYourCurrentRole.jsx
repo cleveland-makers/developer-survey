@@ -55,7 +55,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Paper style={styles.paper} zDepth={1}>
           <h1 style={styles.h1}>Tell Us About Your Current Role</h1>
           <ClearFix style={styles.questionGroup}>
@@ -80,7 +80,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
             style={styles.buttonMain}
           />
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -53,7 +53,7 @@ class PrimaryLanguage extends React.PureComponent {
       <SelectField
         autoWidth
         hintStyle={styles.highlightLabel}
-        hintText="Language"
+        hintText="Primary Language"
         labelStyle={styles.highlightLabel}
         onChange={this.handleChange}
         style={styles.fieldSingleSelect}

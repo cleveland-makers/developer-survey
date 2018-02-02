@@ -5,8 +5,8 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import ReasonsForStayingInCleveland from '../questions/ReasonsForStayingInCleveland';
-import FavSportsTeam from '../questions/FavSportsTeam';
-import FavCleActivity from '../questions/FavCleActivity';
+import FavoriteSportsTeam from '../questions/FavoriteSportsTeam';
+import FavoriteClevelandActivity from '../questions/FavoriteClevelandActivity';
 import storeProvider from '../storeProvider';
 
 const styles = {
@@ -68,7 +68,7 @@ class MovingOn extends React.PureComponent {
   render() {
     const { survey } = this.props;
     return (
-      <div>
+      <React.Fragment>
         <Paper style={styles.paper} zDepth={1}>
           <h1 style={styles.h1}>Moving On...</h1>
           <div style={styles.questionGroup}>
@@ -78,14 +78,14 @@ class MovingOn extends React.PureComponent {
                 personalWhyCleveland={survey.personalWhyCleveland}
               />
               <div style={styles.div}>, and I live and breathe the</div>
-              <FavSportsTeam
+              <FavoriteSportsTeam
                 personalFavoriteSportsTeams={survey.personalFavoriteSportsTeams}
               />
               <div style={styles.div}>(most of the time). Cleveland is a special place,</div>
             </ClearFix>
             <ClearFix>
               <div style={styles.div}>and I wish more people knew about the</div>
-              <FavCleActivity
+              <FavoriteClevelandActivity
                 personalFavoriteClevelandActivity={survey.personalFavoriteClevelandActivity}
               />
               <div style={styles.div}>.</div>
@@ -107,7 +107,7 @@ class MovingOn extends React.PureComponent {
             style={styles.buttonMain}
           />
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

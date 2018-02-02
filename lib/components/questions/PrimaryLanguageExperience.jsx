@@ -9,7 +9,7 @@ import styles from './styles';
  *
  * When did you learn you primary language?
  */
-class YearsExpWithLanguage extends React.PureComponent {
+class PrimaryLanguageExperience extends React.PureComponent {
   handleChange = (event, value) => {
     this.props.store.saveWhenLearned(value);
   }
@@ -29,11 +29,11 @@ class YearsExpWithLanguage extends React.PureComponent {
   }
 }
 
-YearsExpWithLanguage.propTypes = {
+PrimaryLanguageExperience.propTypes = {
   languageWhenDidYouLearnIt: PropTypes.number.isRequired,
   store: PropTypes.shape({
     saveWhenLearned: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default storeProvider()(YearsExpWithLanguage);
+export default storeProvider()(PrimaryLanguageExperience);

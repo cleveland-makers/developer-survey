@@ -67,7 +67,7 @@ class SomeOtherStuff extends React.PureComponent {
   render() {
     const { survey } = this.props;
     return (
-      <div>
+      <React.Fragment>
         <Paper style={styles.paper} zDepth={1}>
           <h1 style={styles.h1}>Some Other Stuff</h1>
           <div style={styles.questionGroup}>
@@ -104,7 +104,7 @@ class SomeOtherStuff extends React.PureComponent {
             href="../Confirmation"
           />
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

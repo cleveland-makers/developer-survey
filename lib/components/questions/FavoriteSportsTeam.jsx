@@ -17,7 +17,7 @@ const teams = [
  *
  * What are your favorite sports teams?
  */
-class FavSportsTeam extends React.PureComponent {
+class FavoriteSportsTeam extends React.PureComponent {
   handleChange = (event, index, value) => {
     this.props.store.saveSportsTeam(value);
   }
@@ -46,11 +46,11 @@ class FavSportsTeam extends React.PureComponent {
   }
 }
 
-FavSportsTeam.propTypes = {
+FavoriteSportsTeam.propTypes = {
   personalFavoriteSportsTeams: PropTypes.string.isRequired,
   store: PropTypes.shape({
     saveSportsTeam: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default storeProvider()(FavSportsTeam);
+export default storeProvider()(FavoriteSportsTeam);

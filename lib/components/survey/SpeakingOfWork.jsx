@@ -72,7 +72,7 @@ class SpeakingOfWork extends React.PureComponent {
   render() {
     const { survey } = this.props;
     return (
-      <div>
+      <React.Fragment>
         <Paper style={styles.paper} zDepth={1}>
           <h1 style={styles.h1}>Speaking of Work...</h1>
           <div style={styles.questionGroup}>
@@ -124,7 +124,7 @@ class SpeakingOfWork extends React.PureComponent {
             style={styles.buttonMain}
           />
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

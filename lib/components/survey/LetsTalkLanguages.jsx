@@ -9,7 +9,7 @@ import LanguageUses from '../questions/LanguageUses';
 import PrimaryLanguage from '../questions/PrimaryLanguage';
 import SecondaryLanguages from '../questions/SecondaryLanguages';
 import storeProvider from '../storeProvider';
-import YearsExpWithLanguage from '../questions/YearsExpWithLanguage';
+import PrimaryLanguageExperience from '../questions/PrimaryLanguageExperience';
 
 const styles = {
   h1: {
@@ -73,7 +73,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
   render() {
     const { survey } = this.props;
     return (
-      <div>
+      <React.Fragment>
         <Paper style={styles.paper} zDepth={1}>
           <h1 style={styles.h1}>Let’s Talk Languages</h1>
           <div style={styles.questionGroup}>
@@ -90,7 +90,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
                 languageWhyDoYouUseIt={survey.languageWhyDoYouUseIt}
               />
               <div style={styles.div}>. I learned it</div>
-              <YearsExpWithLanguage
+              <PrimaryLanguageExperience
                 languageWhenDidYouLearnIt={survey.languageWhenDidYouLearnIt}
               />
               <div style={styles.div}>years ago from</div>
@@ -116,7 +116,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
             style={styles.buttonMain}
           />
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

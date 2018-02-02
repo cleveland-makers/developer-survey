@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import NavbarHome from './NavbarHome';
-import FullWidthSection from './FullWidthSection';
+import Paper from 'material-ui/Paper';
 
 const styles = {
   h1: {
@@ -19,51 +17,23 @@ const styles = {
     margin: 'auto',
     width: '60%',
   },
-  buttonMain: {
-    backgroundColor: '#730006',
-    border: '2px solid #730006',
-    borderRadius: '2px',
-    color: '#F7F5F4',
-    display: 'inline-block',
-    font: '16px Roboto, sans-serif',
-    fontWeight: 'bold',
-    padding: '15px 32px',
-    textAlign: 'center',
-    textDecoration: 'none',
-  },
-  buttonSecondary: {
-    backgroundColor: '#F7F5F4',
-    border: '2px solid #4556A5',
-    borderRadius: '2px',
-    color: '#4556A5',
-    display: 'inline-block',
-    font: '16px Roboto, sans-serif',
-    fontWeight: 'bold',
-    padding: '15px 32px',
-    textAlign: 'center',
-    textDecoration: 'none',
-  },
-  root: {
-    backgroundColor: '#8097ad',
-    minHeight: '800px',
-    overflow: 'hidden',
+  paper: {
+    padding: '20px 30px',
   },
 };
 
-const Faq = () => (
-  <div>
-    <FullWidthSection style={styles.root}>
-      <section style={styles.div}>
-        <div className="intro">
-          <h1 style={styles.h1}>Thank you!</h1>
-          <p>
-            We appreciate you taking the time to tell us about yourself. Results
-            will be available soon.
-          </p>
-        </div>
-      </section>
-    </FullWidthSection>
-  </div>
+const Confirmation = () => (
+  <Paper style={styles.paper} zDepth={1}>
+    <section style={styles.div}>
+      <div className="intro">
+        <h1 style={styles.h1}>Thank you!</h1>
+        <p>
+          We appreciate you taking the time to tell us about yourself. Results
+          will be available soon.
+        </p>
+      </div>
+    </section>
+  </Paper>
 );
 
-export default Faq;
+export default Confirmation;
