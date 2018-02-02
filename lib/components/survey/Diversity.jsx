@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import Paper from 'material-ui/Paper';
 import Gender from '../questions/Gender';
 import Ethnicity from '../questions/Ethnicity';
 import HighestEducationalAttainment from '../questions/Education';
 import storeProvider from '../storeProvider';
+import SurveyFormat from '../SurveyFormat';
 
 const styles = {
   h1: {
@@ -68,7 +68,7 @@ class Diversity extends React.PureComponent {
     const { survey } = this.props;
     return (
       <React.Fragment>
-        <Paper style={styles.paper} zDepth={1}>
+        <SurveyFormat>
           <h1 style={styles.h1}>Some Other Stuff</h1>
           <div style={styles.questionGroup}>
             <ClearFix>
@@ -87,7 +87,7 @@ class Diversity extends React.PureComponent {
               />
             </ClearFix>
           </div>
-        </Paper>
+        </SurveyFormat>
         <div style={styles.buttonGroup}>
           <FlatButton
             label="Previous"
