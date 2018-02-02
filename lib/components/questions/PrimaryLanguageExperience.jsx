@@ -11,7 +11,13 @@ import styles from './styles';
  */
 class PrimaryLanguageExperience extends React.PureComponent {
   handleChange = (event, value) => {
-    this.props.store.saveWhenLearned(value);
+    let validatedValue = parseInt(value, 10);
+    if (value < 1) {
+      validatedValue = 1;
+    } else if (value > 99) {
+      validatedValue = 99;
+    }
+    this.props.store.saveWhenLearned(validatedValue);
   }
 
   render() {

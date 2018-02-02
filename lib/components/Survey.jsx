@@ -6,44 +6,42 @@ import SomeOtherStuff from './survey/SomeOtherStuff';
 import SpeakingOfWork from './survey/SpeakingOfWork';
 import SurveyProgress from './survey/SurveyProgress';
 import TellUsAboutYourCurrentRole from './survey/TellUsAboutYourCurrentRole';
+import FourOhFour from '../FourOhFour';
 
 class Survey extends React.PureComponent {
   surveyPage() {
     switch (this.props.surveyStep) {
-      case 1:
+      case 0:
         return (<TellUsAboutYourCurrentRole
           nextStep={this.nextStep}
           {...this.props}
         />);
-      case 2:
+      case 1:
         return (<LetsTalkLanguages
           nextStep={this.nextStep}
           previousStep={this.previousStep}
           {...this.props}
         />);
-      case 3:
+      case 2:
         return (<SpeakingOfWork
           nextStep={this.nextStep}
           previousStep={this.previousStep}
           {...this.props}
         />);
-      case 4:
+      case 3:
         return (<MovingOn
           nextStep={this.nextStep}
           previousStep={this.previousStep}
           {...this.props}
         />);
-      case 5:
+      case 4:
         return (<SomeOtherStuff
           nextStep={this.nextStep}
           previousStep={this.previousStep}
           {...this.props}
         />);
       default:
-        return (<TellUsAboutYourCurrentRole
-          nextStep={this.nextStep}
-          {...this.props}
-        />);
+        return (<FourOhFour />);
     }
   }
 
