@@ -3,16 +3,7 @@ import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
-
-const styles = {
-  field: {
-    float: 'left',
-    fontSize: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-    width: 270,
-  },
-};
+import styles from './styles';
 
 const activities = [
   'A Christmas Story House',
@@ -46,9 +37,11 @@ class FavCleActivity extends React.PureComponent {
     return (
       <SelectField
         autoWidth
+        hintStyle={styles.highlightLabel}
         hintText="Favorite Cleveland Activity"
+        labelStyle={styles.highlightLabel}
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldSingleSelect}
         value={personalFavoriteClevelandActivity}
       >
         {activities.map(activity => (

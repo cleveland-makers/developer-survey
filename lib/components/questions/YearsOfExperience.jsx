@@ -2,20 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import storeProvider from '../storeProvider';
-
-const styles = {
-  field: {
-    color: '#730006',
-    float: 'left',
-    fontSize: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-    width: '40px',
-  },
-  highlightLabel: {
-    color: '#730006',
-  },
-};
+import styles from './styles';
 
 /**
  * Answers the question:
@@ -30,7 +17,6 @@ class YearsOfExperience extends React.PureComponent {
     } else if (value > 99) {
       validatedValue = 99;
     }
-
     this.props.store.saveHowLong(validatedValue);
   }
 
@@ -41,7 +27,7 @@ class YearsOfExperience extends React.PureComponent {
         hintText="x"
         inputStyle={styles.highlightLabel}
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldText}
         type="number"
         value={this.props.developerHowLong}
       />

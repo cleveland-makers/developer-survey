@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import storeProvider from '../storeProvider';
+import styles from './styles';
 
-const styles = {
-  field: {
-    width: 40,
-    marginLeft: '8px',
-  },
-};
-
+/**
+ * Asks the question:
+ *
+ * When did you learn you primary language?
+ */
 class YearsExpWithLanguage extends React.PureComponent {
   handleChange = (event, value) => {
     this.props.store.saveWhenLearned(value);
@@ -18,9 +17,11 @@ class YearsExpWithLanguage extends React.PureComponent {
   render() {
     return (
       <TextField
+        hintStyle={styles.highlightLabel}
         hintText="x"
+        inputStyle={styles.highlightLabel}
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldText}
         type="number"
         value={this.props.languageWhenDidYouLearnIt}
       />

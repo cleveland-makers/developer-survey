@@ -3,16 +3,7 @@ import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
-
-const styles = {
-  field: {
-    float: 'left',
-    fontSize: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-    width: 230,
-  },
-};
+import styles from './styles';
 
 const reasons = [
   'of the Pro Sports Teams',
@@ -42,10 +33,12 @@ class ReasonsForStayingInCleveland extends React.PureComponent {
     return (
       <SelectField
         autoWidth
+        hintStyle={styles.highlightLabel}
         hintText="Reasons for Staying"
+        labelStyle={styles.highlightLabel}
         multiple
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldMultipleSelect}
         value={personalWhyCleveland}
       >
         {reasons.map(reason => (

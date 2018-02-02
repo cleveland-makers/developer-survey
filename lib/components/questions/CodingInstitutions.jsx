@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
-
-const styles = {
-  field: {
-    float: 'left',
-    fontSize: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-  },
-};
+import styles from './styles';
 
 const institutions = [
   'Bootcamp',
@@ -25,6 +17,11 @@ const institutions = [
   'Other',
 ];
 
+/**
+ * Asks the question:
+ *
+ * When did you learn you primary language?
+ */
 class CodingInstitutions extends React.PureComponent {
   handleChange = (event, index, values) => {
     this.props.store.saveWhereLearned(values);
@@ -35,10 +32,12 @@ class CodingInstitutions extends React.PureComponent {
     return (
       <SelectField
         autoWidth
+        hintStyle={styles.highlightLabel}
         hintText="Where you learned to code"
+        labelStyle={styles.highlightLabel}
         multiple
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldMultipleSelect}
         value={languageWhereDidYouLearnIt}
       >
         {institutions.map(institution => (

@@ -82,8 +82,6 @@ class SpeakingOfWork extends React.PureComponent {
                 officeHoursPerWeek={survey.officeHoursPerWeek}
               />
               <div style={styles.div}>hours per week, I commute to</div>
-            </ClearFix>
-            <ClearFix>
               <OfficeLocation
                 officeLocation={survey.officeLocation}
               />
@@ -103,10 +101,7 @@ class SpeakingOfWork extends React.PureComponent {
               <JobSatisfaction
                 careerSatisfaction={survey.careerSatisfaction}
               />
-              <div style={styles.div}>at work, and I think</div>
-            </ClearFix>
-            <ClearFix>
-              <div style={styles.div}>the work/life balance is</div>
+              <div style={styles.div}>at work, and I think the work/life balance is</div>
               <WorkLifeBalance
                 careerWorkLifeBalance={survey.careerWorkLifeBalance}
               />

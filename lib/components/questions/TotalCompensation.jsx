@@ -2,22 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import storeProvider from '../storeProvider';
+import styles from './styles';
 
 /**
  * Asks the question:
  *
  * How much do you earn?
  */
-
-const styles = {
-  field: {
-    width: 70,
-    marginLeft: '8px',
-    marginRight: '8px',
-    float: 'left',
-  },
-};
-
 class TotalCompensation extends React.PureComponent {
   handleChange = (event, value) => {
     this.props.store.saveCompensation(value);
@@ -26,9 +17,14 @@ class TotalCompensation extends React.PureComponent {
   render() {
     return (
       <TextField
-        style={styles.field}
+        hintStyle={styles.highlightLabel}
         hintText="Total Compensation"
+        inputStyle={styles.highlightLabel}
         onChange={this.handleChange}
+        style={{
+          ...styles.fieldText,
+          width: '70px',
+        }}
         type="number"
         value={this.props.careerSalary}
       />

@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
-
-const styles = {
-  field: {
-    float: 'left',
-    fontSize: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-  },
-};
+import styles from './styles';
 
 const locations = [
   'West of the West Side',
@@ -39,9 +31,11 @@ class OfficeLocation extends React.PureComponent {
     return (
       <SelectField
         autoWidth
+        hintStyle={styles.highlightLabel}
         hintText="Work Location"
+        labelStyle={styles.highlightLabel}
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldSingleSelect}
         value={officeLocation}
       >
         {locations.map(location => (

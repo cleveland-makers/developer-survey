@@ -2,32 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import storeProvider from '../storeProvider';
+import styles from './styles';
 
 /**
  * Asks the question:
  *
  * How many hours do you work per week?
  */
-
-const styles = {
-  field: {
-    marginLeft: '8px',
-    float: 'left',
-  },
-};
-
 class OfficeHoursPerWeek extends React.PureComponent {
   handleChange = (event, value) => {
-    this.props.store.saveHoursPerWeek(value);
+    let validatedValue = parseInt(value, 10);
+    if (value < 0) {
+      validatedValue = 0;
+    }
+    this.props.store.saveHoursPerWeek(validatedValue);
   }
 
   render() {
     const { officeHoursPerWeek } = this.props;
     return (
       <TextField
-        style={styles.field}
-        hintText="Average Work Hours Per Week"
+        hintStyle={styles.highlightLabel}
+        hintText="x"
+        inputStyle={styles.highlightLabel}
         onChange={this.handleChange}
+        style={styles.fieldText}
         type="number"
         value={officeHoursPerWeek}
       />

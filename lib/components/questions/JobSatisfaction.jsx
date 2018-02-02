@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
-
-const styles = {
-  field: {
-    float: 'left',
-    fontSize: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-  },
-};
+import styles from './styles';
 
 const emoji = [
   '\u{1F603}', // Happy - 5
@@ -36,9 +28,11 @@ class JobSatisfaction extends React.PureComponent {
     return (
       <SelectField
         autoWidth
+        hintStyle={styles.highlightLabel}
         hintText="Job Satisfaction"
+        labelStyle={styles.highlightLabel}
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldSingleSelect}
         value={careerSatisfaction}
       >
         {emoji.map(emo => (

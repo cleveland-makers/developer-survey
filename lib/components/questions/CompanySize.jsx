@@ -3,16 +3,7 @@ import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
-
-const styles = {
-  field: {
-    float: 'left',
-    fontSize: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-    width: 150,
-  },
-};
+import styles from './styles';
 
 const buckets = [
   '< 10',
@@ -40,9 +31,11 @@ class CompanySize extends React.PureComponent {
     return (
       <SelectField
         autoWidth
+        hintStyle={styles.highlightLabel}
         hintText="Company Size"
+        labelStyle={styles.highlightLabel}
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldSingleSelect}
         value={officeEmployeeCount}
       >
         {buckets.map(bucket => (

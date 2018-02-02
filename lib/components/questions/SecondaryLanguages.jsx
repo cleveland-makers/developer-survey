@@ -3,16 +3,7 @@ import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
-
-const styles = {
-  field: {
-    float: 'left',
-    fontSize: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-    width: 150,
-  },
-};
+import styles from './styles';
 
 const langs = [
   'Assembly',
@@ -46,6 +37,11 @@ const langs = [
   'Other',
 ];
 
+/**
+ * Asks the question:
+ *
+ * What languages do you use at home?
+ */
 class SecondaryLanguages extends React.PureComponent {
   handleChange = (event, index, values) => {
     this.props.store.saveHomeLanguages(values);
@@ -56,10 +52,12 @@ class SecondaryLanguages extends React.PureComponent {
     return (
       <SelectField
         autoWidth
+        hintStyle={styles.highlightLabel}
         hintText="Languages"
+        labelStyle={styles.highlightLabel}
         multiple
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldMultipleSelect}
         value={languagePrimaryHomeLanguages}
       >
         {langs.map(lang => (

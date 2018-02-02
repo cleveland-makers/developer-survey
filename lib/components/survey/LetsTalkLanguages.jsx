@@ -85,10 +85,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
               <SecondaryLanguages
                 languagePrimaryHomeLanguages={survey.languagePrimaryHomeLanguages}
               />
-              <div style={styles.div}>for my personal and open-source projects. I’ve been using</div>
-            </ClearFix>
-            <ClearFix>
-              <div style={styles.div}>my primary language for</div>
+              <div style={styles.div}>for my personal and open-source projects. I’ve been using my primary language for</div>
               <LanguageUses
                 languageWhyDoYouUseIt={survey.languageWhyDoYouUseIt}
               />

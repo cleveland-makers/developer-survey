@@ -3,16 +3,7 @@ import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
-
-const styles = {
-  field: {
-    float: 'left',
-    fontSize: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-    width: 150,
-  },
-};
+import styles from './styles';
 
 const langs = [
   'Assembly',
@@ -46,6 +37,11 @@ const langs = [
   'Other',
 ];
 
+/**
+ * Asks the question:
+ *
+ * What is your primary language at work?
+ */
 class PrimaryLanguage extends React.PureComponent {
   handleChange = (event, index, value) => {
     this.props.store.savePrimaryLanguage(value);
@@ -56,9 +52,11 @@ class PrimaryLanguage extends React.PureComponent {
     return (
       <SelectField
         autoWidth
+        hintStyle={styles.highlightLabel}
         hintText="Language"
+        labelStyle={styles.highlightLabel}
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldSingleSelect}
         value={languagePrimaryWorkLanguage}
       >
         {langs.map(lang => (

@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
-
-const styles = {
-  field: {
-    float: 'left',
-    fontSize: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-  },
-};
+import styles from './styles';
 
 const ethnicities = [
   'Black or of African descent',
@@ -25,6 +17,11 @@ const ethnicities = [
   'Other',
 ];
 
+/**
+ * Asks the question:
+ *
+ * What ethnicity are you?
+ */
 class Ethnicity extends React.PureComponent {
   handleChange = (event, index, value) => {
     this.props.store.saveEthnicity(value);
@@ -35,9 +32,11 @@ class Ethnicity extends React.PureComponent {
     return (
       <SelectField
         autoWidth
+        hintStyle={styles.highlightLabel}
         hintText="Ethnicity"
+        labelStyle={styles.highlightLabel}
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldSingleSelect}
         value={personalEthnicity}
       >
         {ethnicities.map(eth => (

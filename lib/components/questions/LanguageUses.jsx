@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
-
-const styles = {
-  field: {
-    float: 'left',
-    fontSize: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-  },
-};
+import styles from './styles';
 
 const uses = [
   'Fun',
@@ -19,6 +11,11 @@ const uses = [
   'Study',
 ];
 
+/**
+ * Asks the question:
+ *
+ * Why do you use you primary language?
+ */
 class LanguageUses extends React.PureComponent {
   handleChange = (event, index, values) => {
     this.props.store.saveLanguageUses(values);
@@ -28,10 +25,12 @@ class LanguageUses extends React.PureComponent {
     const { languageWhyDoYouUseIt } = this.props;
     return (
       <SelectField
+        hintStyle={styles.highlightLabel}
         hintText="Reasons"
+        labelStyle={styles.highlightLabel}
         multiple
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldMultipleSelect}
         value={languageWhyDoYouUseIt}
       >
         {uses.map(use => (

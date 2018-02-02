@@ -3,18 +3,7 @@ import PropTypes from 'prop-types';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import storeProvider from '../storeProvider';
-
-const styles = {
-  field: {
-    float: 'left',
-    fontSize: '20px',
-    paddingLeft: '10px',
-    paddingRight: '10px',
-  },
-  highlightLabel: {
-    color: '#730006',
-  },
-};
+import styles from './styles';
 
 const roles = [
   'Back-End',
@@ -29,6 +18,11 @@ const roles = [
   'UX',
 ];
 
+/**
+ * Asks the question:
+ *
+ * What roles do you do?
+ */
 class CurrentRole extends React.PureComponent {
   handleChange = (event, index, values) => {
     this.props.store.saveRoles(values);
@@ -38,13 +32,13 @@ class CurrentRole extends React.PureComponent {
     const { developerCurrentRoles } = this.props;
     return (
       <SelectField
-        hintStyle={styles.highlightLabel}
-        labelStyle={styles.highlightLabel}
         autoWidth
+        hintStyle={styles.highlightLabel}
         hintText="Select roles that apply"
+        labelStyle={styles.highlightLabel}
         multiple
         onChange={this.handleChange}
-        style={styles.field}
+        style={styles.fieldMultipleSelect}
         value={developerCurrentRoles}
       >
         {roles.map(role => (

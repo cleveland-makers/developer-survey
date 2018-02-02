@@ -2,20 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import storeProvider from '../storeProvider';
+import styles from './styles';
 
 /**
  * Asks the question:
  *
  * How many development jobs have you had?
  */
-const styles = {
-  field: {
-    width: 40,
-    marginLeft: '8px',
-    float: 'left',
-  },
-};
-
 class NumCompaniesWorkedFor extends React.PureComponent {
   handleChange = (event, value) => {
     this.props.store.saveNumberOfJobs(value);
@@ -24,9 +17,11 @@ class NumCompaniesWorkedFor extends React.PureComponent {
   render() {
     return (
       <TextField
-        style={styles.field}
+        hintStyle={styles.highlightLabel}
         hintText="x"
+        inputStyle={styles.highlightLabel}
         onChange={this.handleChange}
+        style={styles.fieldText}
         type="number"
         value={this.props.careerDevelopmentJobCount}
       />
