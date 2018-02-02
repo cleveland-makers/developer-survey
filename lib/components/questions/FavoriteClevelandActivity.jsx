@@ -27,7 +27,7 @@ const activities = [
  *
  * What is your favorite undiscovered activity?
  */
-class FavCleActivity extends React.PureComponent {
+class FavoriteClevelandActivity extends React.PureComponent {
   handleChange = (event, index, value) => {
     this.props.store.saveClevelandActivity(value);
   }
@@ -56,11 +56,11 @@ class FavCleActivity extends React.PureComponent {
   }
 }
 
-FavCleActivity.propTypes = {
+FavoriteClevelandActivity.propTypes = {
   personalFavoriteClevelandActivity: PropTypes.string.isRequired,
   store: PropTypes.shape({
     saveClevelandActivity: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default storeProvider()(FavCleActivity);
+export default storeProvider()(FavoriteClevelandActivity);

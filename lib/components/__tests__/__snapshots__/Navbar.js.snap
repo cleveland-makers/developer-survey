@@ -4,7 +4,12 @@ exports[`Navbar renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <AppNavbar
+  Symbol(enzyme.__unrendered__): <withRouter(Navbar)
+    history={
+      Object {
+        "push": [Function],
+      }
+    }
     i18n={
       Object {
         "header": "Header",
@@ -23,37 +28,10 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "bsStyle": "default",
-      "children": <NavbarHeader
-        style={
-          Object {
-            "color": "#fff",
-            "fontSize": "3em",
-          }
-        }
-      >
-        Header
-      </NavbarHeader>,
-      "style": Object {
-        "backgroundColor": "#44C938",
-      },
+      "render": [Function],
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": "Header",
-        "style": Object {
-          "color": "#fff",
-          "fontSize": "3em",
-        },
-      },
-      "ref": null,
-      "rendered": "Header",
-      "type": [Function],
-    },
+    "rendered": null,
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -62,37 +40,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "bsStyle": "default",
-        "children": <NavbarHeader
-          style={
-            Object {
-              "color": "#fff",
-              "fontSize": "3em",
-            }
-          }
-        >
-          Header
-        </NavbarHeader>,
-        "style": Object {
-          "backgroundColor": "#44C938",
-        },
+        "render": [Function],
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "Header",
-          "style": Object {
-            "color": "#fff",
-            "fontSize": "3em",
-          },
-        },
-        "ref": null,
-        "rendered": "Header",
-        "type": [Function],
-      },
+      "rendered": null,
       "type": [Function],
     },
   ],

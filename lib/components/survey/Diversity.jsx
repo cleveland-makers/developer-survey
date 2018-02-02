@@ -54,7 +54,7 @@ const styles = {
   },
 };
 
-class SomeOtherStuff extends React.PureComponent {
+class Diversity extends React.PureComponent {
   previousStep = (e) => {
     e.preventDefault();
     this.props.store.previousStep();
@@ -109,7 +109,7 @@ class SomeOtherStuff extends React.PureComponent {
   }
 }
 
-SomeOtherStuff.propTypes = {
+Diversity.propTypes = {
   store: PropTypes.shape({
     previousStep: PropTypes.func.isRequired,
     submitSurvey: PropTypes.func.isRequired,
@@ -121,4 +121,4 @@ SomeOtherStuff.propTypes = {
   }).isRequired,
 };
 
-export default storeProvider()(SomeOtherStuff);
+export default storeProvider()(Diversity);
