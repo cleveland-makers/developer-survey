@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import withWidth, { SMALL } from 'material-ui/utils/withWidth';
-import FullWidthSection from './FullWidthSection';
+import FullWidthSection from '../FullWidthSection';
 
 const styles = {
   paper: {
@@ -28,6 +28,7 @@ class SurveyFormat extends React.PureComponent {
 }
 
 SurveyFormat.propTypes = {
+  children: PropTypes.node.isRequired,
   width: PropTypes.number.isRequired,
 };
 

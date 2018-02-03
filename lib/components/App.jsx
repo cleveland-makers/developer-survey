@@ -97,7 +97,19 @@ class App extends React.Component {
                 </StandardPage>
               )}
             />
-            <Route exact path="/confirmation" component={Confirmation} />
+            <Route
+              exact
+              path="/confirmation"
+              render={() => (
+                <StandardPage>
+                  <Confirmation
+                    survey={survey}
+                    surveyStep={surveyStep}
+                    surveyLength={surveyLength}
+                  />
+                </StandardPage>
+              )}
+            />
           </Switch>
         </div>
         <Footer fingerprint={fingerprint} />

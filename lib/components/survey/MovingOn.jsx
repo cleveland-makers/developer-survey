@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import ReasonsForStayingInCleveland from '../questions/ReasonsForStayingInCleveland';
 import FavoriteSportsTeam from '../questions/FavoriteSportsTeam';
 import FavoriteClevelandActivity from '../questions/FavoriteClevelandActivity';
-import storeProvider from '../storeProvider';
-import SurveyFormat from '../SurveyFormat';
+import SurveyNavigation from './SurveyNavigation';
 
 const styles = {
   h1: {
@@ -29,91 +26,68 @@ const styles = {
     fontWeight: '400',
     height: '48px',
     lineHeight: '48px',
-  },
-  buttonMain: {
-    height: '45px',
-    marginRight: '16px',
-    width: '110px',
-  },
-  buttonMainLabel: {
-    lineHeight: '45px',
-  },
-  buttonSecondary: {
-    height: '45px',
-    marginRight: '16px',
-    width: '110px',
+    marginLeft: '4px',
   },
   questionGroup: {
     marginTop: '20px',
   },
-  buttonGroup: {
-    paddingTop: '30px',
-  },
 };
 
 class MovingOn extends React.PureComponent {
-  previousStep = (e) => {
-    e.preventDefault();
-    this.props.store.previousStep();
-  }
-
-  saveAndContinue = (e) => {
-    e.preventDefault();
-    this.props.store.nextStep();
-  }
-
   render() {
     const { survey } = this.props;
     return (
-      <React.Fragment>
-        <SurveyFormat>
-          <h1 style={styles.h1}>Moving On...</h1>
-          <div style={styles.questionGroup}>
-            <ClearFix>
-              <div style={styles.div}>I stay in Cleveland because</div>
-              <ReasonsForStayingInCleveland
-                personalWhyCleveland={survey.personalWhyCleveland}
-              />
-              <div style={styles.div}>, and I live and breathe the</div>
-              <FavoriteSportsTeam
-                personalFavoriteSportsTeams={survey.personalFavoriteSportsTeams}
-              />
-              <div style={styles.div}>(most of the time). Cleveland is a special place,</div>
-            </ClearFix>
-            <ClearFix>
-              <div style={styles.div}>and I wish more people knew about the</div>
-              <FavoriteClevelandActivity
-                personalFavoriteClevelandActivity={survey.personalFavoriteClevelandActivity}
-              />
-              <div style={styles.div}>.</div>
-            </ClearFix>
-          </div>
-        </SurveyFormat>
-        <div style={styles.buttonGroup}>
-          <FlatButton
-            label="Previous"
-            onClick={this.previousStep}
-            style={styles.buttonSecondary}
-          />
-          <RaisedButton
-            backgroundColor="#730006"
-            label="Next"
-            labelColor="#F7F5F4"
-            labelStyle={styles.buttonMainLabel}
-            onClick={this.saveAndContinue}
-            style={styles.buttonMain}
-          />
+      <SurveyNavigation>
+        <h1 style={styles.h1}>Moving On</h1>
+        <div style={styles.questionGroup}>
+          <ClearFix>
+            <div style={styles.div}>I</div>
+            <div style={styles.div}>stay</div>
+            <div style={styles.div}>in</div>
+            <div style={styles.div}>Cleveland</div>
+            <div style={styles.div}>because</div>
+            <ReasonsForStayingInCleveland
+              personalWhyCleveland={survey.personalWhyCleveland}
+            />
+            <div style={styles.div}>,</div>
+            <div style={styles.div}>and</div>
+            <div style={styles.div}>I</div>
+            <div style={styles.div}>live</div>
+            <div style={styles.div}>and</div>
+            <div style={styles.div}>breathe</div>
+            <div style={styles.div}>the</div>
+            <FavoriteSportsTeam
+              personalFavoriteSportsTeams={survey.personalFavoriteSportsTeams}
+            />
+            <div style={styles.div}>(most</div>
+            <div style={styles.div}>of</div>
+            <div style={styles.div}>the</div>
+            <div style={styles.div}>time).</div>
+            <div style={styles.div}>Cleveland</div>
+            <div style={styles.div}>is</div>
+            <div style={styles.div}>a</div>
+            <div style={styles.div}>special</div>
+            <div style={styles.div}>place,</div>
+            <div style={styles.div}>and</div>
+            <div style={styles.div}>I</div>
+            <div style={styles.div}>wish</div>
+            <div style={styles.div}>more</div>
+            <div style={styles.div}>people</div>
+            <div style={styles.div}>knew</div>
+            <div style={styles.div}>about</div>
+            <div style={styles.div}>the</div>
+            <FavoriteClevelandActivity
+              personalFavoriteClevelandActivity={survey.personalFavoriteClevelandActivity}
+            />
+            <div style={styles.div}>.</div>
+          </ClearFix>
         </div>
-      </React.Fragment>
+      </SurveyNavigation>
     );
   }
 }
 
 MovingOn.propTypes = {
-  store: PropTypes.shape({
-    nextStep: PropTypes.func.isRequired,
-    previousStep: PropTypes.func.isRequired,
-  }).isRequired,
   survey: PropTypes.shape({
     personalFavoriteClevelandActivity: PropTypes.string.isRequired,
     personalFavoriteSportsTeams: PropTypes.string.isRequired,
@@ -121,4 +95,4 @@ MovingOn.propTypes = {
   }).isRequired,
 };
 
-export default storeProvider()(MovingOn);
+export default MovingOn;

@@ -11,8 +11,8 @@ const styles = {
 const NavbarHome = () => (
   <div style={styles.navbar}>
     <AppBar
+      showMenuIconButton={false}
       style={styles.navbar}
-      iconClassNameRight="muidocs-icon-navigation-expand-more"
       zDepth={0}
     />
   </div>

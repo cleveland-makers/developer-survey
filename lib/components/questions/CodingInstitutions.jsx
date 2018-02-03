@@ -33,7 +33,7 @@ class CodingInstitutions extends React.PureComponent {
       <SelectField
         autoWidth
         hintStyle={styles.highlightLabel}
-        hintText="Where you learned to code"
+        hintText="Learned to Code"
         labelStyle={styles.highlightLabel}
         multiple
         onChange={this.handleChange}

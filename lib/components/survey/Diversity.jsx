@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import Gender from '../questions/Gender';
 import Ethnicity from '../questions/Ethnicity';
 import HighestEducationalAttainment from '../questions/Education';
 import storeProvider from '../storeProvider';
-import SurveyFormat from '../SurveyFormat';
+import SurveyNavigation from './SurveyNavigation';
 
 const styles = {
   h1: {
@@ -30,88 +28,45 @@ const styles = {
     height: '48px',
     lineHeight: '48px',
   },
-  buttonMain: {
-    height: '45px',
-    marginRight: '16px',
-    width: '110px',
-  },
-  buttonMainLabel: {
-    lineHeight: '45px',
-  },
-  buttonSecondary: {
-    height: '45px',
-    marginRight: '16px',
-    width: '110px',
-  },
   questionGroup: {
     marginTop: '20px',
-  },
-  buttonGroup: {
-    paddingTop: '30px',
-  },
-  paper: {
-    padding: '20px 30px',
   },
 };
 
 class Diversity extends React.PureComponent {
-  previousStep = (e) => {
-    e.preventDefault();
-    this.props.store.previousStep();
-  }
-
-  submitSurvey = () => {
-    this.props.store.submitSurvey();
-  }
-
   render() {
     const { survey } = this.props;
     return (
-      <React.Fragment>
-        <SurveyFormat>
-          <h1 style={styles.h1}>Some Other Stuff</h1>
-          <div style={styles.questionGroup}>
-            <ClearFix>
-              <Gender
-                personalGender={survey.personalGender}
-              />
-            </ClearFix>
-            <ClearFix>
-              <Ethnicity
-                personalEthnicity={survey.personalEthnicity}
-              />
-            </ClearFix>
-            <ClearFix>
-              <HighestEducationalAttainment
-                personalHighestEducation={survey.personalHighestEducation}
-              />
-            </ClearFix>
-          </div>
-        </SurveyFormat>
-        <div style={styles.buttonGroup}>
-          <FlatButton
-            label="Previous"
-            onClick={this.previousStep}
-            style={styles.buttonSecondary}
-          />
-          <RaisedButton
-            backgroundColor="#730006"
-            label="Submit"
-            labelColor="#F7F5F4"
-            labelStyle={styles.buttonMainLabel}
-            onClick={this.submitSurvey}
-            style={styles.buttonMain}
-            href="../Confirmation"
-          />
+      <SurveyNavigation
+        nextFunc={this.props.store.submitSurvey}
+        nextHref="/confirmation"
+        nextLabel="Submit"
+      >
+        <h1 style={styles.h1}>Personal Information</h1>
+        <div style={styles.questionGroup}>
+          <ClearFix>
+            <Gender
+              personalGender={survey.personalGender}
+            />
+          </ClearFix>
+          <ClearFix>
+            <Ethnicity
+              personalEthnicity={survey.personalEthnicity}
+            />
+          </ClearFix>
+          <ClearFix>
+            <HighestEducationalAttainment
+              personalHighestEducation={survey.personalHighestEducation}
+            />
+          </ClearFix>
         </div>
-      </React.Fragment>
+      </SurveyNavigation>
     );
   }
 }
 
 Diversity.propTypes = {
   store: PropTypes.shape({
-    previousStep: PropTypes.func.isRequired,
     submitSurvey: PropTypes.func.isRequired,
   }).isRequired,
   survey: PropTypes.shape({

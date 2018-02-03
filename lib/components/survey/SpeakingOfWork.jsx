@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import OfficeHoursPerWeek from '../questions/OfficeHoursPerWeek';
 import OfficeLocation from '../questions/OfficeLocation';
 import CompanySize from '../questions/CompanySize';
@@ -10,8 +8,7 @@ import TotalCompensation from '../questions/TotalCompensation';
 import NumCompaniesWorkedFor from '../questions/NumCompaniesWorkedFor';
 import JobSatisfaction from '../questions/JobSatisfaction';
 import WorkLifeBalance from '../questions/WorkLifeBalance';
-import storeProvider from '../storeProvider';
-import SurveyFormat from '../SurveyFormat';
+import SurveyNavigation from './SurveyNavigation';
 
 const styles = {
   h1: {
@@ -33,104 +30,95 @@ const styles = {
     fontWeight: '400',
     height: '48px',
     lineHeight: '48px',
-  },
-  buttonMain: {
-    height: '45px',
-    marginRight: '16px',
-    width: '110px',
-  },
-  buttonMainLabel: {
-    lineHeight: '45px',
-  },
-  buttonSecondary: {
-    height: '45px',
-    marginRight: '16px',
-    width: '110px',
+    marginLeft: '4px',
   },
   questionGroup: {
     marginTop: '20px',
   },
-  buttonGroup: {
-    paddingTop: '30px',
-  },
 };
 
 class SpeakingOfWork extends React.PureComponent {
-  previousStep = (e) => {
-    e.preventDefault();
-    this.props.store.previousStep();
-  }
-
-  saveAndContinue = (e) => {
-    e.preventDefault();
-    this.props.store.nextStep();
-  }
-
   render() {
     const { survey } = this.props;
     return (
-      <React.Fragment>
-        <SurveyFormat>
-          <h1 style={styles.h1}>Speaking of Work...</h1>
-          <div style={styles.questionGroup}>
-            <ClearFix>
-              <div style={styles.div}>For my average of</div>
-              <OfficeHoursPerWeek
-                officeHoursPerWeek={survey.officeHoursPerWeek}
-              />
-              <div style={styles.div}>hours per week, I commute to</div>
-              <OfficeLocation
-                officeLocation={survey.officeLocation}
-              />
-              <div style={styles.div}>to work for a company about</div>
-              <CompanySize
-                officeEmployeeCount={survey.officeEmployeeCount}
-              />
-              <div style={styles.div}>people in size. I earn</div>
-              <TotalCompensation
-                careerSalary={survey.careerSalary}
-              />
-              <div style={styles.div}>for this work, and this is development job number</div>
-              <NumCompaniesWorkedFor
-                careerDevelopmentJobCount={survey.careerDevelopmentJobCount}
-              />
-              <div style={styles.div}>for me. I am generally</div>
-              <JobSatisfaction
-                careerSatisfaction={survey.careerSatisfaction}
-              />
-              <div style={styles.div}>at work, and I think the work/life balance is</div>
-              <WorkLifeBalance
-                careerWorkLifeBalance={survey.careerWorkLifeBalance}
-              />
-              <div style={styles.div}>.</div>
-            </ClearFix>
-          </div>
-        </SurveyFormat>
-        <div style={styles.buttonGroup}>
-          <FlatButton
-            label="Previous"
-            onClick={this.previousStep}
-            style={styles.buttonSecondary}
-          />
-          <RaisedButton
-            backgroundColor="#730006"
-            label="Next"
-            labelColor="#F7F5F4"
-            labelStyle={styles.buttonMainLabel}
-            onClick={this.saveAndContinue}
-            style={styles.buttonMain}
-          />
+      <SurveyNavigation>
+        <h1 style={styles.h1}>Speaking of Work</h1>
+        <div style={styles.questionGroup}>
+          <ClearFix>
+            <div style={styles.div}>For</div>
+            <div style={styles.div}>my</div>
+            <div style={styles.div}>average</div>
+            <div style={styles.div}>of</div>
+            <OfficeHoursPerWeek
+              officeHoursPerWeek={survey.officeHoursPerWeek}
+            />
+            <div style={styles.div}>hours</div>
+            <div style={styles.div}>per</div>
+            <div style={styles.div}>week,</div>
+            <div style={styles.div}>I</div>
+            <div style={styles.div}>commute</div>
+            <div style={styles.div}>to</div>
+            <OfficeLocation
+              officeLocation={survey.officeLocation}
+            />
+            <div style={styles.div}>to</div>
+            <div style={styles.div}>work</div>
+            <div style={styles.div}>for</div>
+            <div style={styles.div}>a</div>
+            <div style={styles.div}>company</div>
+            <div style={styles.div}>about</div>
+            <CompanySize
+              officeEmployeeCount={survey.officeEmployeeCount}
+            />
+            <div style={styles.div}>people</div>
+            <div style={styles.div}>in</div>
+            <div style={styles.div}>size.</div>
+            <div style={styles.div}>I</div>
+            <div style={styles.div}>earn</div>
+            <TotalCompensation
+              careerSalary={survey.careerSalary}
+            />
+            <div style={styles.div}>for</div>
+            <div style={styles.div}>this</div>
+            <div style={styles.div}>work,</div>
+            <div style={styles.div}>and</div>
+            <div style={styles.div}>this</div>
+            <div style={styles.div}>is</div>
+            <div style={styles.div}>development</div>
+            <div style={styles.div}>job</div>
+            <div style={styles.div}>number</div>
+            <NumCompaniesWorkedFor
+              careerDevelopmentJobCount={survey.careerDevelopmentJobCount}
+            />
+            <div style={styles.div}>for</div>
+            <div style={styles.div}>me.</div>
+            <div style={styles.div}>I</div>
+            <div style={styles.div}>am</div>
+            <div style={styles.div}>generally</div>
+            <JobSatisfaction
+              careerSatisfaction={survey.careerSatisfaction}
+            />
+            <div style={styles.div}>at</div>
+            <div style={styles.div}>work,</div>
+            <div style={styles.div}>and</div>
+            <div style={styles.div}>I</div>
+            <div style={styles.div}>think</div>
+            <div style={styles.div}>the</div>
+            <div style={styles.div}>work/life</div>
+            <div style={styles.div}>balance</div>
+            <div style={styles.div}>is</div>
+            <WorkLifeBalance
+              careerWorkLifeBalance={survey.careerWorkLifeBalance}
+            />
+            <div style={styles.div}>.</div>
+          </ClearFix>
         </div>
-      </React.Fragment>
+      </SurveyNavigation>
     );
   }
 }
 
 SpeakingOfWork.propTypes = {
-  store: PropTypes.shape({
-    nextStep: PropTypes.func.isRequired,
-    previousStep: PropTypes.func.isRequired,
-  }).isRequired,
   survey: PropTypes.shape({
     careerDevelopmentJobCount: PropTypes.number.isRequired,
     careerSalary: PropTypes.number.isRequired,
@@ -142,4 +130,4 @@ SpeakingOfWork.propTypes = {
   }).isRequired,
 };
 
-export default storeProvider()(SpeakingOfWork);
+export default SpeakingOfWork;

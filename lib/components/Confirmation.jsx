@@ -25,13 +25,11 @@ const styles = {
 const Confirmation = () => (
   <Paper style={styles.paper} zDepth={1}>
     <section style={styles.div}>
-      <div className="intro">
-        <h1 style={styles.h1}>Thank you!</h1>
-        <p>
-          We appreciate you taking the time to tell us about yourself. Results
-          will be available soon.
-        </p>
-      </div>
+      <h1 style={styles.h1}>Thank you!</h1>
+      <p>
+        We appreciate you taking the time to tell us about yourself. Results
+        will be available soon.
+      </p>
     </section>
   </Paper>
 );
