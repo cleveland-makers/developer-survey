@@ -1,10 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login renders correctly 1`] = `
+exports[`Flow renders TellUsAboutYourCurrentRole correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Login />,
+  Symbol(enzyme.__unrendered__): <Survey
+    surveyLength={0}
+    surveyStep={0}
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -18,20 +21,14 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <Link
-          className="btn btn-primary"
-          replace={false}
-          to="/pin-entry"
-        >
-          Manager
-        </Link>,
-        <Link
-          className="btn btn-primary"
-          replace={false}
-          to="/pin-entry"
-        >
-          Employee
-        </Link>,
+        <SurveyProgress
+          surveyLength={0}
+          surveyStep={0}
+        />,
+        <TellUsAboutYourCurrentRoleContainer
+          surveyLength={0}
+          surveyStep={0}
+        />,
       ],
     },
     "ref": null,
@@ -41,13 +38,11 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": "Manager",
-          "className": "btn btn-primary",
-          "replace": false,
-          "to": "/pin-entry",
+          "surveyLength": 0,
+          "surveyStep": 0,
         },
         "ref": null,
-        "rendered": "Manager",
+        "rendered": null,
         "type": [Function],
       },
       Object {
@@ -55,13 +50,11 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": "Employee",
-          "className": "btn btn-primary",
-          "replace": false,
-          "to": "/pin-entry",
+          "surveyLength": 0,
+          "surveyStep": 0,
         },
         "ref": null,
-        "rendered": "Employee",
+        "rendered": null,
         "type": [Function],
       },
     ],
@@ -74,20 +67,14 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Link
-            className="btn btn-primary"
-            replace={false}
-            to="/pin-entry"
-          >
-            Manager
-          </Link>,
-          <Link
-            className="btn btn-primary"
-            replace={false}
-            to="/pin-entry"
-          >
-            Employee
-          </Link>,
+          <SurveyProgress
+            surveyLength={0}
+            surveyStep={0}
+          />,
+          <TellUsAboutYourCurrentRoleContainer
+            surveyLength={0}
+            surveyStep={0}
+          />,
         ],
       },
       "ref": null,
@@ -97,13 +84,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": "Manager",
-            "className": "btn btn-primary",
-            "replace": false,
-            "to": "/pin-entry",
+            "surveyLength": 0,
+            "surveyStep": 0,
           },
           "ref": null,
-          "rendered": "Manager",
+          "rendered": null,
           "type": [Function],
         },
         Object {
@@ -111,13 +96,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": "Employee",
-            "className": "btn btn-primary",
-            "replace": false,
-            "to": "/pin-entry",
+            "surveyLength": 0,
+            "surveyStep": 0,
           },
           "ref": null,
-          "rendered": "Employee",
+          "rendered": null,
           "type": [Function],
         },
       ],

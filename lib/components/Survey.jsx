@@ -1,43 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Diversity from './survey/Diversity';
+import FourOhFour from './FourOhFour';
 import LetsTalkLanguages from './survey/LetsTalkLanguages';
 import MovingOn from './survey/MovingOn';
-import SomeOtherStuff from './survey/SomeOtherStuff';
 import SpeakingOfWork from './survey/SpeakingOfWork';
 import SurveyProgress from './survey/SurveyProgress';
 import TellUsAboutYourCurrentRole from './survey/TellUsAboutYourCurrentRole';
-import FourOhFour from '../FourOhFour';
 
 class Survey extends React.PureComponent {
   surveyPage() {
     switch (this.props.surveyStep) {
       case 0:
         return (<TellUsAboutYourCurrentRole
-          nextStep={this.nextStep}
           {...this.props}
         />);
       case 1:
         return (<LetsTalkLanguages
-          nextStep={this.nextStep}
-          previousStep={this.previousStep}
           {...this.props}
         />);
       case 2:
         return (<SpeakingOfWork
-          nextStep={this.nextStep}
-          previousStep={this.previousStep}
           {...this.props}
         />);
       case 3:
         return (<MovingOn
-          nextStep={this.nextStep}
-          previousStep={this.previousStep}
           {...this.props}
         />);
       case 4:
-        return (<SomeOtherStuff
-          nextStep={this.nextStep}
-          previousStep={this.previousStep}
+        return (<Diversity
           {...this.props}
         />);
       default:
@@ -59,28 +50,6 @@ class Survey extends React.PureComponent {
 }
 
 Survey.propTypes = {
-  survey: PropTypes.shape({
-    careerDevelopmentJobCount: PropTypes.number.isRequired,
-    careerSalary: PropTypes.number.isRequired,
-    careerSatisfaction: PropTypes.string.isRequired,
-    careerWorkLifeBalance: PropTypes.string.isRequired,
-    developerCurrentRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
-    developerHowLong: PropTypes.number.isRequired,
-    languagePrimaryHomeLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
-    languagePrimaryWorkLanguage: PropTypes.string.isRequired,
-    languageWhenDidYouLearnIt: PropTypes.number.isRequired,
-    languageWhereDidYouLearnIt: PropTypes.arrayOf(PropTypes.string).isRequired,
-    languageWhyDoYouUseIt: PropTypes.arrayOf(PropTypes.string).isRequired,
-    officeEmployeeCount: PropTypes.string.isRequired,
-    officeHoursPerWeek: PropTypes.number.isRequired,
-    officeLocation: PropTypes.string.isRequired,
-    personalEthnicity: PropTypes.string.isRequired,
-    personalFavoriteClevelandActivity: PropTypes.string.isRequired,
-    personalFavoriteSportsTeams: PropTypes.string.isRequired,
-    personalGender: PropTypes.string.isRequired,
-    personalHighestEducation: PropTypes.string.isRequired,
-    personalWhyCleveland: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }).isRequired,
   surveyLength: PropTypes.number.isRequired,
   surveyStep: PropTypes.number.isRequired,
 };
