@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import Paper from 'material-ui/Paper';
 import CodingInstitutions from '../questions/CodingInstitutions';
 import LanguageUses from '../questions/LanguageUses';
 import PrimaryLanguage from '../questions/PrimaryLanguage';
 import SecondaryLanguages from '../questions/SecondaryLanguages';
 import storeProvider from '../storeProvider';
 import PrimaryLanguageExperience from '../questions/PrimaryLanguageExperience';
+import SurveyFormat from '../SurveyFormat';
 
 const styles = {
   h1: {
@@ -51,9 +51,6 @@ const styles = {
   buttonGroup: {
     paddingTop: '30px',
   },
-  paper: {
-    padding: '20px 30px',
-  },
 };
 
 /**
@@ -74,7 +71,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
     const { survey } = this.props;
     return (
       <React.Fragment>
-        <Paper style={styles.paper} zDepth={1}>
+        <SurveyFormat>
           <h1 style={styles.h1}>Let’s Talk Languages</h1>
           <div style={styles.questionGroup}>
             <ClearFix>
@@ -100,7 +97,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
               <div style={styles.div}>.</div>
             </ClearFix>
           </div>
-        </Paper>
+        </SurveyFormat>
         <div style={styles.buttonGroup}>
           <FlatButton
             label="Previous"

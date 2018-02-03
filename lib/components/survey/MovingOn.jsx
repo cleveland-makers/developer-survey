@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import Paper from 'material-ui/Paper';
 import ReasonsForStayingInCleveland from '../questions/ReasonsForStayingInCleveland';
 import FavoriteSportsTeam from '../questions/FavoriteSportsTeam';
 import FavoriteClevelandActivity from '../questions/FavoriteClevelandActivity';
 import storeProvider from '../storeProvider';
+import SurveyFormat from '../SurveyFormat';
 
 const styles = {
   h1: {
@@ -49,9 +49,6 @@ const styles = {
   buttonGroup: {
     paddingTop: '30px',
   },
-  paper: {
-    padding: '20px 30px',
-  },
 };
 
 class MovingOn extends React.PureComponent {
@@ -69,7 +66,7 @@ class MovingOn extends React.PureComponent {
     const { survey } = this.props;
     return (
       <React.Fragment>
-        <Paper style={styles.paper} zDepth={1}>
+        <SurveyFormat>
           <h1 style={styles.h1}>Moving On...</h1>
           <div style={styles.questionGroup}>
             <ClearFix>
@@ -91,7 +88,7 @@ class MovingOn extends React.PureComponent {
               <div style={styles.div}>.</div>
             </ClearFix>
           </div>
-        </Paper>
+        </SurveyFormat>
         <div style={styles.buttonGroup}>
           <FlatButton
             label="Previous"

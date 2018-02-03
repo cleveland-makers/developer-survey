@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
 import RaisedButton from 'material-ui/RaisedButton';
-import Paper from 'material-ui/Paper';
 import CurrentRole from '../questions/CurrentRole';
 import YearsOfExperience from '../questions/YearsOfExperience';
 import storeProvider from '../storeProvider';
+import SurveyFormat from '../SurveyFormat';
 
 const styles = {
   h1: {
@@ -42,9 +42,6 @@ const styles = {
   buttonGroup: {
     paddingTop: '30px',
   },
-  paper: {
-    padding: '20px 30px',
-  },
 };
 
 class TellUsAboutYourCurrentRole extends React.PureComponent {
@@ -54,22 +51,23 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
   }
 
   render() {
+    const { survey } = this.props;
     return (
       <React.Fragment>
-        <Paper style={styles.paper} zDepth={1}>
+        <SurveyFormat>
           <h1 style={styles.h1}>Tell Us About Your Current Role</h1>
           <ClearFix style={styles.questionGroup}>
             <div style={styles.div}>I have been programming as a</div>
             <CurrentRole
-              developerCurrentRoles={this.props.survey.developerCurrentRoles}
+              developerCurrentRoles={survey.developerCurrentRoles}
             />
             <div style={styles.div}>developer for</div>
             <YearsOfExperience
-              developerHowLong={this.props.survey.developerHowLong}
+              developerHowLong={survey.developerHowLong}
             />
             <div style={styles.div}>years.</div>
           </ClearFix>
-        </Paper>
+        </SurveyFormat>
         <div style={styles.buttonGroup}>
           <RaisedButton
             backgroundColor="#730006"
