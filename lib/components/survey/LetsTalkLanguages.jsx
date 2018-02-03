@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import CodingInstitutions from '../questions/CodingInstitutions';
 import LanguageUses from '../questions/LanguageUses';
 import PrimaryLanguage from '../questions/PrimaryLanguage';
 import SecondaryLanguages from '../questions/SecondaryLanguages';
-import storeProvider from '../storeProvider';
 import PrimaryLanguageExperience from '../questions/PrimaryLanguageExperience';
-import SurveyFormat from '../SurveyFormat';
+import SurveyNavigation from './SurveyNavigation';
 
 const styles = {
   h1: {
@@ -31,25 +28,10 @@ const styles = {
     fontWeight: '400',
     height: '48px',
     lineHeight: '48px',
-  },
-  buttonMain: {
-    height: '45px',
-    marginRight: '16px',
-    width: '110px',
-  },
-  buttonMainLabel: {
-    lineHeight: '45px',
-  },
-  buttonSecondary: {
-    height: '45px',
-    marginRight: '16px',
-    width: '110px',
+    marginLeft: '4px',
   },
   questionGroup: {
     marginTop: '20px',
-  },
-  buttonGroup: {
-    paddingTop: '30px',
   },
 };
 
@@ -57,72 +39,67 @@ const styles = {
  * The second page of the survey.
  */
 class TellUsAboutYourCurrentRole extends React.PureComponent {
-  previousStep = (e) => {
-    e.preventDefault();
-    this.props.store.previousStep();
-  }
-
-  saveAndContinue = (e) => {
-    e.preventDefault();
-    this.props.store.nextStep();
-  }
-
   render() {
     const { survey } = this.props;
     return (
-      <React.Fragment>
-        <SurveyFormat>
-          <h1 style={styles.h1}>Let’s Talk Languages</h1>
-          <div style={styles.questionGroup}>
-            <ClearFix>
-              <PrimaryLanguage
-                languagePrimaryWorkLanguage={survey.languagePrimaryWorkLanguage}
-              />
-              <div style={styles.div}>is my primary work programming language. At home, I use</div>
-              <SecondaryLanguages
-                languagePrimaryHomeLanguages={survey.languagePrimaryHomeLanguages}
-              />
-              <div style={styles.div}>for my personal and open-source projects. I’ve been using my primary language for</div>
-              <LanguageUses
-                languageWhyDoYouUseIt={survey.languageWhyDoYouUseIt}
-              />
-              <div style={styles.div}>. I learned it</div>
-              <PrimaryLanguageExperience
-                languageWhenDidYouLearnIt={survey.languageWhenDidYouLearnIt}
-              />
-              <div style={styles.div}>years ago from</div>
-              <CodingInstitutions
-                languageWhereDidYouLearnIt={survey.languageWhereDidYouLearnIt}
-              />
-              <div style={styles.div}>.</div>
-            </ClearFix>
-          </div>
-        </SurveyFormat>
-        <div style={styles.buttonGroup}>
-          <FlatButton
-            label="Previous"
-            onClick={this.previousStep}
-            style={styles.buttonSecondary}
-          />
-          <RaisedButton
-            backgroundColor="#730006"
-            label="Next"
-            labelColor="#F7F5F4"
-            labelStyle={styles.buttonMainLabel}
-            onClick={this.saveAndContinue}
-            style={styles.buttonMain}
-          />
+      <SurveyNavigation>
+        <h1 style={styles.h1}>Let’s Talk Languages</h1>
+        <div style={styles.questionGroup}>
+          <ClearFix>
+            <PrimaryLanguage
+              languagePrimaryWorkLanguage={survey.languagePrimaryWorkLanguage}
+            />
+            <div style={styles.div}>is</div>
+            <div style={styles.div}>my</div>
+            <div style={styles.div}>primary</div>
+            <div style={styles.div}>work</div>
+            <div style={styles.div}>programming</div>
+            <div style={styles.div}>language.</div>
+            <div style={styles.div}>At</div>
+            <div style={styles.div}>home,</div>
+            <div style={styles.div}>I</div>
+            <div style={styles.div}>use</div>
+            <SecondaryLanguages
+              languagePrimaryHomeLanguages={survey.languagePrimaryHomeLanguages}
+            />
+            <div style={styles.div}>for</div>
+            <div style={styles.div}>my</div>
+            <div style={styles.div}>personal</div>
+            <div style={styles.div}>and</div>
+            <div style={styles.div}>open-source</div>
+            <div style={styles.div}>projects.</div>
+            <div style={styles.div}>I’ve</div>
+            <div style={styles.div}>been</div>
+            <div style={styles.div}>using</div>
+            <div style={styles.div}>my</div>
+            <div style={styles.div}>primary</div>
+            <div style={styles.div}>language</div>
+            <div style={styles.div}>for</div>
+            <LanguageUses
+              languageWhyDoYouUseIt={survey.languageWhyDoYouUseIt}
+            />
+            <div style={styles.div}>.</div>
+            <div style={styles.div}>I</div>
+            <div style={styles.div}>learned</div>
+            <div style={styles.div}>it</div>
+            <PrimaryLanguageExperience
+              languageWhenDidYouLearnIt={survey.languageWhenDidYouLearnIt}
+            />
+            <div style={styles.div}>years</div>
+            <div style={styles.div}>ago</div>
+            <div style={styles.div}>from</div>
+            <CodingInstitutions
+              languageWhereDidYouLearnIt={survey.languageWhereDidYouLearnIt}
+            />
+            <div style={styles.div}>.</div>
+          </ClearFix>
         </div>
-      </React.Fragment>
+      </SurveyNavigation>
     );
   }
 }
 
 TellUsAboutYourCurrentRole.propTypes = {
-  store: PropTypes.shape({
-    nextStep: PropTypes.func.isRequired,
-    previousStep: PropTypes.func.isRequired,
-  }).isRequired,
   survey: PropTypes.shape({
     languagePrimaryHomeLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
     languagePrimaryWorkLanguage: PropTypes.string.isRequired,
@@ -132,4 +109,4 @@ TellUsAboutYourCurrentRole.propTypes = {
   }).isRequired,
 };
 
-export default storeProvider()(TellUsAboutYourCurrentRole);
+export default TellUsAboutYourCurrentRole;

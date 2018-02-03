@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
-import RaisedButton from 'material-ui/RaisedButton';
 import CurrentRole from '../questions/CurrentRole';
 import YearsOfExperience from '../questions/YearsOfExperience';
-import storeProvider from '../storeProvider';
-import SurveyFormat from '../SurveyFormat';
+import SurveyNavigation from './SurveyNavigation';
 
 const styles = {
   h1: {
@@ -27,70 +25,48 @@ const styles = {
     fontWeight: '400',
     height: '48px',
     lineHeight: '48px',
-  },
-  buttonMain: {
-    height: '45px',
-    marginRight: '16px',
-    width: '110px',
-  },
-  buttonMainLabel: {
-    lineHeight: '45px',
+    marginLeft: '4px',
   },
   questionGroup: {
     marginTop: '20px',
   },
-  buttonGroup: {
-    paddingTop: '30px',
-  },
 };
 
 class TellUsAboutYourCurrentRole extends React.PureComponent {
-  saveAndContinue = (e) => {
-    e.preventDefault();
-    this.props.store.nextStep();
-  }
-
   render() {
     const { survey } = this.props;
     return (
-      <React.Fragment>
-        <SurveyFormat>
-          <h1 style={styles.h1}>Tell Us About Your Current Role</h1>
-          <ClearFix style={styles.questionGroup}>
-            <div style={styles.div}>I have been programming as a</div>
-            <CurrentRole
-              developerCurrentRoles={survey.developerCurrentRoles}
-            />
-            <div style={styles.div}>developer for</div>
-            <YearsOfExperience
-              developerHowLong={survey.developerHowLong}
-            />
-            <div style={styles.div}>years.</div>
-          </ClearFix>
-        </SurveyFormat>
-        <div style={styles.buttonGroup}>
-          <RaisedButton
-            backgroundColor="#730006"
-            label="Next"
-            labelColor="#F7F5F4"
-            labelStyle={styles.buttonMainLabel}
-            onClick={this.saveAndContinue}
-            style={styles.buttonMain}
+      <SurveyNavigation
+        previousDisplay={false}
+      >
+        <h1 style={styles.h1}>Tell Us About Your Current Role</h1>
+        <ClearFix style={styles.questionGroup}>
+          <div style={styles.div}>I</div>
+          <div style={styles.div}>have</div>
+          <div style={styles.div}>been</div>
+          <div style={styles.div}>programming</div>
+          <div style={styles.div}>as</div>
+          <div style={styles.div}>a</div>
+          <CurrentRole
+            developerCurrentRoles={survey.developerCurrentRoles}
           />
-        </div>
-      </React.Fragment>
+          <div style={styles.div}>developer</div>
+          <div style={styles.div}>for</div>
+          <YearsOfExperience
+            developerHowLong={survey.developerHowLong}
+          />
+          <div style={styles.div}>years.</div>
+        </ClearFix>
+      </SurveyNavigation>
     );
   }
 }
 
 TellUsAboutYourCurrentRole.propTypes = {
-  store: PropTypes.shape({
-    nextStep: PropTypes.func.isRequired,
-  }).isRequired,
   survey: PropTypes.shape({
     developerCurrentRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
     developerHowLong: PropTypes.number.isRequired,
   }).isRequired,
 };
 
-export default storeProvider()(TellUsAboutYourCurrentRole);
+export default TellUsAboutYourCurrentRole;

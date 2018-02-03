@@ -28,9 +28,10 @@ class Navbar extends React.PureComponent {
       <div style={styles.navbar}>
         <AppBar
           onTitleClick={this.onTitleClick}
+          showMenuIconButton={false}
           style={styles.navbar}
-          titleStyle={styles.navbarTitle}
           title={this.props.i18n.header}
+          titleStyle={styles.navbarTitle}
         />
       </div>
     );

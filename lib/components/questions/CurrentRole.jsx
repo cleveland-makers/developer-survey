@@ -34,7 +34,7 @@ class CurrentRole extends React.PureComponent {
       <SelectField
         autoWidth
         hintStyle={styles.highlightLabel}
-        hintText="Select roles that apply"
+        hintText="Individual Roles"
         labelStyle={styles.highlightLabel}
         multiple
         onChange={this.handleChange}
