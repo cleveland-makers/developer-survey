@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import withWidth, { SMALL } from 'material-ui/utils/withWidth';
-
 import FontIcon from 'material-ui/FontIcon';
+import { withRouter } from 'react-router-dom';
 import SurveyFormat from './SurveyFormat';
 import storeProvider from '../storeProvider';
 
@@ -70,16 +70,26 @@ class SurveyNavigation extends React.PureComponent {
     this.props.store.previousStep();
   }
 
-  saveAndContinue = (e) => {
+  saveAndContinue = async (e) => {
     e.preventDefault();
-    this.props.store.nextStep();
+
+    if (this.props.nextFunc) {
+      const success = await this.props.nextFunc();
+      if (!success) {
+        console.log('error');
+      }
+    } else {
+      await this.props.store.nextStep();
+    }
+
+    if (this.props.nextHref) {
+      this.props.history.push(this.props.nextHref);
+    }
   }
 
   render() {
     const {
       nextDisplay,
-      nextFunc,
-      nextHref,
       nextLabel,
       previousDisplay,
       previousLabel,
@@ -138,11 +148,10 @@ class SurveyNavigation extends React.PureComponent {
           /> : ''}
           {(nextDisplay) ? <RaisedButton
             backgroundColor="#730006"
-            href={nextHref}
             label={nextLabel}
             labelColor="#F7F5F4"
             labelStyle={styles.buttonMainLabel}
-            onClick={(nextFunc) ? nextFunc : this.saveAndContinue}
+            onClick={this.saveAndContinue}
             style={styles.buttonMain}
           /> : ''}
         </div>
@@ -153,6 +162,9 @@ class SurveyNavigation extends React.PureComponent {
 
 SurveyNavigation.propTypes = {
   children: PropTypes.node.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
   nextDisplay: PropTypes.bool,
   nextFunc: PropTypes.func,
   nextHref: PropTypes.string,
@@ -175,4 +187,4 @@ SurveyNavigation.defaultProps = {
   previousLabel: 'Previous',
 };
 
-export default withWidth()(storeProvider()(SurveyNavigation));
+export default withWidth()(withRouter(storeProvider()(SurveyNavigation)));
