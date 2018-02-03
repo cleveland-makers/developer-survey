@@ -1,12 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Flow renders TellUsAboutYourCurrentRole correctly 1`] = `
+exports[`Survey renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Survey
-    surveyLength={0}
-    surveyStep={0}
+    survey={
+      Object {
+        "careerDevelopmentJobCount": 0,
+        "careerSalary": 0,
+        "careerSatisfaction": "",
+        "careerWorkLifeBalance": "",
+        "developerCurrentRoles": Array [],
+        "developerHowLong": 0,
+        "languagePrimaryHomeLanguages": Array [],
+        "languagePrimaryWorkLanguage": "",
+        "languageWhenDidYouLearnIt": 0,
+        "languageWhereDidYouLearnIt": Array [],
+        "languageWhyDoYouUseIt": Array [],
+        "officeEmployeeCount": "",
+        "officeHoursPerWeek": 0,
+        "officeLocation": "",
+        "personalEthnicity": "",
+        "personalFavoriteClevelandActivity": "",
+        "personalFavoriteSportsTeams": "",
+        "personalGender": "",
+        "personalHighestEducation": "",
+        "personalWhyCleveland": Array [],
+      }
+    }
+    surveyLength={5}
+    surveyStep={1}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -22,12 +46,36 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <SurveyProgress
-          surveyLength={0}
-          surveyStep={0}
+          surveyLength={5}
+          surveyStep={1}
         />,
-        <TellUsAboutYourCurrentRoleContainer
-          surveyLength={0}
-          surveyStep={0}
+        <TellUsAboutYourCurrentRole
+          survey={
+            Object {
+              "careerDevelopmentJobCount": 0,
+              "careerSalary": 0,
+              "careerSatisfaction": "",
+              "careerWorkLifeBalance": "",
+              "developerCurrentRoles": Array [],
+              "developerHowLong": 0,
+              "languagePrimaryHomeLanguages": Array [],
+              "languagePrimaryWorkLanguage": "",
+              "languageWhenDidYouLearnIt": 0,
+              "languageWhereDidYouLearnIt": Array [],
+              "languageWhyDoYouUseIt": Array [],
+              "officeEmployeeCount": "",
+              "officeHoursPerWeek": 0,
+              "officeLocation": "",
+              "personalEthnicity": "",
+              "personalFavoriteClevelandActivity": "",
+              "personalFavoriteSportsTeams": "",
+              "personalGender": "",
+              "personalHighestEducation": "",
+              "personalWhyCleveland": Array [],
+            }
+          }
+          surveyLength={5}
+          surveyStep={1}
         />,
       ],
     },
@@ -38,8 +86,8 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "surveyLength": 0,
-          "surveyStep": 0,
+          "surveyLength": 5,
+          "surveyStep": 1,
         },
         "ref": null,
         "rendered": null,
@@ -50,8 +98,30 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "surveyLength": 0,
-          "surveyStep": 0,
+          "survey": Object {
+            "careerDevelopmentJobCount": 0,
+            "careerSalary": 0,
+            "careerSatisfaction": "",
+            "careerWorkLifeBalance": "",
+            "developerCurrentRoles": Array [],
+            "developerHowLong": 0,
+            "languagePrimaryHomeLanguages": Array [],
+            "languagePrimaryWorkLanguage": "",
+            "languageWhenDidYouLearnIt": 0,
+            "languageWhereDidYouLearnIt": Array [],
+            "languageWhyDoYouUseIt": Array [],
+            "officeEmployeeCount": "",
+            "officeHoursPerWeek": 0,
+            "officeLocation": "",
+            "personalEthnicity": "",
+            "personalFavoriteClevelandActivity": "",
+            "personalFavoriteSportsTeams": "",
+            "personalGender": "",
+            "personalHighestEducation": "",
+            "personalWhyCleveland": Array [],
+          },
+          "surveyLength": 5,
+          "surveyStep": 1,
         },
         "ref": null,
         "rendered": null,
@@ -68,12 +138,36 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <SurveyProgress
-            surveyLength={0}
-            surveyStep={0}
+            surveyLength={5}
+            surveyStep={1}
           />,
-          <TellUsAboutYourCurrentRoleContainer
-            surveyLength={0}
-            surveyStep={0}
+          <TellUsAboutYourCurrentRole
+            survey={
+              Object {
+                "careerDevelopmentJobCount": 0,
+                "careerSalary": 0,
+                "careerSatisfaction": "",
+                "careerWorkLifeBalance": "",
+                "developerCurrentRoles": Array [],
+                "developerHowLong": 0,
+                "languagePrimaryHomeLanguages": Array [],
+                "languagePrimaryWorkLanguage": "",
+                "languageWhenDidYouLearnIt": 0,
+                "languageWhereDidYouLearnIt": Array [],
+                "languageWhyDoYouUseIt": Array [],
+                "officeEmployeeCount": "",
+                "officeHoursPerWeek": 0,
+                "officeLocation": "",
+                "personalEthnicity": "",
+                "personalFavoriteClevelandActivity": "",
+                "personalFavoriteSportsTeams": "",
+                "personalGender": "",
+                "personalHighestEducation": "",
+                "personalWhyCleveland": Array [],
+              }
+            }
+            surveyLength={5}
+            surveyStep={1}
           />,
         ],
       },
@@ -84,8 +178,8 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "surveyLength": 0,
-            "surveyStep": 0,
+            "surveyLength": 5,
+            "surveyStep": 1,
           },
           "ref": null,
           "rendered": null,
@@ -96,8 +190,30 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "surveyLength": 0,
-            "surveyStep": 0,
+            "survey": Object {
+              "careerDevelopmentJobCount": 0,
+              "careerSalary": 0,
+              "careerSatisfaction": "",
+              "careerWorkLifeBalance": "",
+              "developerCurrentRoles": Array [],
+              "developerHowLong": 0,
+              "languagePrimaryHomeLanguages": Array [],
+              "languagePrimaryWorkLanguage": "",
+              "languageWhenDidYouLearnIt": 0,
+              "languageWhereDidYouLearnIt": Array [],
+              "languageWhyDoYouUseIt": Array [],
+              "officeEmployeeCount": "",
+              "officeHoursPerWeek": 0,
+              "officeLocation": "",
+              "personalEthnicity": "",
+              "personalFavoriteClevelandActivity": "",
+              "personalFavoriteSportsTeams": "",
+              "personalGender": "",
+              "personalHighestEducation": "",
+              "personalWhyCleveland": Array [],
+            },
+            "surveyLength": 5,
+            "surveyStep": 1,
           },
           "ref": null,
           "rendered": null,
