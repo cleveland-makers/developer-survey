@@ -52,10 +52,15 @@ const styles = {
     paddingTop: '30px',
   },
   mobileButtonNav: {
-    width: '100%',
     height: 'auto',
     backgroundColor: '#7a96b0',
     color: '#343432',
+    mobileOneButton: {
+      width: '100%',
+    },
+    mobileTwoButtons: {
+      width: '50%',
+    },
   },
 };
 
@@ -89,8 +94,15 @@ class SurveyNavigation extends React.PureComponent {
             {(previousDisplay) ? <FlatButton
               disableTouchRipple
               onClick={this.previousStep}
-              style={styles.mobileButtonNav}
               icon={previousIcon}
+              style={(!this.props.previousDisplay) ?
+                {
+                  ...styles.mobileButtonNav,
+                  ...styles.mobileOneButton,
+                } : {
+                ...styles.mobileButtonNav,
+                ...styles.mobileTwoButtons,
+              }}
             /> : ''}
             {(nextDisplay) ? <FlatButton
               disableTouchRipple
@@ -99,7 +111,14 @@ class SurveyNavigation extends React.PureComponent {
               labelStyle={styles.buttonMainLabel}
               onClick={(nextFunc) ? nextFunc : this.saveAndContinue}
               icon={nextIcon}
-              style={styles.mobileButtonNav}
+              style={(!this.props.previousDisplay) ?
+                {
+                  ...styles.mobileButtonNav,
+                  ...styles.mobileOneButton,
+                } : {
+                ...styles.mobileButtonNav,
+                ...styles.mobileTwoButtons,
+              }}
             /> : ''}
           </div>
         </React.Fragment>
