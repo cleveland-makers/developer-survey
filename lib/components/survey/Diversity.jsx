@@ -4,8 +4,6 @@ import ClearFix from 'material-ui/internal/ClearFix';
 import Gender from '../questions/Gender';
 import Ethnicity from '../questions/Ethnicity';
 import HighestEducationalAttainment from '../questions/Education';
-import storeProvider from '../storeProvider';
-import SurveyNavigation from './SurveyNavigation';
 
 const styles = {
   h1: {
@@ -37,11 +35,7 @@ class Diversity extends React.PureComponent {
   render() {
     const { survey } = this.props;
     return (
-      <React.Fragment
-        nextFunc={this.props.store.submitSurvey}
-        nextHref="/confirmation"
-        nextLabel="Submit"
-      >
+      <React.Fragment>
         <h1 style={styles.h1}>Personal Information</h1>
         <div style={styles.questionGroup}>
           <ClearFix>
@@ -66,9 +60,6 @@ class Diversity extends React.PureComponent {
 }
 
 Diversity.propTypes = {
-  store: PropTypes.shape({
-    submitSurvey: PropTypes.func.isRequired,
-  }).isRequired,
   survey: PropTypes.shape({
     personalEthnicity: PropTypes.string.isRequired,
     personalGender: PropTypes.string.isRequired,
@@ -76,4 +67,4 @@ Diversity.propTypes = {
   }).isRequired,
 };
 
-export default storeProvider()(Diversity);
+export default Diversity;

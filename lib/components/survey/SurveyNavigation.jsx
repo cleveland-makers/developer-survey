@@ -85,13 +85,15 @@ class SurveyNavigation extends React.PureComponent {
           <SurveyFormat>
             {this.props.children}
           </SurveyFormat>
-          <div style={styles.mobileButtonBox}>
+          <div>
             {(previousDisplay) ? <FlatButton
+              disableTouchRipple
               onClick={this.previousStep}
               style={styles.mobileButtonNav}
               icon={previousIcon}
             /> : ''}
             {(nextDisplay) ? <FlatButton
+              disableTouchRipple
               backgroundColor="#730006"
               href={nextHref}
               labelStyle={styles.buttonMainLabel}

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
 import CurrentRole from '../questions/CurrentRole';
 import YearsOfExperience from '../questions/YearsOfExperience';
-import SurveyNavigation from './SurveyNavigation';
 
 const styles = {
   h1: {
@@ -36,9 +35,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
   render() {
     const { survey } = this.props;
     return (
-      <React.Fragment
-        previousDisplay={false}
-      >
+      <React.Fragment>
         <h1 style={styles.h1}>Tell Us About Your Current Role</h1>
         <ClearFix style={styles.questionGroup}>
           <div style={styles.div}>I</div>

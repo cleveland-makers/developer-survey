@@ -8,6 +8,22 @@ import SpeakingOfWork from './survey/SpeakingOfWork';
 import SurveyProgress from './survey/SurveyProgress';
 import TellUsAboutYourCurrentRole from './survey/TellUsAboutYourCurrentRole';
 import SurveyNavigation from './survey/SurveyNavigation';
+import storeProvider from './storeProvider';
+
+function buttonOptions(currentStep, submit) {
+  if (currentStep === 0) {
+    return {
+      previousDisplay: false,
+    };
+  } else if (currentStep === 4) {
+    return {
+      nextFunc: submit,
+      nextHref: '/confirmation',
+      nextLabel: 'Submit',
+    };
+  }
+  return {};
+}
 
 class Survey extends React.PureComponent {
   surveyPage() {
@@ -38,6 +54,12 @@ class Survey extends React.PureComponent {
   }
 
   render() {
+    const {
+      nextFunc,
+      nextHref,
+      nextLabel,
+      previousDisplay,
+    } = buttonOptions(this.props.surveyStep, this.props.store.submitSurvey);
     return (
       <div>
         <SurveyProgress
@@ -45,7 +67,10 @@ class Survey extends React.PureComponent {
           surveyLength={this.props.surveyLength}
         />
         <SurveyNavigation
-          previousDisplay={false}
+          nextFunc={nextFunc}
+          nextHref={nextHref}
+          nextLabel={nextLabel}
+          previousDisplay={previousDisplay}
         >
           {this.surveyPage()}
         </SurveyNavigation>
@@ -55,8 +80,11 @@ class Survey extends React.PureComponent {
 }
 
 Survey.propTypes = {
+  store: PropTypes.shape({
+    submitSurvey: PropTypes.func.isRequired,
+  }).isRequired,
   surveyLength: PropTypes.number.isRequired,
   surveyStep: PropTypes.number.isRequired,
 };
 
-export default Survey;
+export default storeProvider()(Survey);
