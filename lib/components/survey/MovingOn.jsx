@@ -37,7 +37,7 @@ class MovingOn extends React.PureComponent {
   render() {
     const { survey } = this.props;
     return (
-      <SurveyNavigation>
+      <React.Fragment>
         <h1 style={styles.h1}>Moving On</h1>
         <div style={styles.questionGroup}>
           <ClearFix>
@@ -82,7 +82,7 @@ class MovingOn extends React.PureComponent {
             <div style={styles.div}>.</div>
           </ClearFix>
         </div>
-      </SurveyNavigation>
+      </React.Fragment>
     );
   }
 }

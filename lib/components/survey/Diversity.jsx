@@ -37,7 +37,7 @@ class Diversity extends React.PureComponent {
   render() {
     const { survey } = this.props;
     return (
-      <SurveyNavigation
+      <React.Fragment
         nextFunc={this.props.store.submitSurvey}
         nextHref="/confirmation"
         nextLabel="Submit"
@@ -60,7 +60,7 @@ class Diversity extends React.PureComponent {
             />
           </ClearFix>
         </div>
-      </SurveyNavigation>
+      </React.Fragment>
     );
   }
 }

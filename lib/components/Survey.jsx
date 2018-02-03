@@ -7,6 +7,7 @@ import MovingOn from './survey/MovingOn';
 import SpeakingOfWork from './survey/SpeakingOfWork';
 import SurveyProgress from './survey/SurveyProgress';
 import TellUsAboutYourCurrentRole from './survey/TellUsAboutYourCurrentRole';
+import SurveyNavigation from './survey/SurveyNavigation';
 
 class Survey extends React.PureComponent {
   surveyPage() {
@@ -43,7 +44,11 @@ class Survey extends React.PureComponent {
           surveyStep={this.props.surveyStep}
           surveyLength={this.props.surveyLength}
         />
-        {this.surveyPage()}
+        <SurveyNavigation
+          previousDisplay={false}
+        >
+          {this.surveyPage()}
+        </SurveyNavigation>
       </div>
     );
   }

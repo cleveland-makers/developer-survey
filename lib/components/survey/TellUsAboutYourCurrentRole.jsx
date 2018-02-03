@@ -36,7 +36,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
   render() {
     const { survey } = this.props;
     return (
-      <SurveyNavigation
+      <React.Fragment
         previousDisplay={false}
       >
         <h1 style={styles.h1}>Tell Us About Your Current Role</h1>
@@ -57,7 +57,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
           />
           <div style={styles.div}>years.</div>
         </ClearFix>
-      </SurveyNavigation>
+      </React.Fragment>
     );
   }
 }

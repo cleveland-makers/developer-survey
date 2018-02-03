@@ -8,7 +8,6 @@ import TotalCompensation from '../questions/TotalCompensation';
 import NumCompaniesWorkedFor from '../questions/NumCompaniesWorkedFor';
 import JobSatisfaction from '../questions/JobSatisfaction';
 import WorkLifeBalance from '../questions/WorkLifeBalance';
-import SurveyNavigation from './SurveyNavigation';
 
 const styles = {
   h1: {
@@ -41,7 +40,7 @@ class SpeakingOfWork extends React.PureComponent {
   render() {
     const { survey } = this.props;
     return (
-      <SurveyNavigation>
+      <React.Fragment>
         <h1 style={styles.h1}>Speaking of Work</h1>
         <div style={styles.questionGroup}>
           <ClearFix>
@@ -113,7 +112,7 @@ class SpeakingOfWork extends React.PureComponent {
             <div style={styles.div}>.</div>
           </ClearFix>
         </div>
-      </SurveyNavigation>
+      </React.Fragment>
     );
   }
 }

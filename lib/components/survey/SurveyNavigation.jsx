@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import withWidth, { SMALL } from 'material-ui/utils/withWidth';
+
+import FontIcon from 'material-ui/FontIcon';
 import SurveyFormat from './SurveyFormat';
 import storeProvider from '../storeProvider';
 
+const previousIcon = <FontIcon className="fa fa-arrow-left" />;
+const nextIcon = <FontIcon className="fa fa-arrow-right" />;
 const styles = {
   h1: {
     color: '#730006',
@@ -48,6 +51,12 @@ const styles = {
   buttonGroup: {
     paddingTop: '30px',
   },
+  mobileButtonNav: {
+    width: '100%',
+    height: 'auto',
+    backgroundColor: '#7a96b0',
+    color: '#343432',
+  },
 };
 
 class SurveyNavigation extends React.PureComponent {
@@ -76,20 +85,20 @@ class SurveyNavigation extends React.PureComponent {
           <SurveyFormat>
             {this.props.children}
           </SurveyFormat>
-          <div style={styles.buttonGroup}>
-            <FlatButton
-              label={previousLabel}
+          <div style={styles.mobileButtonBox}>
+            {(previousDisplay) ? <FlatButton
               onClick={this.previousStep}
-              style={styles.buttonSecondary}
-            />
-            <RaisedButton
+              style={styles.mobileButtonNav}
+              icon={previousIcon}
+            /> : ''}
+            {(nextDisplay) ? <FlatButton
               backgroundColor="#730006"
-              label={nextLabel}
-              labelColor="#F7F5F4"
+              href={nextHref}
               labelStyle={styles.buttonMainLabel}
-              onClick={this.saveAndContinue}
-              style={styles.buttonMain}
-            />
+              onClick={(nextFunc) ? nextFunc : this.saveAndContinue}
+              icon={nextIcon}
+              style={styles.mobileButtonNav}
+            /> : ''}
           </div>
         </React.Fragment>
       );
