@@ -23,10 +23,16 @@ class Gender extends React.PureComponent {
   }
 
   render() {
-    const { personalGender } = this.props;
+    const { personalGender, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          !personalGender &&
+          personalGender.length === 0 &&
+          'Gender'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Gender"
         labelStyle={styles.highlightLabel}
@@ -36,7 +42,10 @@ class Gender extends React.PureComponent {
       >
         {genders.map(gen => (
           <MenuItem
-            checked={personalGender.length > 0 && personalGender === gen}
+            checked={
+              personalGender.length > 0 &&
+              personalGender === gen
+            }
             key={gen}
             primaryText={gen}
             value={gen}
@@ -51,6 +60,11 @@ Gender.propTypes = {
   store: PropTypes.shape({
     saveGender: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+Gender.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(Gender);

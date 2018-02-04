@@ -24,10 +24,16 @@ class JobSatisfaction extends React.PureComponent {
   }
 
   render() {
-    const { careerSatisfaction } = this.props;
+    const { careerSatisfaction, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          !careerSatisfaction &&
+          careerSatisfaction.length === 0 &&
+          'Career satisfaction'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Job Satisfaction"
         labelStyle={styles.highlightLabel}
@@ -37,7 +43,10 @@ class JobSatisfaction extends React.PureComponent {
       >
         {emoji.map(emo => (
           <MenuItem
-            checked={careerSatisfaction.length > 0 && careerSatisfaction === emo}
+            checked={
+              careerSatisfaction.length > 0 &&
+              careerSatisfaction === emo
+            }
             key={emo}
             primaryText={emo}
             value={emo}
@@ -52,6 +61,11 @@ JobSatisfaction.propTypes = {
   store: PropTypes.shape({
     saveJobSatisfaction: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+JobSatisfaction.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(JobSatisfaction);

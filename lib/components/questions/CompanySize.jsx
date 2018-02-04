@@ -27,10 +27,16 @@ class CompanySize extends React.PureComponent {
   }
 
   render() {
-    const { officeEmployeeCount } = this.props;
+    const { officeEmployeeCount, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          !officeEmployeeCount &&
+          officeEmployeeCount.length === 0 &&
+          'Company size'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Company Size"
         labelStyle={styles.highlightLabel}
@@ -40,7 +46,10 @@ class CompanySize extends React.PureComponent {
       >
         {buckets.map(bucket => (
           <MenuItem
-            checked={officeEmployeeCount.length > 0 && officeEmployeeCount === bucket}
+            checked={
+              officeEmployeeCount.length > 0 &&
+              officeEmployeeCount === bucket
+            }
             key={bucket}
             primaryText={bucket}
             value={bucket}
@@ -55,6 +64,11 @@ CompanySize.propTypes = {
   store: PropTypes.shape({
     saveCompanySize: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+CompanySize.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(CompanySize);

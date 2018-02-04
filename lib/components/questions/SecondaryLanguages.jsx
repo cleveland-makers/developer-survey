@@ -48,10 +48,16 @@ class SecondaryLanguages extends React.PureComponent {
   }
 
   render() {
-    const { languagePrimaryHomeLanguages } = this.props;
+    const { languagePrimaryHomeLanguages, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          languagePrimaryHomeLanguages &&
+          languagePrimaryHomeLanguages.length === 0 &&
+          'Secondary Languages'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Personal Languages"
         labelStyle={styles.highlightLabel}
@@ -62,7 +68,10 @@ class SecondaryLanguages extends React.PureComponent {
       >
         {langs.map(lang => (
           <MenuItem
-            checked={languagePrimaryHomeLanguages && languagePrimaryHomeLanguages.indexOf(lang) > -1}
+            checked={
+              languagePrimaryHomeLanguages &&
+              languagePrimaryHomeLanguages.indexOf(lang) > -1
+            }
             insetChildren
             key={lang}
             primaryText={lang}
@@ -78,6 +87,11 @@ SecondaryLanguages.propTypes = {
   store: PropTypes.shape({
     saveHomeLanguages: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+SecondaryLanguages.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(SecondaryLanguages);

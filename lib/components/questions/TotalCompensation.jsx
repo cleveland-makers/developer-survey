@@ -19,8 +19,13 @@ class TotalCompensation extends React.PureComponent {
   }
 
   render() {
+    const { careerSalary, showValidation } = this.props;
     return (
       <TextField
+        errorText={
+          showValidation &&
+          'Compensation'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Total Compensation"
         inputStyle={styles.highlightLabel}
@@ -30,7 +35,7 @@ class TotalCompensation extends React.PureComponent {
           width: '70px',
         }}
         type="number"
-        value={this.props.careerSalary}
+        value={careerSalary}
       />
     );
   }
@@ -41,6 +46,11 @@ TotalCompensation.propTypes = {
   store: PropTypes.shape({
     saveCompensation: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+TotalCompensation.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(TotalCompensation);

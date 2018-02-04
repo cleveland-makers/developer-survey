@@ -39,7 +39,7 @@ const styles = {
  */
 class TellUsAboutYourCurrentRole extends React.PureComponent {
   render() {
-    const { survey } = this.props;
+    const { showValidation, survey } = this.props;
     return (
       <React.Fragment>
         <h1 style={styles.h1}>Let’s Talk Languages</h1>
@@ -47,6 +47,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
           <ClearFix>
             <PrimaryLanguage
               languagePrimaryWorkLanguage={survey.languagePrimaryWorkLanguage}
+              showValidation={showValidation}
             />
             <div style={styles.div}>is</div>
             <div style={styles.div}>my</div>
@@ -60,6 +61,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
             <div style={styles.div}>use</div>
             <SecondaryLanguages
               languagePrimaryHomeLanguages={survey.languagePrimaryHomeLanguages}
+              showValidation={showValidation}
             />
             <div style={styles.div}>for</div>
             <div style={styles.div}>my</div>
@@ -76,6 +78,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
             <div style={styles.div}>for</div>
             <LanguageUses
               languageWhyDoYouUseIt={survey.languageWhyDoYouUseIt}
+              showValidation={showValidation}
             />
             <div style={styles.div}>.</div>
             <div style={styles.div}>I</div>
@@ -83,12 +86,14 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
             <div style={styles.div}>it</div>
             <PrimaryLanguageExperience
               languageWhenDidYouLearnIt={survey.languageWhenDidYouLearnIt}
+              showValidation={showValidation}
             />
             <div style={styles.div}>years</div>
             <div style={styles.div}>ago</div>
             <div style={styles.div}>from</div>
             <CodingInstitutions
               languageWhereDidYouLearnIt={survey.languageWhereDidYouLearnIt}
+              showValidation={showValidation}
             />
             <div style={styles.div}>.</div>
           </ClearFix>
@@ -99,6 +104,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
 }
 
 TellUsAboutYourCurrentRole.propTypes = {
+  showValidation: PropTypes.bool.isRequired,
   survey: PropTypes.shape({
     languagePrimaryHomeLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
     languagePrimaryWorkLanguage: PropTypes.string.isRequired,

@@ -28,10 +28,16 @@ class CodingInstitutions extends React.PureComponent {
   }
 
   render() {
-    const { languageWhereDidYouLearnIt } = this.props;
+    const { languageWhereDidYouLearnIt, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          languageWhereDidYouLearnIt &&
+          languageWhereDidYouLearnIt.length === 0 &&
+          'Learned'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Learned to Code"
         labelStyle={styles.highlightLabel}
@@ -42,7 +48,10 @@ class CodingInstitutions extends React.PureComponent {
       >
         {institutions.map(institution => (
           <MenuItem
-            checked={languageWhereDidYouLearnIt && languageWhereDidYouLearnIt.indexOf(institution) > -1}
+            checked={
+              languageWhereDidYouLearnIt &&
+              languageWhereDidYouLearnIt.indexOf(institution) > -1
+            }
             insetChildren
             key={institution}
             primaryText={institution}
@@ -58,6 +67,11 @@ CodingInstitutions.propTypes = {
   store: PropTypes.shape({
     saveWhereLearned: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+CodingInstitutions.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(CodingInstitutions);

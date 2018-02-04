@@ -27,10 +27,16 @@ class OfficeLocation extends React.PureComponent {
   }
 
   render() {
-    const { officeLocation } = this.props;
+    const { officeLocation, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          !officeLocation &&
+          officeLocation.length === 0 &&
+          'Office location'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Work Location"
         labelStyle={styles.highlightLabel}
@@ -40,7 +46,10 @@ class OfficeLocation extends React.PureComponent {
       >
         {locations.map(location => (
           <MenuItem
-            checked={officeLocation.length > 0 && officeLocation === location}
+            checked={
+              officeLocation.length > 0 &&
+              officeLocation === location
+            }
             key={location}
             primaryText={location}
             value={location}
@@ -55,6 +64,11 @@ OfficeLocation.propTypes = {
   store: PropTypes.shape({
     saveWorkLocation: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+OfficeLocation.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(OfficeLocation);

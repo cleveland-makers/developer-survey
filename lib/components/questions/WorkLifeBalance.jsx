@@ -24,10 +24,16 @@ class WorkLifeBalance extends React.PureComponent {
   }
 
   render() {
-    const { careerWorkLifeBalance } = this.props;
+    const { careerWorkLifeBalance, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          !careerWorkLifeBalance &&
+          careerWorkLifeBalance.length === 0
+          && 'Work / Life Balance'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Work/Life Balance"
         labelStyle={styles.highlightLabel}
@@ -52,6 +58,11 @@ WorkLifeBalance.propTypes = {
   store: PropTypes.shape({
     saveWorkLifeBalance: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+WorkLifeBalance.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(WorkLifeBalance);

@@ -19,9 +19,14 @@ class OfficeHoursPerWeek extends React.PureComponent {
   }
 
   render() {
-    const { officeHoursPerWeek } = this.props;
+    const { officeHoursPerWeek, showValidation } = this.props;
     return (
       <TextField
+        errorText={
+          showValidation &&
+          officeHoursPerWeek === 0 &&
+          'Office hours'
+        }
         hintStyle={styles.highlightLabel}
         hintText="x"
         inputStyle={styles.highlightLabel}
@@ -39,6 +44,11 @@ OfficeHoursPerWeek.propTypes = {
   store: PropTypes.shape({
     saveHoursPerWeek: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+OfficeHoursPerWeek.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(OfficeHoursPerWeek);

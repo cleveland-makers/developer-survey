@@ -29,10 +29,16 @@ class ReasonsForStayingInCleveland extends React.PureComponent {
   }
 
   render() {
-    const { personalWhyCleveland } = this.props;
+    const { personalWhyCleveland, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          personalWhyCleveland &&
+          personalWhyCleveland.length === 0 &&
+          'Why do you stay'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Reasons for Staying"
         labelStyle={styles.highlightLabel}
@@ -43,7 +49,10 @@ class ReasonsForStayingInCleveland extends React.PureComponent {
       >
         {reasons.map(reason => (
           <MenuItem
-            checked={personalWhyCleveland && personalWhyCleveland.indexOf(reason) > -1}
+            checked={
+              personalWhyCleveland &&
+              personalWhyCleveland.indexOf(reason) > -1
+            }
             insetChildren
             key={reason}
             primaryText={reason}
@@ -59,6 +68,11 @@ ReasonsForStayingInCleveland.propTypes = {
   store: PropTypes.shape({
     saveWhyCleveland: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+ReasonsForStayingInCleveland.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(ReasonsForStayingInCleveland);

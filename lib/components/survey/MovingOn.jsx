@@ -34,7 +34,7 @@ const styles = {
 
 class MovingOn extends React.PureComponent {
   render() {
-    const { survey } = this.props;
+    const { showValidation, survey } = this.props;
     return (
       <React.Fragment>
         <h1 style={styles.h1}>Moving On</h1>
@@ -47,6 +47,7 @@ class MovingOn extends React.PureComponent {
             <div style={styles.div}>because</div>
             <ReasonsForStayingInCleveland
               personalWhyCleveland={survey.personalWhyCleveland}
+              showValidation={showValidation}
             />
             <div style={styles.div}>,</div>
             <div style={styles.div}>and</div>
@@ -57,6 +58,7 @@ class MovingOn extends React.PureComponent {
             <div style={styles.div}>the</div>
             <FavoriteSportsTeam
               personalFavoriteSportsTeams={survey.personalFavoriteSportsTeams}
+              showValidation={showValidation}
             />
             <div style={styles.div}>(most</div>
             <div style={styles.div}>of</div>
@@ -77,6 +79,7 @@ class MovingOn extends React.PureComponent {
             <div style={styles.div}>the</div>
             <FavoriteClevelandActivity
               personalFavoriteClevelandActivity={survey.personalFavoriteClevelandActivity}
+              showValidation={showValidation}
             />
             <div style={styles.div}>.</div>
           </ClearFix>
@@ -87,6 +90,7 @@ class MovingOn extends React.PureComponent {
 }
 
 MovingOn.propTypes = {
+  showValidation: PropTypes.bool.isRequired,
   survey: PropTypes.shape({
     personalFavoriteClevelandActivity: PropTypes.string.isRequired,
     personalFavoriteSportsTeams: PropTypes.string.isRequired,

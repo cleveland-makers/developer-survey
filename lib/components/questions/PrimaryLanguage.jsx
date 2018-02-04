@@ -48,10 +48,16 @@ class PrimaryLanguage extends React.PureComponent {
   }
 
   render() {
-    const { languagePrimaryWorkLanguage } = this.props;
+    const { languagePrimaryWorkLanguage, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          !languagePrimaryWorkLanguage &&
+          languagePrimaryWorkLanguage.length === 0 &&
+          'Primary language'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Primary Language"
         labelStyle={styles.highlightLabel}
@@ -61,7 +67,10 @@ class PrimaryLanguage extends React.PureComponent {
       >
         {langs.map(lang => (
           <MenuItem
-            checked={languagePrimaryWorkLanguage.length > 0 && languagePrimaryWorkLanguage === lang}
+            checked={
+              languagePrimaryWorkLanguage.length > 0
+              && languagePrimaryWorkLanguage === lang
+            }
             key={lang}
             primaryText={lang}
             value={lang}
@@ -76,6 +85,11 @@ PrimaryLanguage.propTypes = {
   store: PropTypes.shape({
     savePrimaryLanguage: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+PrimaryLanguage.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(PrimaryLanguage);

@@ -28,10 +28,16 @@ class Ethnicity extends React.PureComponent {
   }
 
   render() {
-    const { personalEthnicity } = this.props;
+    const { personalEthnicity, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          !personalEthnicity &&
+          personalEthnicity.length === 0 &&
+          'Ethnicity'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Ethnicity"
         labelStyle={styles.highlightLabel}
@@ -41,7 +47,10 @@ class Ethnicity extends React.PureComponent {
       >
         {ethnicities.map(eth => (
           <MenuItem
-            checked={personalEthnicity.length > 0 && personalEthnicity === eth}
+            checked={
+              personalEthnicity.length > 0 &&
+              personalEthnicity === eth
+            }
             key={eth}
             primaryText={eth}
             value={eth}
@@ -56,6 +65,11 @@ Ethnicity.propTypes = {
   store: PropTypes.shape({
     saveEthnicity: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+Ethnicity.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(Ethnicity);

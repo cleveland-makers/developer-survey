@@ -19,15 +19,21 @@ class NumCompaniesWorkedFor extends React.PureComponent {
   }
 
   render() {
+    const { careerDevelopmentJobCount, showValidation } = this.props;
     return (
       <TextField
+        errorText={
+          showValidation &&
+          careerDevelopmentJobCount === 0 &&
+          'Previous jobs'
+        }
         hintStyle={styles.highlightLabel}
         hintText="x"
         inputStyle={styles.highlightLabel}
         onChange={this.handleChange}
         style={styles.fieldText}
         type="number"
-        value={this.props.careerDevelopmentJobCount}
+        value={careerDevelopmentJobCount}
       />
     );
   }
@@ -38,6 +44,11 @@ NumCompaniesWorkedFor.propTypes = {
   store: PropTypes.shape({
     saveNumberOfJobs: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+NumCompaniesWorkedFor.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(NumCompaniesWorkedFor);

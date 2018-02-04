@@ -33,7 +33,7 @@ const styles = {
 
 class TellUsAboutYourCurrentRole extends React.PureComponent {
   render() {
-    const { survey } = this.props;
+    const { showValidation, survey } = this.props;
     return (
       <React.Fragment>
         <h1 style={styles.h1}>Tell Us About Your Current Role</h1>
@@ -46,11 +46,13 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
           <div style={styles.div}>a</div>
           <CurrentRole
             developerCurrentRoles={survey.developerCurrentRoles}
+            showValidation={showValidation}
           />
           <div style={styles.div}>developer</div>
           <div style={styles.div}>for</div>
           <YearsOfExperience
             developerHowLong={survey.developerHowLong}
+            showValidation={showValidation}
           />
           <div style={styles.div}>years.</div>
         </ClearFix>
@@ -60,6 +62,7 @@ class TellUsAboutYourCurrentRole extends React.PureComponent {
 }
 
 TellUsAboutYourCurrentRole.propTypes = {
+  showValidation: PropTypes.bool.isRequired,
   survey: PropTypes.shape({
     developerCurrentRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
     developerHowLong: PropTypes.number.isRequired,

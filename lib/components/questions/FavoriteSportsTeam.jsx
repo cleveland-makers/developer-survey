@@ -23,10 +23,16 @@ class FavoriteSportsTeam extends React.PureComponent {
   }
 
   render() {
-    const { personalFavoriteSportsTeams } = this.props;
+    const { personalFavoriteSportsTeams, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          !personalFavoriteSportsTeams &&
+          personalFavoriteSportsTeams.length === 0 &&
+          'Favorite team'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Favorite Sports Team"
         labelStyle={styles.highlightLabel}
@@ -36,7 +42,10 @@ class FavoriteSportsTeam extends React.PureComponent {
       >
         {teams.map(team => (
           <MenuItem
-            checked={personalFavoriteSportsTeams.length > 0 && personalFavoriteSportsTeams === team}
+            checked={
+              personalFavoriteSportsTeams.length > 0 &&
+              personalFavoriteSportsTeams === team
+            }
             key={team}
             primaryText={team}
             value={team}
@@ -51,6 +60,11 @@ FavoriteSportsTeam.propTypes = {
   store: PropTypes.shape({
     saveSportsTeam: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+FavoriteSportsTeam.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(FavoriteSportsTeam);

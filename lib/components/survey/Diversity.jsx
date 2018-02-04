@@ -33,7 +33,7 @@ const styles = {
 
 class Diversity extends React.PureComponent {
   render() {
-    const { survey } = this.props;
+    const { showValidation, survey } = this.props;
     return (
       <React.Fragment>
         <h1 style={styles.h1}>Personal Information</h1>
@@ -41,16 +41,19 @@ class Diversity extends React.PureComponent {
           <ClearFix>
             <Gender
               personalGender={survey.personalGender}
+              showValidation={showValidation}
             />
           </ClearFix>
           <ClearFix>
             <Ethnicity
               personalEthnicity={survey.personalEthnicity}
+              showValidation={showValidation}
             />
           </ClearFix>
           <ClearFix>
             <HighestEducationalAttainment
               personalHighestEducation={survey.personalHighestEducation}
+              showValidation={showValidation}
             />
           </ClearFix>
         </div>
@@ -60,6 +63,7 @@ class Diversity extends React.PureComponent {
 }
 
 Diversity.propTypes = {
+  showValidation: PropTypes.bool.isRequired,
   survey: PropTypes.shape({
     personalEthnicity: PropTypes.string.isRequired,
     personalGender: PropTypes.string.isRequired,

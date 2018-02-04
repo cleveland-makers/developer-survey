@@ -10,7 +10,7 @@ const styles = {
 const Loading = () => (
   <section style={styles.div}>
     <p>
-      It looks like you have already completed the survey. Why not send it to a freind instead!
+      It looks like you have already completed the survey. Why not forward it on to a friend instead!
     </p>
   </section>
 );

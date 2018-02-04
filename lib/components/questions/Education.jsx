@@ -28,10 +28,16 @@ class Education extends React.PureComponent {
   };
 
   render() {
-    const { personalHighestEducation } = this.props;
+    const { personalHighestEducation, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          !personalHighestEducation &&
+          personalHighestEducation.length === 0 &&
+          'Education'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Education"
         labelStyle={styles.highlightLabel}
@@ -41,7 +47,10 @@ class Education extends React.PureComponent {
       >
         {education.map(ed => (
           <MenuItem
-            checked={personalHighestEducation.length > 0 && personalHighestEducation === ed}
+            checked={
+              personalHighestEducation.length > 0 &&
+              personalHighestEducation === ed
+            }
             key={ed}
             primaryText={ed}
             value={ed}
@@ -56,6 +65,11 @@ Education.propTypes = {
   store: PropTypes.shape({
     saveHighestEducation: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+Education.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(Education);

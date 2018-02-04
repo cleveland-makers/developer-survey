@@ -38,7 +38,7 @@ const styles = {
 
 class SpeakingOfWork extends React.PureComponent {
   render() {
-    const { survey } = this.props;
+    const { showValidation, survey } = this.props;
     return (
       <React.Fragment>
         <h1 style={styles.h1}>Speaking of Work</h1>
@@ -50,6 +50,7 @@ class SpeakingOfWork extends React.PureComponent {
             <div style={styles.div}>of</div>
             <OfficeHoursPerWeek
               officeHoursPerWeek={survey.officeHoursPerWeek}
+              showValidation={showValidation}
             />
             <div style={styles.div}>hours</div>
             <div style={styles.div}>per</div>
@@ -59,6 +60,7 @@ class SpeakingOfWork extends React.PureComponent {
             <div style={styles.div}>to</div>
             <OfficeLocation
               officeLocation={survey.officeLocation}
+              showValidation={showValidation}
             />
             <div style={styles.div}>to</div>
             <div style={styles.div}>work</div>
@@ -68,6 +70,7 @@ class SpeakingOfWork extends React.PureComponent {
             <div style={styles.div}>about</div>
             <CompanySize
               officeEmployeeCount={survey.officeEmployeeCount}
+              showValidation={showValidation}
             />
             <div style={styles.div}>people</div>
             <div style={styles.div}>in</div>
@@ -76,6 +79,7 @@ class SpeakingOfWork extends React.PureComponent {
             <div style={styles.div}>earn</div>
             <TotalCompensation
               careerSalary={survey.careerSalary}
+              showValidation={showValidation}
             />
             <div style={styles.div}>for</div>
             <div style={styles.div}>this</div>
@@ -88,6 +92,7 @@ class SpeakingOfWork extends React.PureComponent {
             <div style={styles.div}>number</div>
             <NumCompaniesWorkedFor
               careerDevelopmentJobCount={survey.careerDevelopmentJobCount}
+              showValidation={showValidation}
             />
             <div style={styles.div}>for</div>
             <div style={styles.div}>me.</div>
@@ -96,6 +101,7 @@ class SpeakingOfWork extends React.PureComponent {
             <div style={styles.div}>generally</div>
             <JobSatisfaction
               careerSatisfaction={survey.careerSatisfaction}
+              showValidation={showValidation}
             />
             <div style={styles.div}>at</div>
             <div style={styles.div}>work,</div>
@@ -108,6 +114,7 @@ class SpeakingOfWork extends React.PureComponent {
             <div style={styles.div}>is</div>
             <WorkLifeBalance
               careerWorkLifeBalance={survey.careerWorkLifeBalance}
+              showValidation={showValidation}
             />
             <div style={styles.div}>.</div>
           </ClearFix>
@@ -118,6 +125,7 @@ class SpeakingOfWork extends React.PureComponent {
 }
 
 SpeakingOfWork.propTypes = {
+  showValidation: PropTypes.bool.isRequired,
   survey: PropTypes.shape({
     careerDevelopmentJobCount: PropTypes.number.isRequired,
     careerSalary: PropTypes.number.isRequired,

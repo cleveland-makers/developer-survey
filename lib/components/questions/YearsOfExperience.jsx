@@ -21,15 +21,21 @@ class YearsOfExperience extends React.PureComponent {
   }
 
   render() {
+    const { developerHowLong, showValidation } = this.props;
     return (
       <TextField
+        errorText={
+          showValidation &&
+          developerHowLong === 0 &&
+          'Years'
+        }
         hintStyle={styles.highlightLabel}
         hintText="x"
         inputStyle={styles.highlightLabel}
         onChange={this.handleChange}
         style={styles.fieldText}
         type="number"
-        value={this.props.developerHowLong}
+        value={developerHowLong}
       />
     );
   }
@@ -40,6 +46,11 @@ YearsOfExperience.propTypes = {
   store: PropTypes.shape({
     saveHowLong: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+YearsOfExperience.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(YearsOfExperience);

@@ -22,9 +22,15 @@ class LanguageUses extends React.PureComponent {
   }
 
   render() {
-    const { languageWhyDoYouUseIt } = this.props;
+    const { languageWhyDoYouUseIt, showValidation } = this.props;
     return (
       <SelectField
+        errorText={
+          showValidation &&
+          languageWhyDoYouUseIt &&
+          languageWhyDoYouUseIt.length === 0 &&
+          'Uses'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Reasons"
         labelStyle={styles.highlightLabel}
@@ -35,7 +41,10 @@ class LanguageUses extends React.PureComponent {
       >
         {uses.map(use => (
           <MenuItem
-            checked={languageWhyDoYouUseIt && languageWhyDoYouUseIt.indexOf(use) > -1}
+            checked={
+              languageWhyDoYouUseIt &&
+              languageWhyDoYouUseIt.indexOf(use) > -1
+            }
             insetChildren
             key={use}
             primaryText={use}
@@ -51,6 +60,11 @@ LanguageUses.propTypes = {
   store: PropTypes.shape({
     saveLanguageUses: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+LanguageUses.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(LanguageUses);

@@ -21,15 +21,21 @@ class PrimaryLanguageExperience extends React.PureComponent {
   }
 
   render() {
+    const { languageWhenDidYouLearnIt, showValidation } = this.props;
     return (
       <TextField
+        errorText={
+          showValidation &&
+          languageWhenDidYouLearnIt === 0 &&
+          'Years'
+        }
         hintStyle={styles.highlightLabel}
         hintText="x"
         inputStyle={styles.highlightLabel}
         onChange={this.handleChange}
         style={styles.fieldText}
         type="number"
-        value={this.props.languageWhenDidYouLearnIt}
+        value={languageWhenDidYouLearnIt}
       />
     );
   }
@@ -40,6 +46,11 @@ PrimaryLanguageExperience.propTypes = {
   store: PropTypes.shape({
     saveWhenLearned: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+PrimaryLanguageExperience.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(PrimaryLanguageExperience);

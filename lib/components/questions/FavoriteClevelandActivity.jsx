@@ -33,10 +33,16 @@ class FavoriteClevelandActivity extends React.PureComponent {
   }
 
   render() {
-    const { personalFavoriteClevelandActivity } = this.props;
+    const { personalFavoriteClevelandActivity, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          !personalFavoriteClevelandActivity &&
+          personalFavoriteClevelandActivity.length === 0 &&
+          'Favorite activity'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Favorite Cleveland Activity"
         labelStyle={styles.highlightLabel}
@@ -46,7 +52,10 @@ class FavoriteClevelandActivity extends React.PureComponent {
       >
         {activities.map(activity => (
           <MenuItem
-            checked={personalFavoriteClevelandActivity.length > 0 && personalFavoriteClevelandActivity === activity}
+            checked={
+              personalFavoriteClevelandActivity.length > 0 &&
+              personalFavoriteClevelandActivity === activity
+            }
             key={activity}
             primaryText={activity}
             value={activity}
@@ -61,6 +70,11 @@ FavoriteClevelandActivity.propTypes = {
   store: PropTypes.shape({
     saveClevelandActivity: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+FavoriteClevelandActivity.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(FavoriteClevelandActivity);

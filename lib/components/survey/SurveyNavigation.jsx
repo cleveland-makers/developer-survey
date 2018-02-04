@@ -1,40 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import FontIcon from 'material-ui/FontIcon';
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
-import Paper from 'material-ui/Paper';
-import withWidth, { SMALL } from 'material-ui/utils/withWidth';
 import { withRouter } from 'react-router-dom';
-import SurveyFormat from './SurveyFormat';
+import FlatButton from 'material-ui/FlatButton';
+import FontIcon from 'material-ui/FontIcon';
+import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+import withWidth, { SMALL } from 'material-ui/utils/withWidth';
 import storeProvider from '../storeProvider';
+import SurveyFormat from './SurveyFormat';
 
 const previousIcon = <FontIcon className="fa fa-arrow-left" />;
 const nextIcon = <FontIcon className="fa fa-arrow-right" />;
 
 const styles = {
-  h1: {
-    color: '#730006',
-    fontFamily: 'Play, serif',
-    fontSize: '35px',
-    fontWeight: '600',
-    lineHeight: '1.08',
-    marginBottom: '40px',
-    marginTop: '20px',
-    textShadow: '2px 2px 5px #F24932',
-    textTransform: 'uppercase',
-  },
-  div: {
-    color: '#343432',
-    display: 'inline-block',
-    float: 'left',
-    fontSize: '20px',
-    fontWeight: '400',
-    height: '48px',
-    lineHeight: '48px',
-    marginLeft: '4px',
-  },
   buttonMain: {
     height: '45px',
     marginRight: '16px',
@@ -64,6 +43,11 @@ class SurveyNavigation extends React.PureComponent {
 
   saveAndContinue = (e) => {
     e.preventDefault();
+
+    if (!this.props.validator()) {
+      this.props.store.displayValidation();
+      return;
+    }
 
     if (this.props.nextFunc) {
       this.props.nextFunc()
@@ -150,9 +134,11 @@ SurveyNavigation.propTypes = {
   previousDisplay: PropTypes.bool,
   previousLabel: PropTypes.string,
   store: PropTypes.shape({
+    displayValidation: PropTypes.func.isRequired,
     nextStep: PropTypes.func.isRequired,
     previousStep: PropTypes.func.isRequired,
   }).isRequired,
+  validator: PropTypes.func.isRequired,
   width: PropTypes.number.isRequired,
 };
 

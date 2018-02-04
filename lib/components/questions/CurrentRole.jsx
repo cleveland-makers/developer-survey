@@ -29,10 +29,16 @@ class CurrentRole extends React.PureComponent {
   }
 
   render() {
-    const { developerCurrentRoles } = this.props;
+    const { developerCurrentRoles, showValidation } = this.props;
     return (
       <SelectField
         autoWidth
+        errorText={
+          showValidation &&
+          developerCurrentRoles &&
+          developerCurrentRoles.length === 0 &&
+          'Current roles'
+        }
         hintStyle={styles.highlightLabel}
         hintText="Individual Roles"
         labelStyle={styles.highlightLabel}
@@ -43,7 +49,10 @@ class CurrentRole extends React.PureComponent {
       >
         {roles.map(role => (
           <MenuItem
-            checked={developerCurrentRoles && developerCurrentRoles.indexOf(role) > -1}
+            checked={
+              developerCurrentRoles &&
+              developerCurrentRoles.indexOf(role) > -1
+            }
             insetChildren
             key={role}
             primaryText={role}
@@ -59,6 +68,11 @@ CurrentRole.propTypes = {
   store: PropTypes.shape({
     saveRoles: PropTypes.func.isRequired,
   }).isRequired,
+  showValidation: PropTypes.bool,
+};
+
+CurrentRole.defaultProps = {
+  showValidation: false,
 };
 
 export default storeProvider()(CurrentRole);

@@ -31,6 +31,56 @@ function buttonOptions(currentStep) {
   return {};
 }
 
+function validator(survey, surveyStep) {
+  return () => {
+    switch (surveyStep) {
+      case 0:
+        return survey.developerCurrentRoles &&
+          survey.developerCurrentRoles.length > 0 &&
+          survey.developerHowLong !== 0;
+      case 1:
+        return survey.languagePrimaryHomeLanguages &&
+          survey.languagePrimaryHomeLanguages.length > 0 &&
+          survey.languagePrimaryWorkLanguage &&
+          survey.languagePrimaryWorkLanguage.length > 0 &&
+          survey.languageWhenDidYouLearnIt &&
+          survey.languageWhenDidYouLearnIt > 0 &&
+          survey.languageWhereDidYouLearnIt &&
+          survey.languageWhereDidYouLearnIt.length > 0 &&
+          survey.languageWhyDoYouUseIt &&
+          survey.languageWhyDoYouUseIt.length > 0;
+      case 2:
+        return survey.careerDevelopmentJobCount > 0 &&
+          survey.careerSalary > 0 &&
+          survey.careerSatisfaction &&
+          survey.careerSatisfaction.length > 0 &&
+          survey.careerWorkLifeBalance &&
+          survey.careerWorkLifeBalance.length > 0 &&
+          survey.officeEmployeeCount &&
+          survey.officeEmployeeCount.length > 0 &&
+          survey.officeHoursPerWeek > 0 &&
+          survey.officeLocation &&
+          survey.officeLocation.length > 0;
+      case 3:
+        return survey.personalFavoriteClevelandActivity &&
+          survey.personalFavoriteClevelandActivity.length > 0 &&
+          survey.personalFavoriteSportsTeams &&
+          survey.personalFavoriteSportsTeams.length > 0 &&
+          survey.personalWhyCleveland &&
+          survey.personalWhyCleveland.length > 0;
+      case 4:
+        return survey.personalEthnicity &&
+          survey.personalEthnicity.length > 0 &&
+          survey.personalGender &&
+          survey.personalGender.length > 0 &&
+          survey.personalHighestEducation &&
+          survey.personalHighestEducation.length > 0;
+      default:
+        return false;
+    }
+  };
+}
+
 class Survey extends React.PureComponent {
   state = {
     loading: true,
@@ -83,6 +133,7 @@ class Survey extends React.PureComponent {
     const nextFunc = (this.props.surveyStep === 4) ?
       this.props.store.submitSurvey : null;
     const options = buttonOptions(this.props.surveyStep);
+    const validation = validator(this.props.survey, this.props.surveyStep);
     return (
       <div>
         <SurveyProgress
@@ -91,6 +142,7 @@ class Survey extends React.PureComponent {
         />
         <SurveyNavigation
           nextFunc={nextFunc}
+          validator={validation}
           {...options}
         >
           {this.surveyPage()}
@@ -106,6 +158,28 @@ Survey.propTypes = {
     disallow: PropTypes.func.isRequired,
     loadProps: PropTypes.func.isRequired,
     submitSurvey: PropTypes.func.isRequired,
+  }).isRequired,
+  survey: PropTypes.shape({
+    careerDevelopmentJobCount: PropTypes.number.isRequired,
+    careerSalary: PropTypes.number.isRequired,
+    careerSatisfaction: PropTypes.string.isRequired,
+    careerWorkLifeBalance: PropTypes.string.isRequired,
+    developerCurrentRoles: PropTypes.arrayOf(PropTypes.string).isRequired,
+    developerHowLong: PropTypes.number.isRequired,
+    languagePrimaryHomeLanguages: PropTypes.arrayOf(PropTypes.string).isRequired,
+    languagePrimaryWorkLanguage: PropTypes.string.isRequired,
+    languageWhenDidYouLearnIt: PropTypes.number.isRequired,
+    languageWhereDidYouLearnIt: PropTypes.arrayOf(PropTypes.string).isRequired,
+    languageWhyDoYouUseIt: PropTypes.arrayOf(PropTypes.string).isRequired,
+    officeEmployeeCount: PropTypes.string.isRequired,
+    officeHoursPerWeek: PropTypes.number.isRequired,
+    officeLocation: PropTypes.string.isRequired,
+    personalEthnicity: PropTypes.string.isRequired,
+    personalFavoriteClevelandActivity: PropTypes.string.isRequired,
+    personalFavoriteSportsTeams: PropTypes.string.isRequired,
+    personalGender: PropTypes.string.isRequired,
+    personalHighestEducation: PropTypes.string.isRequired,
+    personalWhyCleveland: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
   surveyLength: PropTypes.number.isRequired,
   surveyStep: PropTypes.number.isRequired,

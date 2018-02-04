@@ -51,6 +51,7 @@ class App extends React.Component {
     const {
       fingerprint,
       i18n,
+      showValidation,
       survey,
       surveyStep,
       surveyLength,
@@ -58,6 +59,7 @@ class App extends React.Component {
     return {
       fingerprint,
       i18n,
+      showValidation,
       survey,
       surveyStep,
       surveyLength,
@@ -67,6 +69,7 @@ class App extends React.Component {
     const {
       fingerprint,
       i18n,
+      showValidation,
       survey,
       surveyStep,
       surveyLength,
@@ -90,6 +93,7 @@ class App extends React.Component {
               render={() => (
                 <StandardPage>
                   <Survey
+                    showValidation={showValidation}
                     survey={survey}
                     surveyStep={surveyStep}
                     surveyLength={surveyLength}
