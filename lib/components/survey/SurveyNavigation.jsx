@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import withWidth, { SMALL } from 'material-ui/utils/withWidth';
 import FontIcon from 'material-ui/FontIcon';
+import withWidth, { SMALL } from 'material-ui/utils/withWidth';
 import { withRouter } from 'react-router-dom';
 import SurveyFormat from './SurveyFormat';
 import storeProvider from '../storeProvider';
@@ -55,12 +55,12 @@ const styles = {
     height: 'auto',
     backgroundColor: '#7a96b0',
     color: '#343432',
-    mobileOneButton: {
-      width: '100%',
-    },
-    mobileTwoButtons: {
-      width: '50%',
-    },
+  },
+  mobileOneButton: {
+    width: '100%',
+  },
+  mobileTwoButtons: {
+    width: '50%',
   },
 };
 
@@ -112,14 +112,13 @@ class SurveyNavigation extends React.PureComponent {
                 } : {
                 ...styles.mobileButtonNav,
                 ...styles.mobileTwoButtons,
-              }}
+                }}
             /> : ''}
             {(nextDisplay) ? <FlatButton
               disableTouchRipple
               backgroundColor="#730006"
-              href={nextHref}
               labelStyle={styles.buttonMainLabel}
-              onClick={(nextFunc) ? nextFunc : this.saveAndContinue}
+              onClick={this.saveAndContinue}
               icon={nextIcon}
               style={(!this.props.previousDisplay) ?
                 {
@@ -128,7 +127,7 @@ class SurveyNavigation extends React.PureComponent {
                 } : {
                 ...styles.mobileButtonNav,
                 ...styles.mobileTwoButtons,
-              }}
+                }}
             /> : ''}
           </div>
         </React.Fragment>
