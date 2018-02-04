@@ -1,22 +1,26 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import FullWidthSection from './FullWidthSection';
+import { deepRed, offWhite, rubyRed } from './colors';
 
 const styles = {
+  container: {
+    margin: 'auto',
+    width: '60%',
+  },
+  containerRoot: {
+    overflow: 'hidden',
+  },
   h1: {
-    color: '#730006',
+    color: deepRed,
     fontFamily: 'Play, serif',
     fontSize: '50px',
     fontWeight: '600',
     lineHeight: '1.08',
     marginBottom: '40px',
     marginTop: '20px',
-    textShadow: '2px 2px 5px #F24932',
+    textShadow: `2px 2px 5px ${rubyRed}`,
     textTransform: 'uppercase',
-  },
-  div: {
-    margin: 'auto',
-    width: '60%',
   },
   buttonMain: {
     height: '45px',
@@ -26,27 +30,11 @@ const styles = {
   buttonMainLabel: {
     lineHeight: '45px',
   },
-  buttonSecondary: {
-    backgroundColor: '#F7F5F4',
-    border: '2px solid #4556A5',
-    borderRadius: '2px',
-    color: '#4556A5',
-    padding: '15px 32px',
-    textAlign: 'center',
-    textDecoration: 'none',
-    display: 'inline-block',
-    font: '16px Roboto, sans-serif',
-    fontWeight: 'bold',
-  },
-  root: {
-    backgroundColor: '#8097ad',
-    overflow: 'hidden',
-  },
 };
 
 const Faq = () => (
-  <FullWidthSection style={styles.root}>
-    <section style={styles.div}>
+  <FullWidthSection style={styles.containerRoot}>
+    <section style={styles.container}>
       <div>
         <h1 style={styles.h1}>Welcome to the CLE Tech Survey</h1>
         <p>
@@ -71,10 +59,10 @@ const Faq = () => (
       </div>
       <div>
         <RaisedButton
-          backgroundColor="#730006"
+          backgroundColor={deepRed}
           href="/survey"
           label="Start"
-          labelColor="#F7F5F4"
+          labelColor={offWhite}
           labelStyle={styles.buttonMainLabel}
           style={styles.buttonMain}
         />

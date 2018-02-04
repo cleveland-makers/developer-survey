@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Diversity from './survey/Diversity';
-import FourOhFour from './FourOhFour';
-import LetsTalkLanguages from './survey/LetsTalkLanguages';
-import Loading from './Loading';
-import MovingOn from './survey/MovingOn';
-import SpeakingOfWork from './survey/SpeakingOfWork';
-import storeProvider from './storeProvider';
-import SurveyComplete from './SurveyComplete';
-import SurveyNavigation from './survey/SurveyNavigation';
-import SurveyProgress from './survey/SurveyProgress';
-import TellUsAboutYourCurrentRole from './survey/TellUsAboutYourCurrentRole';
+import Diversity from './Diversity';
+import FourOhFour from '../FourOhFour';
+import LetsTalkLanguages from './LetsTalkLanguages';
+import Loading from '../Loading';
+import MovingOn from './MovingOn';
+import SpeakingOfWork from './SpeakingOfWork';
+import storeProvider from '../storeProvider';
+import SurveyComplete from '../SurveyComplete';
+import SurveyNavigation from './SurveyNavigation';
+import SurveyProgress from './SurveyProgress';
+import TellUsAboutYourCurrentRole from './TellUsAboutYourCurrentRole';
 
 function buttonOptions(currentStep) {
   if (currentStep === -1) {

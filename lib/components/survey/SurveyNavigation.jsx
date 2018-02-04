@@ -9,11 +9,15 @@ import RaisedButton from 'material-ui/RaisedButton';
 import withWidth, { SMALL } from 'material-ui/utils/withWidth';
 import storeProvider from '../storeProvider';
 import SurveyFormat from './SurveyFormat';
+import { deepRed, offWhite } from '../colors';
 
 const previousIcon = <FontIcon className="fa fa-arrow-left" />;
 const nextIcon = <FontIcon className="fa fa-arrow-right" />;
 
 const styles = {
+  buttonGroup: {
+    paddingTop: '30px',
+  },
   buttonMain: {
     height: '45px',
     marginRight: '16px',
@@ -29,9 +33,6 @@ const styles = {
   },
   questionGroup: {
     marginTop: '20px',
-  },
-  buttonGroup: {
-    paddingTop: '30px',
   },
 };
 
@@ -71,54 +72,55 @@ class SurveyNavigation extends React.PureComponent {
       previousDisplay,
       previousLabel,
     } = this.props;
-    if (this.props.width === SMALL) {
-      return (
-        <React.Fragment>
-          <SurveyFormat>
-            {this.props.children}
-          </SurveyFormat>
-          <Paper>
-            <BottomNavigation>
-              {(previousDisplay) ? <BottomNavigationItem
-                disableTouchRipple
-                icon={previousIcon}
+    switch (this.props.width) {
+      case SMALL:
+        return (
+          <React.Fragment>
+            <SurveyFormat>
+              {this.props.children}
+            </SurveyFormat>
+            <Paper>
+              <BottomNavigation>
+                {(previousDisplay) ? <BottomNavigationItem
+                  disableTouchRipple
+                  icon={previousIcon}
+                  label={previousLabel}
+                  onClick={this.previousStep}
+                /> : ''}
+                {(nextDisplay) ? <BottomNavigationItem
+                  disableTouchRipple
+                  icon={nextIcon}
+                  label={nextLabel}
+                  onClick={this.saveAndContinue}
+                /> : ''}
+              </BottomNavigation>
+            </Paper>
+          </React.Fragment>
+        );
+      default:
+        return (
+          <React.Fragment>
+            <SurveyFormat>
+              {this.props.children}
+            </SurveyFormat>
+            <div style={styles.buttonGroup}>
+              {(previousDisplay) ? <FlatButton
                 label={previousLabel}
                 onClick={this.previousStep}
+                style={styles.buttonSecondary}
               /> : ''}
-              {(nextDisplay) ? <BottomNavigationItem
-                disableTouchRipple
-                icon={nextIcon}
+              {(nextDisplay) ? <RaisedButton
+                backgroundColor={deepRed}
                 label={nextLabel}
+                labelColor={offWhite}
+                labelStyle={styles.buttonMainLabel}
                 onClick={this.saveAndContinue}
+                style={styles.buttonMain}
               /> : ''}
-            </BottomNavigation>
-          </Paper>
-        </React.Fragment>
-      );
+            </div>
+          </React.Fragment>
+        );
     }
-
-    return (
-      <React.Fragment>
-        <SurveyFormat>
-          {this.props.children}
-        </SurveyFormat>
-        <div style={styles.buttonGroup}>
-          {(previousDisplay) ? <FlatButton
-            label={previousLabel}
-            onClick={this.previousStep}
-            style={styles.buttonSecondary}
-          /> : ''}
-          {(nextDisplay) ? <RaisedButton
-            backgroundColor="#730006"
-            label={nextLabel}
-            labelColor="#F7F5F4"
-            labelStyle={styles.buttonMainLabel}
-            onClick={this.saveAndContinue}
-            style={styles.buttonMain}
-          /> : ''}
-        </div>
-      </React.Fragment>
-    );
   }
 }
 

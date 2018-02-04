@@ -1,21 +1,24 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
+import { blueGrey } from './colors';
 
 const styles = {
-  navbar: {
-    backgroundColor: '#8097ad',
+  header: {
     flexShrink: 'none',
+  },
+  navbar: {
+    backgroundColor: blueGrey,
   },
 };
 
 const NavbarHome = () => (
-  <div style={styles.navbar}>
+  <header style={styles.header}>
     <AppBar
       showMenuIconButton={false}
       style={styles.navbar}
       zDepth={0}
     />
-  </div>
+  </header>
 );
 
 export default NavbarHome;

@@ -3,33 +3,9 @@ import PropTypes from 'prop-types';
 import ClearFix from 'material-ui/internal/ClearFix';
 import CurrentRole from '../questions/CurrentRole';
 import YearsOfExperience from '../questions/YearsOfExperience';
+import globalStyles from '../questions/styles';
 
-const styles = {
-  h1: {
-    color: '#730006',
-    fontFamily: 'Play, serif',
-    fontSize: '35px',
-    fontWeight: '600',
-    lineHeight: '1.08',
-    marginBottom: '40px',
-    marginTop: '20px',
-    textShadow: '2px 2px 5px #F24932',
-    textTransform: 'uppercase',
-  },
-  div: {
-    color: '#343432',
-    display: 'inline-block',
-    float: 'left',
-    fontSize: '20px',
-    fontWeight: '400',
-    height: '48px',
-    lineHeight: '48px',
-    marginLeft: '4px',
-  },
-  questionGroup: {
-    marginTop: '20px',
-  },
-};
+const styles = globalStyles.survey;
 
 class TellUsAboutYourCurrentRole extends React.PureComponent {
   render() {

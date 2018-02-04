@@ -8,10 +8,11 @@ import Footer from './Footer';
 import Navbar from './Navbar';
 import NavbarHome from './NavbarHome';
 import StandardPage from './StandardPage';
-import Survey from './Survey';
+import Survey from './survey/Survey';
+import { blueGrey, offWhite } from './colors';
 
 const styles = {
-  contentRoot: {
+  contentContainer: {
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
@@ -76,13 +77,14 @@ class App extends React.Component {
     } = this.state;
     const { location } = this.props;
 
+    // Make the backgroud match the header for the root page Hero.
     const content = {
       ...styles.content,
-      backgroundColor: (location.pathname === '/') ? '#8097ad' : '#F7F5F4',
+      backgroundColor: (location.pathname === '/') ? blueGrey : offWhite,
     };
 
     return (
-      <div style={styles.contentRoot}>
+      <div style={styles.contentContainer}>
         {(location.pathname === '/') ? <NavbarHome /> : <Navbar i18n={i18n} />}
         <div style={content}>
           <Switch>

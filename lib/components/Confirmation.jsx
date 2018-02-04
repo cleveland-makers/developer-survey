@@ -1,17 +1,18 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import SurveyProgress from './survey/SurveyProgress';
+import { deepRed, rubyRed } from './colors';
 
 const styles = {
   h1: {
-    color: '#730006',
+    color: deepRed,
     fontFamily: 'Play, serif',
     fontSize: '50px',
     fontWeight: '600',
     lineHeight: '1.08',
     marginBottom: '40px',
     marginTop: '20px',
-    textShadow: '2px 2px 5px #F24932',
+    textShadow: `2px 2px 5px ${rubyRed}`,
     textTransform: 'uppercase',
   },
   div: {

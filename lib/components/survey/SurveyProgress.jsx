@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LinearProgress from 'material-ui/LinearProgress';
+import { deepRed } from '../colors';
 
 const styles = {
   progressBar: {
@@ -12,7 +13,7 @@ class SurveyProgress extends React.PureComponent {
   render() {
     return (
       <LinearProgress
-        color="#730006"
+        color={deepRed}
         max={this.props.surveyLength}
         mode="determinate"
         style={styles.progressBar}

@@ -2,17 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import { withRouter } from 'react-router-dom';
+import { blueGrey, greyBlue } from './colors';
 
 const styles = {
-  navbar: {
-    backgroundColor: '#8097ad',
+  header: {
     flexShrink: 'none',
+  },
+  navbar: {
+    backgroundColor: blueGrey,
   },
   navbarTitle: {
     cursor: 'pointer',
     fontFamily: 'Play, serif',
     fontWeight: '600',
-    textShadow: '2px 2px 5px #6B86A0',
+    textShadow: `2px 2px 5px ${greyBlue}`,
     textTransform: 'uppercase',
   },
 };
@@ -25,7 +28,7 @@ class Navbar extends React.PureComponent {
 
   render() {
     return (
-      <div style={styles.navbar}>
+      <header style={styles.header}>
         <AppBar
           onTitleClick={this.onTitleClick}
           showMenuIconButton={false}
@@ -33,7 +36,7 @@ class Navbar extends React.PureComponent {
           title={this.props.i18n.header}
           titleStyle={styles.navbarTitle}
         />
-      </div>
+      </header>
     );
   }
 }

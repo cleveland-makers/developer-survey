@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { lightWhite } from 'material-ui/styles/colors';
 import FullWidthSection from './FullWidthSection';
 import storeProvider from './storeProvider';
+import { darkGrey } from './colors';
 
 const styles = {
   p: {
@@ -21,7 +22,7 @@ const styles = {
     textAlign: 'center',
   },
   footer: {
-    backgroundColor: '#343432',
+    backgroundColor: darkGrey,
     flexShrink: 'none',
     padding: '20px',
   },
@@ -33,7 +34,7 @@ class Footer extends React.PureComponent {
       <footer style={styles.footer}>
         <FullWidthSection>
           <p style={styles.p}>
-            {'Hand crafted with love by engineers from Cleveland. '}
+            {'Hand crafted with love by engineers from Cleveland.'}
           </p>
           <p style={styles.fingerprint}>
             {this.props.fingerprint}

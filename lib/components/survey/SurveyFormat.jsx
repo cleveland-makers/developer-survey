@@ -3,30 +3,33 @@ import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import withWidth, { SMALL } from 'material-ui/utils/withWidth';
 import FullWidthSection from '../FullWidthSection';
+import { white } from '../colors';
 
 const styles = {
   mobile: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: white,
   },
-  paper: {
+  web: {
     padding: '20px 30px',
   },
 };
 
 class SurveyFormat extends React.PureComponent {
   render() {
-    if (this.props.width === SMALL) {
-      return (
-        <FullWidthSection style={styles.mobile}>
-          {this.props.children}
-        </FullWidthSection>
-      );
+    switch (this.props.width) {
+      case SMALL:
+        return (
+          <FullWidthSection style={styles.mobile}>
+            {this.props.children}
+          </FullWidthSection>
+        );
+      default:
+        return (
+          <Paper style={styles.web} zDepth={1}>
+            {this.props.children}
+          </Paper>
+        );
     }
-    return (
-      <Paper style={styles.paper} zDepth={1}>
-        {this.props.children}
-      </Paper>
-    );
   }
 }
 
