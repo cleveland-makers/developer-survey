@@ -8,6 +8,18 @@
   <script type="text/javascript">window.initialData = <%- JSON.stringify(initialData) -%></script>
   <link href="https://fonts.googleapis.com/css?family=Play|Roboto" rel="stylesheet">
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+  <% if (googleAnalytics) { %>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113560349-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '<%= googleAnalytics.trackingId %>');
+  </script>
+  <% } %>
   <style type="text/css">
     a {
       text-decoration: none;
