@@ -20,6 +20,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "languagePrimaryWorkLanguage": "",
+      "showValidation": false,
       "store": Object {
         "savePrimaryLanguage": [Function],
         "subscribe": [Function],
@@ -36,6 +37,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "languagePrimaryWorkLanguage": "",
+        "showValidation": false,
         "store": Object {
           "savePrimaryLanguage": [Function],
           "subscribe": [Function],

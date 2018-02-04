@@ -20,6 +20,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "careerSalary": 0,
+      "showValidation": false,
       "store": Object {
         "saveCompensation": [Function],
         "subscribe": [Function],
@@ -36,6 +37,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "careerSalary": 0,
+        "showValidation": false,
         "store": Object {
           "saveCompensation": [Function],
           "subscribe": [Function],

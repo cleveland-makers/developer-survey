@@ -20,6 +20,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "officeEmployeeCount": "",
+      "showValidation": false,
       "store": Object {
         "saveCompanySize": [Function],
         "subscribe": [Function],
@@ -36,6 +37,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "officeEmployeeCount": "",
+        "showValidation": false,
         "store": Object {
           "saveCompanySize": [Function],
           "subscribe": [Function],

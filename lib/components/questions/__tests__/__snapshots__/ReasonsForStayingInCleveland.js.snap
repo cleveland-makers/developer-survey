@@ -26,6 +26,7 @@ ShallowWrapper {
       "personalWhyCleveland": Array [
         "",
       ],
+      "showValidation": false,
       "store": Object {
         "saveWhyCleveland": [Function],
         "subscribe": [Function],
@@ -44,6 +45,7 @@ ShallowWrapper {
         "personalWhyCleveland": Array [
           "",
         ],
+        "showValidation": false,
         "store": Object {
           "saveWhyCleveland": [Function],
           "subscribe": [Function],

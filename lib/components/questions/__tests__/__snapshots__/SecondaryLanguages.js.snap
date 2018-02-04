@@ -26,6 +26,7 @@ ShallowWrapper {
       "languagePrimaryHomeLanguages": Array [
         "",
       ],
+      "showValidation": false,
       "store": Object {
         "saveHomeLanguages": [Function],
         "subscribe": [Function],
@@ -44,6 +45,7 @@ ShallowWrapper {
         "languagePrimaryHomeLanguages": Array [
           "",
         ],
+        "showValidation": false,
         "store": Object {
           "saveHomeLanguages": [Function],
           "subscribe": [Function],

@@ -20,6 +20,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "personalGender": "",
+      "showValidation": false,
       "store": Object {
         "saveGender": [Function],
         "subscribe": [Function],
@@ -36,6 +37,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "personalGender": "",
+        "showValidation": false,
         "store": Object {
           "saveGender": [Function],
           "subscribe": [Function],

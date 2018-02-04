@@ -20,6 +20,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "officeHoursPerWeek": 0,
+      "showValidation": false,
       "store": Object {
         "saveHoursPerWeek": [Function],
         "subscribe": [Function],
@@ -36,6 +37,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "officeHoursPerWeek": 0,
+        "showValidation": false,
         "store": Object {
           "saveHoursPerWeek": [Function],
           "subscribe": [Function],

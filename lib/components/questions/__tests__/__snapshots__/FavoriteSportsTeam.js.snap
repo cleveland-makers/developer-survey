@@ -20,6 +20,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "personalFavoriteSportsTeams": "",
+      "showValidation": false,
       "store": Object {
         "saveSportsTeam": [Function],
         "subscribe": [Function],
@@ -36,6 +37,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "personalFavoriteSportsTeams": "",
+        "showValidation": false,
         "store": Object {
           "saveSportsTeam": [Function],
           "subscribe": [Function],

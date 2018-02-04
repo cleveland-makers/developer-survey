@@ -20,6 +20,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "careerWorkLifeBalance": "",
+      "showValidation": false,
       "store": Object {
         "saveWorkLifeBalance": [Function],
         "subscribe": [Function],
@@ -36,6 +37,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "careerWorkLifeBalance": "",
+        "showValidation": false,
         "store": Object {
           "saveWorkLifeBalance": [Function],
           "subscribe": [Function],
