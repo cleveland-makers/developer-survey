@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
+import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
+import Paper from 'material-ui/Paper';
 import withWidth, { SMALL } from 'material-ui/utils/withWidth';
 import { withRouter } from 'react-router-dom';
 import SurveyFormat from './SurveyFormat';
@@ -10,6 +12,7 @@ import storeProvider from '../storeProvider';
 
 const previousIcon = <FontIcon className="fa fa-arrow-left" />;
 const nextIcon = <FontIcon className="fa fa-arrow-right" />;
+
 const styles = {
   h1: {
     color: '#730006',
@@ -51,17 +54,6 @@ const styles = {
   buttonGroup: {
     paddingTop: '30px',
   },
-  mobileButtonNav: {
-    height: 'auto',
-    backgroundColor: '#7a96b0',
-    color: '#343432',
-  },
-  mobileOneButton: {
-    width: '100%',
-  },
-  mobileTwoButtons: {
-    width: '50%',
-  },
 };
 
 class SurveyNavigation extends React.PureComponent {
@@ -70,20 +62,21 @@ class SurveyNavigation extends React.PureComponent {
     this.props.store.previousStep();
   }
 
-  saveAndContinue = async (e) => {
+  saveAndContinue = (e) => {
     e.preventDefault();
 
     if (this.props.nextFunc) {
-      const success = await this.props.nextFunc();
-      if (!success) {
-        console.log('error');
-      }
+      this.props.nextFunc()
+        .then(() => {
+          if (this.props.nextHref) {
+            this.props.history.push(this.props.nextHref);
+          }
+        });
     } else {
-      await this.props.store.nextStep();
-    }
-
-    if (this.props.nextHref) {
-      this.props.history.push(this.props.nextHref);
+      this.props.store.nextStep();
+      if (this.props.nextHref) {
+        this.props.history.push(this.props.nextHref);
+      }
     }
   }
 
@@ -100,36 +93,22 @@ class SurveyNavigation extends React.PureComponent {
           <SurveyFormat>
             {this.props.children}
           </SurveyFormat>
-          <div>
-            {(previousDisplay) ? <FlatButton
-              disableTouchRipple
-              onClick={this.previousStep}
-              icon={previousIcon}
-              style={(!this.props.previousDisplay) ?
-                {
-                  ...styles.mobileButtonNav,
-                  ...styles.mobileOneButton,
-                } : {
-                ...styles.mobileButtonNav,
-                ...styles.mobileTwoButtons,
-                }}
-            /> : ''}
-            {(nextDisplay) ? <FlatButton
-              disableTouchRipple
-              backgroundColor="#730006"
-              labelStyle={styles.buttonMainLabel}
-              onClick={this.saveAndContinue}
-              icon={nextIcon}
-              style={(!this.props.previousDisplay) ?
-                {
-                  ...styles.mobileButtonNav,
-                  ...styles.mobileOneButton,
-                } : {
-                ...styles.mobileButtonNav,
-                ...styles.mobileTwoButtons,
-                }}
-            /> : ''}
-          </div>
+          <Paper>
+            <BottomNavigation>
+              {(previousDisplay) ? <BottomNavigationItem
+                disableTouchRipple
+                icon={previousIcon}
+                label={previousLabel}
+                onClick={this.previousStep}
+              /> : ''}
+              {(nextDisplay) ? <BottomNavigationItem
+                disableTouchRipple
+                icon={nextIcon}
+                label={nextLabel}
+                onClick={this.saveAndContinue}
+              /> : ''}
+            </BottomNavigation>
+          </Paper>
         </React.Fragment>
       );
     }

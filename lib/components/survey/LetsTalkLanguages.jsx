@@ -6,7 +6,6 @@ import LanguageUses from '../questions/LanguageUses';
 import PrimaryLanguage from '../questions/PrimaryLanguage';
 import SecondaryLanguages from '../questions/SecondaryLanguages';
 import PrimaryLanguageExperience from '../questions/PrimaryLanguageExperience';
-import SurveyNavigation from './SurveyNavigation';
 
 const styles = {
   h1: {

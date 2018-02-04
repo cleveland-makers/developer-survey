@@ -4,7 +4,6 @@ import ClearFix from 'material-ui/internal/ClearFix';
 import ReasonsForStayingInCleveland from '../questions/ReasonsForStayingInCleveland';
 import FavoriteSportsTeam from '../questions/FavoriteSportsTeam';
 import FavoriteClevelandActivity from '../questions/FavoriteClevelandActivity';
-import SurveyNavigation from './SurveyNavigation';
 
 const styles = {
   h1: {

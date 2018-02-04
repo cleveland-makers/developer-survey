@@ -12,7 +12,7 @@ import SurveyNavigation from './survey/SurveyNavigation';
 import SurveyProgress from './survey/SurveyProgress';
 import TellUsAboutYourCurrentRole from './survey/TellUsAboutYourCurrentRole';
 
-function buttonOptions(currentStep, submit) {
+function buttonOptions(currentStep) {
   if (currentStep === -1) {
     return {
       nextDisplay: false,
@@ -24,7 +24,6 @@ function buttonOptions(currentStep, submit) {
     };
   } else if (currentStep === 4) {
     return {
-      nextFunc: submit,
       nextHref: '/confirmation',
       nextLabel: 'Submit',
     };
@@ -81,6 +80,9 @@ class Survey extends React.PureComponent {
     if (this.state.loading) {
       return (<Loading />);
     }
+    const nextFunc = (this.props.surveyStep === 4) ?
+      this.props.store.submitSurvey : null;
+    const options = buttonOptions(this.props.surveyStep);
     return (
       <div>
         <SurveyProgress
@@ -88,7 +90,8 @@ class Survey extends React.PureComponent {
           surveyLength={this.props.surveyLength}
         />
         <SurveyNavigation
-          {...buttonOptions(this.props.surveyStep, this.props.store.submitSurvey)}
+          nextFunc={nextFunc}
+          {...options}
         >
           {this.surveyPage()}
         </SurveyNavigation>
