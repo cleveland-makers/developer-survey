@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import withWidth, { SMALL } from 'material-ui/utils/withWidth';
-
 import FontIcon from 'material-ui/FontIcon';
+import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
+import Paper from 'material-ui/Paper';
+import withWidth, { SMALL } from 'material-ui/utils/withWidth';
+import { withRouter } from 'react-router-dom';
 import SurveyFormat from './SurveyFormat';
 import storeProvider from '../storeProvider';
 
 const previousIcon = <FontIcon className="fa fa-arrow-left" />;
 const nextIcon = <FontIcon className="fa fa-arrow-right" />;
+
 const styles = {
   h1: {
     color: '#730006',
@@ -51,17 +54,6 @@ const styles = {
   buttonGroup: {
     paddingTop: '30px',
   },
-  mobileButtonNav: {
-    height: 'auto',
-    backgroundColor: '#7a96b0',
-    color: '#343432',
-    mobileOneButton: {
-      width: '100%',
-    },
-    mobileTwoButtons: {
-      width: '50%',
-    },
-  },
 };
 
 class SurveyNavigation extends React.PureComponent {
@@ -72,14 +64,25 @@ class SurveyNavigation extends React.PureComponent {
 
   saveAndContinue = (e) => {
     e.preventDefault();
-    this.props.store.nextStep();
+
+    if (this.props.nextFunc) {
+      this.props.nextFunc()
+        .then(() => {
+          if (this.props.nextHref) {
+            this.props.history.push(this.props.nextHref);
+          }
+        });
+    } else {
+      this.props.store.nextStep();
+      if (this.props.nextHref) {
+        this.props.history.push(this.props.nextHref);
+      }
+    }
   }
 
   render() {
     const {
       nextDisplay,
-      nextFunc,
-      nextHref,
       nextLabel,
       previousDisplay,
       previousLabel,
@@ -90,37 +93,22 @@ class SurveyNavigation extends React.PureComponent {
           <SurveyFormat>
             {this.props.children}
           </SurveyFormat>
-          <div>
-            {(previousDisplay) ? <FlatButton
-              disableTouchRipple
-              onClick={this.previousStep}
-              icon={previousIcon}
-              style={(!this.props.previousDisplay) ?
-                {
-                  ...styles.mobileButtonNav,
-                  ...styles.mobileOneButton,
-                } : {
-                ...styles.mobileButtonNav,
-                ...styles.mobileTwoButtons,
-              }}
-            /> : ''}
-            {(nextDisplay) ? <FlatButton
-              disableTouchRipple
-              backgroundColor="#730006"
-              href={nextHref}
-              labelStyle={styles.buttonMainLabel}
-              onClick={(nextFunc) ? nextFunc : this.saveAndContinue}
-              icon={nextIcon}
-              style={(!this.props.previousDisplay) ?
-                {
-                  ...styles.mobileButtonNav,
-                  ...styles.mobileOneButton,
-                } : {
-                ...styles.mobileButtonNav,
-                ...styles.mobileTwoButtons,
-              }}
-            /> : ''}
-          </div>
+          <Paper>
+            <BottomNavigation>
+              {(previousDisplay) ? <BottomNavigationItem
+                disableTouchRipple
+                icon={previousIcon}
+                label={previousLabel}
+                onClick={this.previousStep}
+              /> : ''}
+              {(nextDisplay) ? <BottomNavigationItem
+                disableTouchRipple
+                icon={nextIcon}
+                label={nextLabel}
+                onClick={this.saveAndContinue}
+              /> : ''}
+            </BottomNavigation>
+          </Paper>
         </React.Fragment>
       );
     }
@@ -138,11 +126,10 @@ class SurveyNavigation extends React.PureComponent {
           /> : ''}
           {(nextDisplay) ? <RaisedButton
             backgroundColor="#730006"
-            href={nextHref}
             label={nextLabel}
             labelColor="#F7F5F4"
             labelStyle={styles.buttonMainLabel}
-            onClick={(nextFunc) ? nextFunc : this.saveAndContinue}
+            onClick={this.saveAndContinue}
             style={styles.buttonMain}
           /> : ''}
         </div>
@@ -153,6 +140,9 @@ class SurveyNavigation extends React.PureComponent {
 
 SurveyNavigation.propTypes = {
   children: PropTypes.node.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
   nextDisplay: PropTypes.bool,
   nextFunc: PropTypes.func,
   nextHref: PropTypes.string,
@@ -175,4 +165,4 @@ SurveyNavigation.defaultProps = {
   previousLabel: 'Previous',
 };
 
-export default withWidth()(storeProvider()(SurveyNavigation));
+export default withWidth()(withRouter(storeProvider()(SurveyNavigation)));

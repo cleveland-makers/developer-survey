@@ -3,21 +3,27 @@ import PropTypes from 'prop-types';
 import Diversity from './survey/Diversity';
 import FourOhFour from './FourOhFour';
 import LetsTalkLanguages from './survey/LetsTalkLanguages';
+import Loading from './Loading';
 import MovingOn from './survey/MovingOn';
 import SpeakingOfWork from './survey/SpeakingOfWork';
+import storeProvider from './storeProvider';
+import SurveyComplete from './SurveyComplete';
+import SurveyNavigation from './survey/SurveyNavigation';
 import SurveyProgress from './survey/SurveyProgress';
 import TellUsAboutYourCurrentRole from './survey/TellUsAboutYourCurrentRole';
-import SurveyNavigation from './survey/SurveyNavigation';
-import storeProvider from './storeProvider';
 
-function buttonOptions(currentStep, submit) {
-  if (currentStep === 0) {
+function buttonOptions(currentStep) {
+  if (currentStep === -1) {
+    return {
+      nextDisplay: false,
+      previousDisplay: false,
+    };
+  } else if (currentStep === 0) {
     return {
       previousDisplay: false,
     };
   } else if (currentStep === 4) {
     return {
-      nextFunc: submit,
       nextHref: '/confirmation',
       nextLabel: 'Submit',
     };
@@ -26,8 +32,25 @@ function buttonOptions(currentStep, submit) {
 }
 
 class Survey extends React.PureComponent {
+  state = {
+    loading: true,
+  }
+
+  componentDidMount = async () => {
+    await this.props.store.loadProps();
+    const { allowed } = await this.props.store.checkSurveyState();
+    if (!allowed) {
+      this.props.store.disallow();
+    }
+    this.setState({
+      loading: false,
+    });
+  }
+
   surveyPage() {
     switch (this.props.surveyStep) {
+      case -1:
+        return (<SurveyComplete />);
       case 0:
         return (<TellUsAboutYourCurrentRole
           {...this.props}
@@ -54,12 +77,12 @@ class Survey extends React.PureComponent {
   }
 
   render() {
-    const {
-      nextFunc,
-      nextHref,
-      nextLabel,
-      previousDisplay,
-    } = buttonOptions(this.props.surveyStep, this.props.store.submitSurvey);
+    if (this.state.loading) {
+      return (<Loading />);
+    }
+    const nextFunc = (this.props.surveyStep === 4) ?
+      this.props.store.submitSurvey : null;
+    const options = buttonOptions(this.props.surveyStep);
     return (
       <div>
         <SurveyProgress
@@ -68,9 +91,7 @@ class Survey extends React.PureComponent {
         />
         <SurveyNavigation
           nextFunc={nextFunc}
-          nextHref={nextHref}
-          nextLabel={nextLabel}
-          previousDisplay={previousDisplay}
+          {...options}
         >
           {this.surveyPage()}
         </SurveyNavigation>
@@ -81,6 +102,9 @@ class Survey extends React.PureComponent {
 
 Survey.propTypes = {
   store: PropTypes.shape({
+    checkSurveyState: PropTypes.func.isRequired,
+    disallow: PropTypes.func.isRequired,
+    loadProps: PropTypes.func.isRequired,
     submitSurvey: PropTypes.func.isRequired,
   }).isRequired,
   surveyLength: PropTypes.number.isRequired,

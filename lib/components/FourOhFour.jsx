@@ -25,12 +25,10 @@ const styles = {
 const FourOhFour = () => (
   <Paper style={styles.paper} zDepth={1}>
     <section style={styles.div}>
-      <div className="intro">
-        <h1 style={styles.h1}>Page Not Found</h1>
-        <p>
-          Please return to the home page.
-        </p>
-      </div>
+      <h1 style={styles.h1}>Page Not Found</h1>
+      <p>
+        Please return to the home page.
+      </p>
     </section>
   </Paper>
 );
