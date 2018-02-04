@@ -1,5 +1,6 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
+import SurveyProgress from './survey/SurveyProgress';
 
 const styles = {
   h1: {
@@ -23,15 +24,21 @@ const styles = {
 };
 
 const Confirmation = () => (
-  <Paper style={styles.paper} zDepth={1}>
-    <section style={styles.div}>
-      <h1 style={styles.h1}>Thank you!</h1>
-      <p>
-        We appreciate you taking the time to tell us about yourself. Results
-        will be available soon.
-      </p>
-    </section>
-  </Paper>
+  <React.Fragment>
+    <SurveyProgress
+      surveyStep={1}
+      surveyLength={1}
+    />
+    <Paper style={styles.paper} zDepth={1}>
+      <section style={styles.div}>
+        <h1 style={styles.h1}>Thank you!</h1>
+        <p>
+          We appreciate you taking the time to tell us about yourself. Results
+          will be available soon.
+        </p>
+      </section>
+    </Paper>
+  </React.Fragment>
 );
 
 export default Confirmation;

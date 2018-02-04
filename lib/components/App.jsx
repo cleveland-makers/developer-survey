@@ -102,11 +102,7 @@ class App extends React.Component {
               path="/confirmation"
               render={() => (
                 <StandardPage>
-                  <Confirmation
-                    survey={survey}
-                    surveyStep={surveyStep}
-                    surveyLength={surveyLength}
-                  />
+                  <Confirmation />
                 </StandardPage>
               )}
             />

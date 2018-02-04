@@ -5,6 +5,9 @@ import withWidth, { SMALL } from 'material-ui/utils/withWidth';
 import FullWidthSection from '../FullWidthSection';
 
 const styles = {
+  mobile: {
+    backgroundColor: '#FFFFFF',
+  },
   paper: {
     padding: '20px 30px',
   },
@@ -14,7 +17,7 @@ class SurveyFormat extends React.PureComponent {
   render() {
     if (this.props.width === SMALL) {
       return (
-        <FullWidthSection>
+        <FullWidthSection style={styles.mobile}>
           {this.props.children}
         </FullWidthSection>
       );
