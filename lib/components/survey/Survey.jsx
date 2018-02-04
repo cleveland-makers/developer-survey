@@ -92,6 +92,7 @@ class Survey extends React.PureComponent {
     if (!allowed) {
       this.props.store.disallow();
     }
+    this.props.store.resetState();
     this.setState({
       loading: false,
     });
@@ -157,6 +158,7 @@ Survey.propTypes = {
     checkSurveyState: PropTypes.func.isRequired,
     disallow: PropTypes.func.isRequired,
     loadProps: PropTypes.func.isRequired,
+    resetState: PropTypes.func.isRequired,
     submitSurvey: PropTypes.func.isRequired,
   }).isRequired,
   survey: PropTypes.shape({
