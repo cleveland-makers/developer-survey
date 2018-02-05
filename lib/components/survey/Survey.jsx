@@ -92,7 +92,6 @@ class Survey extends React.PureComponent {
     if (!allowed) {
       this.props.store.disallow();
     }
-    this.props.store.resetState();
     this.setState({
       loading: false,
     });
