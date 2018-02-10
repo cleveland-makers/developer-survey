@@ -11,7 +11,7 @@ import styles from './styles';
  */
 class NumCompaniesWorkedFor extends React.PureComponent {
   handleChange = (event, value) => {
-    this.props.store.saveNumberOfJobs(value);
+    this.props.store.saveNumberOfJobs((value) ? parseInt(value, 10) : '');
   }
 
   render() {

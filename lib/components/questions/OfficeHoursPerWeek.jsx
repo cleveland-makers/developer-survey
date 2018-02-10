@@ -11,7 +11,7 @@ import styles from './styles';
  */
 class OfficeHoursPerWeek extends React.PureComponent {
   handleChange = (event, value) => {
-    this.props.store.saveHoursPerWeek(value);
+    this.props.store.saveHoursPerWeek((value) ? parseInt(value, 10) : '');
   }
 
   render() {

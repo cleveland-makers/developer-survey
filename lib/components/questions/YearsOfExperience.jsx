@@ -11,7 +11,7 @@ import styles from './styles';
  */
 class YearsOfExperience extends React.PureComponent {
   handleChange = (event, value) => {
-    this.props.store.saveHowLong(value);
+    this.props.store.saveHowLong((value) ? parseInt(value, 10) : '');
   }
 
   render() {
@@ -26,6 +26,7 @@ class YearsOfExperience extends React.PureComponent {
           'Years'
         }
         hintStyle={styles.highlightLabel}
+        id="yearsOfExperience"
         inputStyle={styles.highlightLabel}
         onChange={this.handleChange}
         style={styles.fieldText}

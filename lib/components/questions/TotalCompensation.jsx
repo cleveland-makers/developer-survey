@@ -11,7 +11,7 @@ import styles from './styles';
  */
 class TotalCompensation extends React.PureComponent {
   handleChange = (event, value) => {
-    this.props.store.saveCompensation(value);
+    this.props.store.saveCompensation((value) ? parseInt(value, 10) : '');
   }
 
   render() {
