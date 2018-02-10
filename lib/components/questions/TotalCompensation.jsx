@@ -11,11 +11,7 @@ import styles from './styles';
  */
 class TotalCompensation extends React.PureComponent {
   handleChange = (event, value) => {
-    let validatedValue = parseInt(value, 10);
-    if (value < 0) {
-      validatedValue = 0;
-    }
-    this.props.store.saveCompensation(validatedValue);
+    this.props.store.saveCompensation(value);
   }
 
   render() {
@@ -24,15 +20,17 @@ class TotalCompensation extends React.PureComponent {
       <TextField
         errorText={
           showValidation &&
-          'Compensation'
+          (!careerSalary ||
+            careerSalary < 0) &&
+          'Salary'
         }
         hintStyle={styles.highlightLabel}
-        hintText="Total Compensation"
+        hintText="100,000"
         inputStyle={styles.highlightLabel}
         onChange={this.handleChange}
         style={{
           ...styles.fieldText,
-          width: '70px',
+          width: '100px',
         }}
         type="number"
         value={careerSalary}

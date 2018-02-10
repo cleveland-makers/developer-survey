@@ -40,7 +40,7 @@ class CurrentRole extends React.PureComponent {
           'Current roles'
         }
         hintStyle={styles.highlightLabel}
-        hintText="Individual Roles"
+        hintText="Roles"
         labelStyle={styles.highlightLabel}
         multiple
         onChange={this.handleChange}

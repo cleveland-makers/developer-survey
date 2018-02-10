@@ -6,14 +6,15 @@ import storeProvider from '../storeProvider';
 import styles from './styles';
 
 const education = [
-  'I never completed any formal education',
-  'Primary/elementary school',
-  'Secondary school',
-  'Some college/university study without earning a bachelor’s degree',
+  'Less than a high school diploma',
+  'High school diploma or equivalent (e.g. GED',
+  'Some college, no degree',
+  'Bootcamp',
+  'Associate degree',
   'Bachelor’s degree',
-  'Master’s degree',
-  'Professional degree',
-  'Doctoral degree',
+  'Master’s degree / Professional degree',
+  'Doctorate',
+  'Not Listed',
   'I prefer not to answer',
 ];
 

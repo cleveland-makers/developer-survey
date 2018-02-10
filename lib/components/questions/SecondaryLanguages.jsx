@@ -34,6 +34,7 @@ const langs = [
   '.NET',
   'VBA',
   'Visual Basic 6',
+  'None',
   'Other',
 ];
 

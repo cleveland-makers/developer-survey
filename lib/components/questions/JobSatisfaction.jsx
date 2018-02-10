@@ -32,13 +32,16 @@ class JobSatisfaction extends React.PureComponent {
           showValidation &&
           !careerSatisfaction &&
           careerSatisfaction.length === 0 &&
-          'Career satisfaction'
+          'Satisfaction'
         }
         hintStyle={styles.highlightLabel}
-        hintText="Job Satisfaction"
+        hintText={'\u{1F610}'}
         labelStyle={styles.highlightLabel}
         onChange={this.handleChange}
-        style={styles.fieldSingleSelect}
+        style={{
+          ...styles.fieldSingleSelect,
+          width: '50px',
+        }}
         value={careerSatisfaction}
       >
         {emoji.map(emo => (

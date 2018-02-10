@@ -37,7 +37,8 @@ function validator(survey, surveyStep) {
       case 0:
         return survey.developerCurrentRoles &&
           survey.developerCurrentRoles.length > 0 &&
-          survey.developerHowLong !== 0;
+          survey.developerHowLong > 0 &&
+          survey.developerHowLong <= 99;
       case 1:
         return survey.languagePrimaryHomeLanguages &&
           survey.languagePrimaryHomeLanguages.length > 0 &&
@@ -45,13 +46,14 @@ function validator(survey, surveyStep) {
           survey.languagePrimaryWorkLanguage.length > 0 &&
           survey.languageWhenDidYouLearnIt &&
           survey.languageWhenDidYouLearnIt > 0 &&
+          survey.languageWhenDidYouLearnIt <= 99 &&
           survey.languageWhereDidYouLearnIt &&
           survey.languageWhereDidYouLearnIt.length > 0 &&
           survey.languageWhyDoYouUseIt &&
           survey.languageWhyDoYouUseIt.length > 0;
       case 2:
         return survey.careerDevelopmentJobCount > 0 &&
-          survey.careerSalary > 0 &&
+          survey.careerSalary >= 0 &&
           survey.careerSatisfaction &&
           survey.careerSatisfaction.length > 0 &&
           survey.careerWorkLifeBalance &&
@@ -59,6 +61,7 @@ function validator(survey, surveyStep) {
           survey.officeEmployeeCount &&
           survey.officeEmployeeCount.length > 0 &&
           survey.officeHoursPerWeek > 0 &&
+          survey.officeHoursPerWeek <= 168 &&
           survey.officeLocation &&
           survey.officeLocation.length > 0;
       case 3:
@@ -175,7 +178,7 @@ Survey.propTypes = {
     officeEmployeeCount: PropTypes.string.isRequired,
     officeHoursPerWeek: PropTypes.number.isRequired,
     officeLocation: PropTypes.string.isRequired,
-    personalEthnicity: PropTypes.string.isRequired,
+    personalEthnicity: PropTypes.arrayOf(PropTypes.string).isRequired,
     personalFavoriteClevelandActivity: PropTypes.string.isRequired,
     personalFavoriteSportsTeams: PropTypes.string.isRequired,
     personalGender: PropTypes.string.isRequired,

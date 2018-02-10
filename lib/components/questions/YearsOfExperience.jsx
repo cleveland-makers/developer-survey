@@ -11,13 +11,7 @@ import styles from './styles';
  */
 class YearsOfExperience extends React.PureComponent {
   handleChange = (event, value) => {
-    let validatedValue = parseInt(value, 10);
-    if (value < 1) {
-      validatedValue = 1;
-    } else if (value > 99) {
-      validatedValue = 99;
-    }
-    this.props.store.saveHowLong(validatedValue);
+    this.props.store.saveHowLong(value);
   }
 
   render() {
@@ -26,11 +20,12 @@ class YearsOfExperience extends React.PureComponent {
       <TextField
         errorText={
           showValidation &&
-          developerHowLong === 0 &&
+          (!developerHowLong ||
+            developerHowLong > 99 ||
+            developerHowLong < 0) &&
           'Years'
         }
         hintStyle={styles.highlightLabel}
-        hintText="x"
         inputStyle={styles.highlightLabel}
         onChange={this.handleChange}
         style={styles.fieldText}

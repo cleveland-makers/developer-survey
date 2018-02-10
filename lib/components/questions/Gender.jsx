@@ -6,10 +6,13 @@ import storeProvider from '../storeProvider';
 import styles from './styles';
 
 const genders = [
-  'Female',
   'Male',
-  'Other',
-  'Prefer not to say',
+  'Female',
+  'Transgender Male',
+  'Transgender Female',
+  'Gender Variant / Non-Conforming',
+  'Not Listed',
+  'Prefer not to answer',
 ];
 
 /**

@@ -11,11 +11,7 @@ import styles from './styles';
  */
 class OfficeHoursPerWeek extends React.PureComponent {
   handleChange = (event, value) => {
-    let validatedValue = parseInt(value, 10);
-    if (value < 0) {
-      validatedValue = 0;
-    }
-    this.props.store.saveHoursPerWeek(validatedValue);
+    this.props.store.saveHoursPerWeek(value);
   }
 
   render() {
@@ -24,7 +20,9 @@ class OfficeHoursPerWeek extends React.PureComponent {
       <TextField
         errorText={
           showValidation &&
-          officeHoursPerWeek === 0 &&
+          (!officeHoursPerWeek ||
+            officeHoursPerWeek > 168 ||
+            officeHoursPerWeek < 0) &&
           'Office hours'
         }
         hintStyle={styles.highlightLabel}

@@ -49,9 +49,9 @@ const Faq = () => (
           salary calculations.
         </p>
         <p>
-          The information collected is anonymous and will be accessible to all, in
-          downloadable (INSERT FILE FORMAT TYPE HERE) format, once the survey
-          collection period is over (INSERT DATE OF COMPLETION HERE).
+          The information collected is anonymous and will be accessible to all,
+          as a downloadable csv, once the survey collection period is over
+          March 31st, 2018.
         </p>
         <p>
           The survey takes about 7 minutes to complete.

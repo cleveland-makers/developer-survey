@@ -6,15 +6,14 @@ import storeProvider from '../storeProvider';
 import styles from './styles';
 
 const ethnicities = [
-  'Black or of African descent',
-  'East Asian',
-  'Hispanic or Latino/Latina',
-  'Middle Eastern',
-  'Native American, Pacific Islander, or Indigenous Australian',
-  'South Asian',
-  'White or of European descent',
-  'Prefer not to say',
-  'Other',
+  'American Indian or Alaska Native',
+  'Asian',
+  'Black or African descent',
+  'Native Hawaiian or Other Pacific Islander',
+  'Hispanic, Latino, or of Spanish origin',
+  'White',
+  'Not Listed',
+  'Prefer not to answer',
 ];
 
 /**
@@ -23,8 +22,8 @@ const ethnicities = [
  * What ethnicity are you?
  */
 class Ethnicity extends React.PureComponent {
-  handleChange = (event, index, value) => {
-    this.props.store.saveEthnicity(value);
+  handleChange = (event, index, values) => {
+    this.props.store.saveEthnicity(values);
   }
 
   render() {
@@ -41,6 +40,7 @@ class Ethnicity extends React.PureComponent {
         hintStyle={styles.highlightLabel}
         hintText="Ethnicity"
         labelStyle={styles.highlightLabel}
+        multiple
         onChange={this.handleChange}
         style={styles.fieldSingleSelect}
         value={personalEthnicity}
@@ -61,7 +61,7 @@ class Ethnicity extends React.PureComponent {
 }
 
 Ethnicity.propTypes = {
-  personalEthnicity: PropTypes.string.isRequired,
+  personalEthnicity: PropTypes.arrayOf(PropTypes.string).isRequired,
   store: PropTypes.shape({
     saveEthnicity: PropTypes.func.isRequired,
   }).isRequired,

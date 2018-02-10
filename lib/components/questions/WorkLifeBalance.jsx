@@ -32,13 +32,16 @@ class WorkLifeBalance extends React.PureComponent {
           showValidation &&
           !careerWorkLifeBalance &&
           careerWorkLifeBalance.length === 0
-          && 'Work / Life Balance'
+          && 'Balance'
         }
         hintStyle={styles.highlightLabel}
-        hintText="Work/Life Balance"
+        hintText={'\u{1F610}'}
         labelStyle={styles.highlightLabel}
         onChange={this.handleChange}
-        style={styles.fieldSingleSelect}
+        style={{
+          ...styles.fieldSingleSelect,
+          width: '50px',
+        }}
         value={careerWorkLifeBalance}
       >
         {emoji.map(emo => (
