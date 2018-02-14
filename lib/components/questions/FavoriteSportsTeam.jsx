@@ -8,8 +8,10 @@ import styles from './styles';
 const teams = [
   'Browns',
   'Cavaliers',
+  'Gladiators',
   'Indians',
   'Monsters',
+  'Not Listed',
 ];
 
 /**
